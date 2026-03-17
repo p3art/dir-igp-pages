@@ -1,0 +1,715 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>pat-11-wooden_door_decorations</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2d9ac165-e88d-8173-b2eb-dcc149924aaa" class="page sans"><header><h1 class="page-title" dir="auto">pat-11-wooden_door_decorations</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><p id="325ac165-e88d-80bc-bcdb-cc9f56d4c3c1" class="">木門紋飾</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-818d-a2d3-e965533665ca" class="">door-pattern-from-suleymaniye-mosque<br/>土耳其 伊斯坦堡 蘇萊曼尼耶清真寺 木門紋飾<br/>58 step to draw</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81e5-8434-efbf7a3c42bc" class="image"><a href="pat-11-wooden_door_decorations/fig-09B.png"><img style="width:709.9874877929688px" src="pat-11-wooden_door_decorations/fig-09B.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81f2-a395-e8f336fff7b8" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8176-9ebc-df51a0b82078" class="image" style="text-align:left"><a href="pat-11-wooden_door_decorations/0A-pattern-door-suleymaniye-mosque.jpg"><img style="width:366.97442626953125px" src="pat-11-wooden_door_decorations/0A-pattern-door-suleymaniye-mosque.jpg"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8180-8db0-c18922624ca1" class="image"><a href="pat-11-wooden_door_decorations/0C-pattern-door-suleymaniye-mosque.jpg"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/0C-pattern-door-suleymaniye-mosque.jpg"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81e5-9e64-e6f92ed8d5f0" class="image"><a href="pat-11-wooden_door_decorations/fig-01A.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-01A.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81b8-8dff-ec60931d032d" class="image"><a href="pat-11-wooden_door_decorations/fig-01B.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-01B.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8118-be0e-e6063d2aabd7" class="image"><a href="pat-11-wooden_door_decorations/fig-01C.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-01C.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-817e-9279-dbd9b2bbcb1d" class="image"><a href="pat-11-wooden_door_decorations/fig-02A.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-02A.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8152-9da9-c7183be00613" class="image"><a href="pat-11-wooden_door_decorations/fig-02B.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-02B.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8163-8520-c8534ec35791" class="image"><a href="pat-11-wooden_door_decorations/fig-03A.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-03A.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81d4-8142-d64427888328" class="image"><a href="pat-11-wooden_door_decorations/fig-03B.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-03B.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81d6-8aa7-e07efaeb8d46" class="image"><a href="pat-11-wooden_door_decorations/fig-03C.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-03C.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81b1-864f-e1b2278d39d0" class="image"><a href="pat-11-wooden_door_decorations/fig-03D.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-03D.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81f4-8422-f8437a819854" class="image"><a href="pat-11-wooden_door_decorations/fig-03E.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-03E.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81ab-af64-ca2c4880635e" class="image"><a href="pat-11-wooden_door_decorations/fig-04A.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-04A.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8169-b9cc-d4c27a4ba61a" class="image"><a href="pat-11-wooden_door_decorations/fig-04B.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-04B.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81a2-b04a-e87bca3c59c6" class="image"><a href="pat-11-wooden_door_decorations/fig-04C.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-04C.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81ce-9b13-c7c0f2c8dc21" class="image"><a href="pat-11-wooden_door_decorations/fig-04D.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-04D.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8172-b7d3-cf8e4c3b690d" class="image"><a href="pat-11-wooden_door_decorations/fig-04E.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-04E.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81dd-9ffa-ed27d60646d2" class="image"><a href="pat-11-wooden_door_decorations/fig-05A.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-05A.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-815e-b1b0-e5bcacc533d3" class="image"><a href="pat-11-wooden_door_decorations/fig-05B.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-05B.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8143-b295-f2ef6c06453a" class="image"><a href="pat-11-wooden_door_decorations/fig-05C.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-05C.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81c2-8e4d-d457632c39b8" class="image"><a href="pat-11-wooden_door_decorations/fig-05D.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-05D.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81df-a6b3-f8830e428413" class="image"><a href="pat-11-wooden_door_decorations/fig-05E.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-05E.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8137-a945-f4b96f133225" class="image"><a href="pat-11-wooden_door_decorations/fig-05F.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-05F.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-814c-9d3a-d18ecd76c2b4" class="image"><a href="pat-11-wooden_door_decorations/fig-05G.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-05G.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8100-b487-dc0aea3f08b6" class="image"><a href="pat-11-wooden_door_decorations/fig-06A.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-06A.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81af-98bb-fa3d8edb042f" class="image"><a href="pat-11-wooden_door_decorations/fig-06B.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-06B.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8133-a01d-f57a7348f049" class="image"><a href="pat-11-wooden_door_decorations/fig-06C.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-06C.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81e2-b1f9-eb45e40ac1d4" class="image"><a href="pat-11-wooden_door_decorations/fig-06D.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-06D.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8166-94c5-fdd229f955b8" class="image"><a href="pat-11-wooden_door_decorations/fig-06E.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-06E.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81ba-af0f-f331448c0f91" class="image"><a href="pat-11-wooden_door_decorations/fig-06F.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-06F.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8181-a1e4-f926995ea694" class="image"><a href="pat-11-wooden_door_decorations/fig-06G.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-06G.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8134-a327-cb940aef1eaf" class="image"><a href="pat-11-wooden_door_decorations/fig-06H.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-06H.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81d4-a2a3-d65f66d61108" class="image"><a href="pat-11-wooden_door_decorations/fig-07F.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-07F.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-8107-a89e-e6ab306bfe4f" class="">          7A</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8191-aefd-e789e084e21f" class="image"><a href="pat-11-wooden_door_decorations/fig-07B.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-07B.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-81ff-a37d-c362a26ad4f5" class="">          7B</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8164-b38e-ddbd26e5e419" class="image"><a href="pat-11-wooden_door_decorations/fig-07C.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-07C.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-813c-8694-ca7207098382" class="">         7C</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8111-8ce1-c174f7092066" class="image"><a href="pat-11-wooden_door_decorations/fig-07D.png"><img style="width:709.984375px" src="pat-11-wooden_door_decorations/fig-07D.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-81d9-9a54-f9432b8f736b" class="">         7D</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8195-80ab-cf2899c4c4da" class="image"><a href="pat-11-wooden_door_decorations/fig-07E.png"><img style="width:709.9874877929688px" src="pat-11-wooden_door_decorations/fig-07E.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-817b-875e-e1647db084cb" class="">         7E</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-814b-b8b1-f332d8c29e02" class="image"><a href="pat-11-wooden_door_decorations/fig-07F%201.png"><img style="width:709.9874877929688px" src="pat-11-wooden_door_decorations/fig-07F%201.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-819a-a122-d7bcc1e9d521" class="">         7F</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8180-aef5-ccedc0daa023" class="image"><a href="pat-11-wooden_door_decorations/fig-07G.png"><img style="width:709.9874877929688px" src="pat-11-wooden_door_decorations/fig-07G.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-8131-a143-d8fb721c0744" class="">         7G</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-815c-ae4d-e4e4375a25e3" class="image"><a href="pat-11-wooden_door_decorations/fig-07H.png"><img style="width:709.9874877929688px" src="pat-11-wooden_door_decorations/fig-07H.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-8194-adda-c878626ce6fc" class="">         7H</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81fe-afbe-e524b967aebd" class="image"><a href="pat-11-wooden_door_decorations/fig-07I.png"><img style="width:709.9874877929688px" src="pat-11-wooden_door_decorations/fig-07I.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-817a-b270-c94feb4fedef" class="">         7I</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8176-84fb-fb3e8e772b55" class="image"><a href="pat-11-wooden_door_decorations/fig-07J.png"><img style="width:709.9874877929688px" src="pat-11-wooden_door_decorations/fig-07J.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-8175-b484-eb61481c1df9" class="">         7J</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8180-8584-c17f546a1dfa" class="image"><a href="pat-11-wooden_door_decorations/fig-07K.png"><img style="width:709.9874877929688px" src="pat-11-wooden_door_decorations/fig-07K.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-813f-b116-fced289fdb70" class="">         7K</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8162-b7e3-ee058cccfadd" class="image"><a href="pat-11-wooden_door_decorations/fig-07L.png"><img style="width:709.9874877929688px" src="pat-11-wooden_door_decorations/fig-07L.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-8124-a290-ce1e0a9be9be" class="">         7L</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8146-8f86-d73d83254145" class="image"><a href="pat-11-wooden_door_decorations/fig-07M.png"><img style="width:709.9874877929688px" src="pat-11-wooden_door_decorations/fig-07M.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-81db-97d8-ea9bbff41dac" class="">         7M</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81e8-8bef-dcaee3412df9" class="image"><a href="pat-11-wooden_door_decorations/fig-07N.png"><img style="width:709.9874877929688px" src="pat-11-wooden_door_decorations/fig-07N.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-81da-a15a-e2a047805301" class="">         7N</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-812e-9939-d5066b23a696" class="image"><a href="pat-11-wooden_door_decorations/fig-07O.png"><img style="width:709.9874877929688px" src="pat-11-wooden_door_decorations/fig-07O.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-81ae-ad56-c3aaf77f1122" class="">         7O</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8188-a567-c98ffc198cec" class="image"><a href="pat-11-wooden_door_decorations/fig-07P.png"><img style="width:709.9874877929688px" src="pat-11-wooden_door_decorations/fig-07P.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-813e-af26-da92348e5c58" class="">         7P</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8112-8744-f22787270999" class="image"><a href="pat-11-wooden_door_decorations/fig-07Q.png"><img style="width:709.9874877929688px" src="pat-11-wooden_door_decorations/fig-07Q.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-8163-bf9a-e187142683d2" class="">         7Q</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-811c-9428-d0fa7436b316" class="image"><a href="pat-11-wooden_door_decorations/fig-07R.png"><img style="width:709.9874877929688px" src="pat-11-wooden_door_decorations/fig-07R.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-81d8-b722-fdd64a97dead" class="">         7R</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8191-bdf0-d84661bb97aa" class="image"><a href="pat-11-wooden_door_decorations/fig-07S.png"><img style="width:709.9874877929688px" src="pat-11-wooden_door_decorations/fig-07S.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-817e-ab92-dce66d94632b" class="">         7S</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81d1-8572-c3888d9be587" class="image"><a href="pat-11-wooden_door_decorations/fig-07T.png"><img style="width:709.9874877929688px" src="pat-11-wooden_door_decorations/fig-07T.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-810e-98b6-c3df0ec2e2d7" class="">         7T</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8150-afed-c2e1df94bc2b" class="image"><a href="pat-11-wooden_door_decorations/fig-07U.png"><img style="width:709.9874877929688px" src="pat-11-wooden_door_decorations/fig-07U.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-812c-8418-c59ec5c166b2" class="">         7U</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81c4-8fe4-ec38c5e50b50" class="image"><a href="pat-11-wooden_door_decorations/fig-07V.png"><img style="width:709.9874877929688px" src="pat-11-wooden_door_decorations/fig-07V.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-8114-904c-df313a3d6219" class="">         7V</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81aa-bc39-efe1b88a5d88" class="image"><a href="pat-11-wooden_door_decorations/fig-08A.png"><img style="width:709.9874877929688px" src="pat-11-wooden_door_decorations/fig-08A.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-811a-8007-c85609044c66" class="">         8A</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8114-bbd2-e09ffbd4ca7d" class="image"><a href="pat-11-wooden_door_decorations/fig-08B.png"><img style="width:709.9874877929688px" src="pat-11-wooden_door_decorations/fig-08B.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-8151-a716-e521e9cd01c4" class="">         8B</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8127-9962-f49fb37d3116" class="image"><a href="pat-11-wooden_door_decorations/fig-09A.png"><img style="width:709.9874877929688px" src="pat-11-wooden_door_decorations/fig-09A.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-810d-968b-d87035d8a96a" class="">    9A</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8156-9549-ffbb2bb74326" class="image"><a href="pat-11-wooden_door_decorations/fig-09B%201.png"><img style="width:709.9874877929688px" src="pat-11-wooden_door_decorations/fig-09B%201.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-8145-81f4-c6ed82c40c4e" class="">    9B</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81b9-b5d4-c42edd2d3db1" class="image"><a href="pat-11-wooden_door_decorations/fig-10A.png"><img style="width:709.9874877929688px" src="pat-11-wooden_door_decorations/fig-10A.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-815e-a703-c6778231f087" class="">         10A</h3></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81fe-afa3-cad7a62a0171" class="image"><a href="pat-11-wooden_door_decorations/fig-10B.png"><img style="width:709.9874877929688px" src="pat-11-wooden_door_decorations/fig-10B.png"/></a></figure></div><div style="display:contents" dir="auto"><h3 id="2d9ac165-e88d-8195-abfc-e24f545f16d6" class="">         10B</h3></div><div style="display:contents" dir="auto"><hr id="2d9ac165-e88d-81e1-bea1-fb797a362a89"/></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-811c-b8a7-f048f1f67902" class="">
+</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81ff-85ac-cf4ccda4c3d6" class="link-to-page"><a href="pat-11-wooden_door_decorations/11-1%20All%20about%20Golden%20Ratio%202d9ac165e88d81ff85accf4ccda4c3d6.html">11-1 All about Golden Ratio</a></figure></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
