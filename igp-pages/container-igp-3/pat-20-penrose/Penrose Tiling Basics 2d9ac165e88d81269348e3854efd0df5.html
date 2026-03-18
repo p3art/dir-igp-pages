@@ -1,0 +1,713 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Penrose Tiling Basics</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2d9ac165-e88d-8126-9348-e3854efd0df5" class="page sans"><header><h1 class="page-title" dir="auto">Penrose Tiling Basics</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8128-b839-f5dbc974bc15" class="image"><a href="Penrose%20Tiling%20Basics/image1.png"><img style="width:700px" src="Penrose%20Tiling%20Basics/image1.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81c1-835d-cfa74ab8a5d7" class="image"><a href="Penrose%20Tiling%20Basics/image2.png"><img style="width:700px" src="Penrose%20Tiling%20Basics/image2.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81fb-ab03-daf383bc1288" class="">Penrose Tiling Basics</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81c8-b790-c74002284dd7" class="">Rich Schwartz</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b7-8a71-c0ff81c8f746" class="">November 5, 2007</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8108-9db2-f62c9e60c6df" class="">The purpose of these notes is to give an account of some of the basic properties of the Penrose tiles. None of the material here is new; all of it can be found in a variety of sources.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-810d-950d-d1df339480cc" class="">1 Basic Definitions</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8183-beda-f5052664a38d" class="">There are two Penrose tiles, a kite and a dart. Both tiles can be constructed from a regular pentagon, as shown in Figure 1.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81eb-a9e1-da43b56f60f9" class="">kite dart</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-815f-bca8-fd9376270e91" class="">Figure 1</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-819f-9782-c47b21ae6edf" class="">The edges of the kite and the dart are labelled so as to disallow certain ways of putting together the tiles. The rule is simply that the tiles can only be put together so that edges of the same length are matched and the black dots match the black dots. Figure 2 shows some examples.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81f6-9274-c8922ab5ba19" class="">1</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b2-84c8-dc8b98181e42" class="">legal illegal</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81ab-aa78-e78da1e82f2f" class="image"><a href="Penrose%20Tiling%20Basics/image3.png"><img style="width:380px" src="Penrose%20Tiling%20Basics/image3.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8142-a69e-cf2e2f4847a7" class="image"><a href="Penrose%20Tiling%20Basics/image4.png"><img style="width:612px" src="Penrose%20Tiling%20Basics/image4.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81f8-9647-ee502c66c1b9" class="image"><a href="Penrose%20Tiling%20Basics/image5.png"><img style="width:480px" src="Penrose%20Tiling%20Basics/image5.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81d4-977d-d34d15fcd8c6" class="image"><a href="Penrose%20Tiling%20Basics/image6.png"><img style="width:412px" src="Penrose%20Tiling%20Basics/image6.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8143-b086-f2fad98f4de8" class="">Figure</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-816c-9162-fcd8c2752c59" class="">2</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8150-93b2-e539079e971e" class="">2 Existence of Penrose Tilings</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ff-9395-da100e0536c4" class="">In this secton I’ll explain why one can tile the plane with Penrose tiles. Here are three observations.</p></div><div style="display:contents" dir="auto"><ul id="2d9ac165-e88d-8164-9432-c4723d04a399" class="bulleted-list"><li style="list-style-type:disc">One can replace a kite by a union of two darts and two kites. The original kite is the union of two smaller kites and two “half-darts”.</li></ul></div><div style="display:contents" dir="auto"><ul id="2d9ac165-e88d-8135-9e84-ff0b65cbbf41" class="bulleted-list"><li style="list-style-type:disc">One can replace a dart by a union of one dart and two kites. The original dart is the union of one kite and two “half-darts”.</li></ul></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8153-8745-c803688a43d9" class="">2</p></div><div style="display:contents" dir="auto"><ul id="2d9ac165-e88d-81a9-a43d-e2ccb72a3a98" class="bulleted-list"><li style="list-style-type:disc">If one performs the replacement process for a finite collection of Penrose tiles arranged in a legal configuration, one gets a new collection of Penrose tiles arranged in a legal configuration. The proof of this fact just amounts to a short case-by-base check for pairs of tiles.</li></ul></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-817c-9694-f1dd10d001ec" class="image"><a href="Penrose%20Tiling%20Basics/image7.png"><img style="width:572px" src="Penrose%20Tiling%20Basics/image7.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81cd-8097-ffc179eb34f0" class="">Figure 3</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81b5-874a-c7e0f75a642c" class="image"><a href="Penrose%20Tiling%20Basics/image8.png"><img style="width:628px" src="Penrose%20Tiling%20Basics/image8.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8196-ba81-e6e333baa2ba" class="">Figure 4</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81a1-9a61-f453e4e8cf76" class="">You can now obtain tilings of the plane by increasingly large (and fat) regions of the plane by iterating the subdivision process. Figure 5 shows what</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-816a-b0a3-fbdf80b970a5" class="">3</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8113-b98a-f104d23a257c" class="">happens when each of the tiles in Figure 4 is subdivided into the replacement tiles.</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-815d-82ee-c7cb0f7def37" class="image"><a href="Penrose%20Tiling%20Basics/image9.png"><img style="width:684px" src="Penrose%20Tiling%20Basics/image9.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-810c-b86b-d094d3e9b8c3" class="">Figure 5</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81e3-8b47-f4027ed38e82" class="">Figure 6 shows what happens when each of the tiles in Figure 5 is subdi-vided into the replacement tiles.</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81e3-9ef5-d4f844ef613d" class="image"><a href="Penrose%20Tiling%20Basics/image10.png"><img style="width:688px" src="Penrose%20Tiling%20Basics/image10.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8143-b8b6-cd46506c9ec2" class="">Figure 6</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-819e-96e1-c9356add9c24" class="">This process continues forever. Suppose that you always rescale the tiles so that they have the same size. Let T1, T2, T3, ... be the sequence of partial</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81d9-accc-f09766ba05d0" class="">4</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8195-b3c2-d5b402dc71c4" class="">tilings you get. So, T1 is the Penrose kite and Tn+1 is obtained from Tn by subdividing and then dilating the picture so that the tiles are the same size as in Tn.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81c3-b886-feda2eea86ae" class="">We would like to take a kind of limit and produce a tiling T∞that fills the entire plane. Here is the idea. Let B denote any disk in the plane–let’s say the disk of radius 100000. There are only finitely many possible patterns for the intersection Tn ∩B. In other words, if we just look at the tiles inside B, then we will only see finitely many different patterns as n varies.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b9-9def-e0a4377115a9" class="">So, we can choose some pattern for Tn ∩B that we see infinitely often. We throw out all the tilings that don’t give this pattern, and we still have an infinite supply. Now we repeat the same procedure on the disk 2B that is concentric with B and twice as large. From amongst our infinite supply of partial tilings, we can find a (possibly) smaller infinite supply that makes the same pattern on the bigger disk 2B. Now we throw away all the Tn that don’t make this pattern on 2B and we continue, using the disk 4B. Continuing this way indefinitely, we produce a legal tiling of the whole plane, layer by layer.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81cc-8f6a-f6238a5da7db" class="">Now, if you have a Penrose tiling P, you can perform the subdivision process to all the tiles of P at the same time. This gives you a new Penrose tiling P′. Let’s call P′the subdivision of P′.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8108-8e74-d59abc40b9af" class="">3 Undoing the Subdivision</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81e8-b6f0-de69d930efff" class="">Now suppose that P′is a Penrose tiling. You can group the tiles of P′together, in a unique way, according to Figures 3 and 4. To perform the grouping, start with a kite K. There are two possibilities:</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ae-816a-f2d47a077e61" class="">1. K is adjacent to two darts, D1 and D2, each of which shares a short edge with K. The three tiles K and D1 and D2 are then grouped together, as in Figure 3.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8164-b26d-f3ef75c12790" class="">2. K is adjacent to another kite K′and one dart D along the short edges of K. Then K′is adjacent to K and another dart D′along the short edges of K′. The tiles K and K′and D and D′are then grouped together, as in Figure 4.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8190-bd5b-ffa11b6d5541" class="">Now perform the above procedure for every kite of P′. Once you finish this grouping procedure, you will have grouped all the tiles of P′into groups of 3 and 4.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8177-9b4c-cd683fd41f5b" class="">5</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81c3-80eb-cdced3846ef1" class="">Now observe that each group of tiles is the subdivision of a larger Penrose</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81a9-84a2-cda8ffba0146" class="">tile. You can construct a new Penrose tiling P by replacing each group of tiles in P′by the corresponding larger Penrose tile that has the given group</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8184-b058-f76f734661d1" class="">of tiles as its subdivision. In short, you can undo the subdivision process in a unique way to find the Penrose tiling P such that P′is the subdivision of</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8120-81ef-c39d8c7cffc2" class="">P.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b7-99be-c13f2c8d7ac4" class="">4 No Infinite Symmetries</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81cc-b6d6-d31ad4af769c" class="">We have already seen that one can tile the plane with Penrose tiles. The</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-817f-9fb0-c6cb7bdd9e2a" class="">result in this section shows that one cannot make a “repeating pattern” out</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-810d-8e92-c3b31eae26a7" class="">of the Penrose tiles.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81a0-8425-ded741039b71" class="">Theorem 4.1 Let P be a Penrose tiling. Suppose that the group of symme-</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81e3-a48e-d40fdcd32d82" class="">tries of P is infinite.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8137-a602-c4fb9e5a26a5" class="">Proof: The proof goes by contradiction. Suppose that the group of sym-</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81e3-b153-d7bee45f0830" class="">metries of P is infinite. In this case, there must be some translation T such</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81f5-a583-de40de6204ff" class="">that T(P) = P. We will show that this is impossible.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-815a-a9f0-c38b064d90d3" class="">We know that P is the subdivision of a larger Penrose tiling P−1. Like-wise, P−1is the subdivision of a larger Penrose tiling P−2, etc. From</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8170-b88c-e1f4ad062483" class="">the nature of the construction described in the previous section, we have T(P−n) = P−nfor any choice of n. However, once n is large, the tiles of P−n</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81f6-a2c2-f0380427ace2" class="">are larger than the translation distance of T. But then it is impossible for T(P−n) = P−n. The problem is that T doesn’t move points far enough to map the huge tiles of T−nto themselves. ♠</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-815f-b9b5-e061278e31ea" class="">5 Five Fold Symmetry</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8192-a99e-e8d38c71235f" class="">One can start with 5 kites (or 5 darts) arranged in a symmetric pattern and</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81d2-8745-ffe53477ad17" class="">subdivide repeatedly. Taking the limit of this process, one can produce two</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-814a-b69a-dfbe6af80cdd" class="">distinct Penrose tilings with 5 fold symmetry. beginnings of these two tilings.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ae-b806-e3599cefcc06" class="">6</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ef-86c9-d4ec01d16904" class="">Figures 7 and 8 show the</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8112-ab7d-eaf45f361b8a" class="image"><a href="Penrose%20Tiling%20Basics/image11.png"><img style="width:700px" src="Penrose%20Tiling%20Basics/image11.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8166-8e11-eb4a0958f38c" class="">Figure 7</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81de-94d3-c3023d78b211" class="image"><a href="Penrose%20Tiling%20Basics/image12.png"><img style="width:700px" src="Penrose%20Tiling%20Basics/image12.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8171-81fe-de33bbccacc3" class="">Figure 8</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b8-a1cc-c24af82531ac" class="">Let P1 be the first of these tilings and let P2 be the second. By construc-</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-819e-93b2-d9b6a520e89b" class="">tion P1 is the subdivision of P2 and P2 is the subdivision of P1.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81af-be58-f8ebf5083f3f" class="">Theorem 5.1 Any Penrose tiling with 5-fold symmetry is either P1 or P2.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81a0-a7ec-dd896ee5859b" class="">Proof: Let Q be a Penrose tiling with 5-fold symmetry. Let B be some huge</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81c6-8786-eb92b0eecad8" class="">ball. We’ll show that Q ∩B agrees with one of P1 ∩B or P2 ∩B. Since the</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81d0-acc7-f66b6a7ad9ff" class="">7</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81d6-bc6b-e6f019b817b6" class="">size of B is arbitrary, this suffices to show that Q agrees with one of P1 or P2 on the whole plane.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ac-9bc6-e365758c977a" class="">Given any Penrose tiling X, let X−ndenote the Penrose tiling such that</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-812a-8c83-d1a6910c8580" class="">X is the nth subdivision of X. This notation is exactly like what we had in the previous section. For n large enough Q−n∩B is contained in at most 5 tiles. Moreover, Q−n∩B has 5-fold symmetry because Q does. But then Q−n∩B is either 5 darts arranged in a symmetric pattern, or 5 kites arranged</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-812c-8b39-ed806633508d" class="">in a symmetric pattern. But then Q ∩B is obtained by repeatedly subdivid-</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b3-b093-fbcc08fc5858" class="">ing either 5 kites or the 5 darts. But this is how we produced pieces of P1</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81cf-b564-dfc0de3e4450" class="">or P2. This shows that (up to rotation) Q∩B equals either P1∩B or P2∩B. ♠</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81d1-b4fd-e92a23ea7932" class="">Say that a pentagonal seed is a group of 5 kites arranged around a vertex.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b5-b701-d88459b0667e" class="">Both the tilings P1 and P2 above are produced from repeated subdivision of</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81fc-bf80-e4769283b7fd" class="">a pentagonal seed.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-815d-a808-e9d1153912ca" class="">Theorem 5.2 There is a number D0 with the following property. If P is any</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8118-8417-d3faac674a72" class="">Penrose tiling and x is any point of the plane, then there is some pentagonal</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81f5-9976-daa95c0ee42f" class="">seed of P within D0 units of x.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8132-a5c5-d8096500b1c3" class="">Proof: Looking at Figures 4-6, we see that the subdivision of a single kite leads to a pentagonal seed after 2 iterations. We can write P = X′′, where</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-814a-a177-f47d7bb1f5c9" class="">X is another Penrose tiling. In other words, P is the second subdivision of X. Note that X′′has lots of pentagonal seeds, because every kite of X gives rise to a seed in X′′. But X′′= P. ♠</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ec-8107-cf81baa4bad9" class="">Say that an n-seed is the result of subdividing a Pentagonal seed n times.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81e6-bae3-f6f33304ada4" class="">For large n, an n-seed is a huge portion of one of the 5-fold symmetric</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8149-8a77-f0177a5a6b54" class="">Penrose tilings. The following result says that any Penrose tiling has huge</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-811e-9654-eeed98629ea9" class="">finite regions that have 5-fold rotational symmetry, even though the whole</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-814d-b011-f08fd0aa6ca7" class="">tiling might not have 5-fold rotational symmetry.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8192-a9bf-cbd562464afd" class="">Theorem 5.3 There is a number Dn with the following property. If P is</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81cf-9d16-f338dc15eb3f" class="">any Penrose tiling and x is any point of the plane, then x is within Dn units</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81f9-8ff9-cb758b1b6456" class="">of some n-seed of P.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8109-bf63-d429056c08cf" class="">Proof: This is the same proof as for the previous result, except that we write P = Xn+2, the (n + 2)nd subdivision of X. Then P is the nth subdivision of X′′. We know that X′′has pentagonal seeds all over the place, so Xn+2</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8133-8309-ed4afe01e587" class="">has n-seeds all over the place. ♠</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8140-a06f-d78a27f10cda" class="">8</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

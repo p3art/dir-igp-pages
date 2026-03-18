@@ -1,0 +1,713 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>penrose</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2d9ac165-e88d-81e2-bc0e-d9a32bc66eb6" class="page sans"><header><h1 class="page-title" dir="auto">penrose</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8197-b601-dac82248eaae" class="">The Penrose Package: Documentation</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-818f-bf75-e02741e4dec7" class="">Andrew Stacey</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ad-95ee-c4a581235d68" class="">loopspace@mathforge.org</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81c9-bb89-ed7495535232" class="">v1.4 from 2021/01/22</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8161-8de5-e4f29c289728" class=""><strong>Contents</strong></p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-815e-b647-e1902912630b" class=""><strong>1</strong> <strong>Introduction</strong> <strong>1</strong></p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ca-8b0a-d223de7899e0" class=""><strong>2</strong> <strong>Initialisation</strong> <strong>1</strong></p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-810b-baee-eda49f54d887" class=""><strong>3</strong> <strong>Usage</strong> <strong>2</strong></p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81d6-b549-dba67fbafa1f" class="">3.1 Placing Tiles “By Hand” . . . . . . . . . . . . . . . . . . . . . . . . 2</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8174-bf5b-e53dc54a41fb" class="">3.2 Placing Tiles Automatically . . . . . . . . . . . . . . . . . . . . . . 7</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81f6-9fa8-f65b79d595fb" class=""><strong>4</strong> <strong>Deforming Paths</strong> <strong>9</strong></p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8190-9934-e39fb0fdf386" class=""><strong>5</strong> <strong>Defining New Tiles</strong> <strong>10</strong></p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ba-847c-ca644992a956" class=""><strong>6</strong> <strong>More Examples</strong> <strong>11</strong></p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-819a-9b08-f3afe8e76d5d" class=""><strong>1</strong> <strong>Introduction</strong></p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81f7-9357-d6ef5eb60787" class="">The Penrose package is a TikZ library for drawing Penrose tiles. It currently</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81a7-98de-dcebcff6b3a1" class="">supports natively the kite/dart, rhombus, and pentagon tile sets, but has provision</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8133-89d5-e3cd5fe400cf" class="">for defining new tiles. There are two main methods for their placement: one that</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b9-ab04-e752d865452a" class="">automatically generates a tiling, and one that allows for “by hand” placement.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8176-86ee-d20deab9b414" class="">Furthermore, the tiles themselves can be deformed and will still (hopefully!) fit</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8195-9a93-d5d96b86460c" class="">together in the correct fashion.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-813b-b0e2-c3a330a6400a" class=""><strong>2</strong> <strong>Initialisation</strong></p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8115-ac14-ffed60c4ab0f" class="">To use this package, load the tikz package and load penrose as a TikZ library.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b0-a55b-d19e4c281d40" class="">Specifically, your preamble should contain:</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8185-91e7-d1a16d2b4148" class="">\usepackage{tikz}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-810d-84bd-fdb22d2f0e01" class="">\usetikzlibrary{penrose}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81dc-922e-c2c58bdab2d4" class="">1</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-814a-a36f-dee4019a3972" class=""><strong>3</strong> <strong>Usage</strong></p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-815b-b40b-f0074fd02fb4" class="">Using this package splits into several components. There are the two main ways of getting tiles on to the page, and then there are the ways of deforming or styling the tiles once they are there.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8120-bce5-c7143094cbc5" class=""><strong>3.1</strong> <strong>Placing Tiles “By Hand”</strong></p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81eb-89c4-dcfe05fe92be" class="">It is possible to use the tiles as pics. These are mini-drawings introduced in TikZ3.0 that are node-like in style, but a little more geared towards repeatable <em>drawings</em> than boxes containing text. This package defines several pic types:</p></div><div style="display:contents" dir="auto"><ul id="2d9ac165-e88d-81d1-9400-d7dd0490789f" class="bulleted-list"><li style="list-style-type:disc">Kite</li></ul></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8197-956d-dd5289fe685d" class="image"><a href="penrose/image1.png"><img style="width:120px" src="penrose/image1.png"/></a></figure></div><div style="display:contents" dir="auto"><ul id="2d9ac165-e88d-819e-aac2-f3dbe6c7665f" class="bulleted-list"><li style="list-style-type:disc">Dart</li></ul></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8104-b76b-df5faf24588f" class="image"><a href="penrose/image2.png"><img style="width:96px" src="penrose/image2.png"/></a></figure></div><div style="display:contents" dir="auto"><ul id="2d9ac165-e88d-819a-a913-fd7523ddd559" class="bulleted-list"><li style="list-style-type:disc">Thin Rhombus</li></ul></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-817f-bfe0-e29c78a18ff5" class="image"><a href="penrose/image3.png"><img style="width:216px" src="penrose/image3.png"/></a></figure></div><div style="display:contents" dir="auto"><ul id="2d9ac165-e88d-814c-abd1-d8d5b684aaac" class="bulleted-list"><li style="list-style-type:disc">Thick Rhombus</li></ul></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8109-a48b-caae9801d2e7" class="image"><a href="penrose/image4.png"><img style="width:184px" src="penrose/image4.png"/></a></figure></div><div style="display:contents" dir="auto"><ul id="2d9ac165-e88d-8142-8ba4-fb355cecdd31" class="bulleted-list"><li style="list-style-type:disc">Pentagon</li></ul></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8175-9c4a-f1dfd63db2f5" class="image"><a href="penrose/image5.png"><img style="width:188px" src="penrose/image5.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81f9-88eb-e93734cbee67" class="">(Actually, there are three pentagons: pentagon 5, pentagon 3, and pentagon 2. The number signifies how many pentagons it goes next to.)</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8109-8550-e1de9b9b651c" class="image"><a href="penrose/image6.png"><img style="width:300px" src="penrose/image6.png"/></a></figure></div><div style="display:contents" dir="auto"><ul id="2d9ac165-e88d-81b2-af7a-f5d6ba9a5cac" class="bulleted-list"><li style="list-style-type:disc">Pentagram</li></ul></div><div style="display:contents" dir="auto"><ul id="2d9ac165-e88d-8131-8e9d-ea555dd3298a" class="bulleted-list"><li style="list-style-type:disc">Boat</li></ul></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8133-999e-f93e5e9d7bda" class="image"><a href="penrose/image7.png"><img style="width:300px" src="penrose/image7.png"/></a></figure></div><div style="display:contents" dir="auto"><ul id="2d9ac165-e88d-81ee-a9f9-c6d45fc21283" class="bulleted-list"><li style="list-style-type:disc">Diamond</li></ul></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81f1-811c-d0c2840e614d" class="image"><a href="penrose/image8.png"><img style="width:220px" src="penrose/image8.png"/></a></figure></div><div style="display:contents" dir="auto"><ul id="2d9ac165-e88d-8140-b3c5-cbc05b041da6" class="bulleted-list"><li style="list-style-type:disc">Golden Triangle</li></ul></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-818d-930b-f99851ae5893" class="image"><a href="penrose/image9.png"><img style="width:108px" src="penrose/image9.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81d7-9911-c4950f1db929" class="">2</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8141-b143-d47489f736b2" class="image"><a href="penrose/image13.png"><img style="width:116px" src="penrose/image13.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81c8-bfe0-c5db2e9322ce" class="image"><a href="penrose/image14.png"><img style="width:220px" src="penrose/image14.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81dc-ad91-db9fc1f31ea0" class="image"><a href="penrose/image15.png"><img style="width:204px" src="penrose/image15.png"/></a></figure></div><div style="display:contents" dir="auto"><ul id="2d9ac165-e88d-8151-8e7d-c4a54b992f7f" class="bulleted-list"><li style="list-style-type:disc">Reverse Golden Triangle</li></ul></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8144-a1e5-f29632d07344" class="image"><a href="penrose/image10.png"><img style="width:112px" src="penrose/image10.png"/></a></figure></div><div style="display:contents" dir="auto"><ul id="2d9ac165-e88d-8136-a8ed-d10c631383f2" class="bulleted-list"><li style="list-style-type:disc">Golden Gnomon</li></ul></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-811f-9147-dc068d5e60fb" class="image"><a href="penrose/image11.png"><img style="width:188px" src="penrose/image11.png"/></a></figure></div><div style="display:contents" dir="auto"><ul id="2d9ac165-e88d-81a5-83ff-cd7000070d6c" class="bulleted-list"><li style="list-style-type:disc">Reverse Golden Gnomon</li></ul></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8110-a3f6-f9f8f6fd58b2" class="image"><a href="penrose/image12.png"><img style="width:184px" src="penrose/image12.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-810e-bbc7-ca55baf8309c" class="">The main tiles can have arcs drawn on them to illustrate the matching rules. The triangles and gnomon are not true Penrose tiles but rather can be used to build tilings so they do not have the arcs. The two types of each triangle and gnomon are actually different in that they have different matching rules. This is best illustrated by deforming the paths (see Section 4).</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8133-a2f5-c462f36143e2" class="">There are two ways in TikZ to specify the pic type: either as the “con-tents” of the pic or as the argument to the pic type key. Each of the tiles comes with a shorthand key which specifies the pic type and also invokes the key every Penrose tile. That is, the key dart calls the every Penrose tile key and specifies the pic type as dart.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ea-b3c2-ffa6de052f3e" class="">The tiles can be placed using standard TikZ methods. One important thing to note is that by default, pics are like nodes in that they only respond to ambient translations, and not to rotations and scaling. To make them notice this, use the key transform shape or specify the transformation to the pic di-rectly. If the shortcut keys are used to specify the tiles, this can be put in the every Penrose pic style.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8113-93eb-c7e8623d7d67" class="">TikZ pics can be named, using the name=&lt;name&gt; key. When a Penrose tile has been named then it can be used for positioning other tiles. Each edge is assigned a label from a b c d e A B C D E and a new tile can be aligned with an old one along a matching edge (a matches with A and so on).</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8170-9c34-f8196c183b36" class="">The edge labels are as follows. For the pentagon 5, for example, the edges are all the same and the numbers are used to distinguish between them.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81a8-b946-c7a44c25e965" class="">a c</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8174-a441-c2ef5a259027" class="">A C</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-815c-bda9-fd34dd481737" class="">c a</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8137-9c20-d2dbd23b2876" class="">C A</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81f6-9c07-ed9bae9db9d2" class="">a A</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8198-90be-d9faf29d0c2f" class="">b B</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8151-85e2-ce364fa87a06" class="">B a</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81d2-a761-dc608c3e8819" class="">b A</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81f1-b59e-d74ea7a69b20" class="">a4 a3</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8147-8de2-d0e26eb7adf2" class="">a5 a2</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8139-8d62-c2e9547718e5" class="">a1</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ce-8cec-d7ce772f5a18" class="">3</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81c6-b42b-f67a5be0edbf" class="image"><a href="penrose/image16.png"><img style="width:188px" src="penrose/image16.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81fd-a583-ddb83ef8a9f2" class="image"><a href="penrose/image17.png"><img style="width:188px" src="penrose/image17.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-815c-a2d5-f7281884ebb4" class="image"><a href="penrose/image18.png"><img style="width:300px" src="penrose/image18.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8162-b983-e7c0bf6f47d2" class="image"><a href="penrose/image19.png"><img style="width:220px" src="penrose/image19.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8166-92e8-f02a052cbdfd" class="image"><a href="penrose/image20.png"><img style="width:112px" src="penrose/image20.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8173-9d35-cadef95d9eab" class="image"><a href="penrose/image21.png"><img style="width:112px" src="penrose/image21.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81f5-9e2e-e8453c9e9b29" class="image"><a href="penrose/image22.png"><img style="width:188px" src="penrose/image22.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8135-9e7d-d4f169986792" class="image"><a href="penrose/image23.png"><img style="width:188px" src="penrose/image23.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81c4-8329-d6a8877620c1" class="">a2 a1</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8156-8251-fa82fd66a576" class="">b2 b1</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81d8-96f1-ece5ea563f99" class="">A</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8142-b959-e27e07950e12" class="">c2 c1</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ec-81eb-dd4c53b10751" class="">A2 A1</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81a0-9a46-f335f1157d60" class="">d</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81aa-a1fa-de9dff38c604" class="">C3 C2</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-812a-a99d-f95058f392c7" class="">C4 C1</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-819f-bc90-c8c9123a8480" class="">C5 C10</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ec-9aa9-dedb17c1b1f2" class="">C6C7 C8C9</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-811e-a446-ce27efb77a54" class="">C3 C2</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81d0-83ee-c52803a65a5c" class="">C4 C1</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81cd-97a9-f3af4414fee8" class="">B1 B2</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8177-b80b-d0ffdacc4776" class="">D</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81f5-97ad-ecd9a84229d9" class="">D1 B1</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81bf-8a16-f081def3ff73" class="">D2 B2</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8195-b290-f78cabf44380" class="">b a c</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-810e-892c-d11cc5f483c1" class="">A B C</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81fb-bc3c-f7577575722c" class="">C b</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-818e-9ddb-cc0d85e22c36" class="">A</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-816b-b12a-fa2afc1d78e0" class="">a</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8127-bee2-f1ede7763406" class="">c B</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-818b-ac96-fa80ea062920" class="">To align a tile with an existing one, use the following key:</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81a1-9712-fe37b4ae32be" class="">align with=&lt;tile&gt; along &lt;edge&gt;</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81bc-9995-c65bea169b87" class="">where &lt;tile&gt; is the name given to an existing tile, and &lt;edge&gt; is the label on</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81bd-bd23-ce7163cf5749" class="">the existing tile. If the tile being placed has edges that are identical (for example,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b4-8015-e2dd968d40c3" class="">pentagon 5), this syntax extends to</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-810b-bef6-cd93a090a0c9" class="">align with=&lt;tile&gt; along &lt;edge&gt; using &lt;number&gt;</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81a2-a14b-ede15e88e032" class="">to specify which of the edges on the new tile to use.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8194-a368-f35f6084f95d" class="">\<strong>begin</strong>{tikzpicture}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81d4-ac4c-f22643fcf0ba" class="">\pic[kite,name=tile];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8145-b180-e65368476746" class="">\pic[dart,align with=tile along c];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81e1-a5e4-c1508a29a6e1" class="">\pic[pentagon 5,name=ptile,at={(3,0)}];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8167-b848-f4423986df13" class="">\pic[pentagon 3,align with=ptile along a1 using 2]; \<strong>end</strong>{tikzpicture}</p></div><div style="display:contents" dir="auto"><hr id="2d9ac165-e88d-8186-a861-fcba6eb132f1"/></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-811f-8133-e7463448e340" class="">4</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8121-8376-d37aaaeac9ad" class="image"><a href="penrose/image24.png"><img style="width:700px" src="penrose/image24.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-818c-87f7-e2953ed34448" class="">With judicious use of loops, quite complicated pictures can be rendered us-ing simple code. (Note that the transform shape is <em>not</em> needed to apply the transformations needed to place a tile using this syntax.)</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b6-a504-d67e79d4ea3f" class="">5</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-815b-b694-d76e16a7632a" class="">\<strong>begin</strong>{tikzpicture}[</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8123-8939-c9cff974f134" class="">every rhombus/.style={</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b0-b944-fcea34caa790" class="">draw=black,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ba-a565-c238984bb235" class="">ultra thick,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8170-810b-e44b32bfe663" class="">},</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8115-b7b2-c344a4c579a8" class="">every thin rhombus/.style={</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81d5-b6c2-c501d5f6ea03" class="">every rhombus/.try,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8122-81a9-fa443b339c95" class="">fill=thinRhombus,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81c2-bd6c-ffe30e3f7f3d" class="">},</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b1-8c00-c7974b60e4b7" class="">every thick rhombus/.style={</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81c3-affa-c69510125cab" class="">every rhombus/.try,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8153-a967-d19e2ffe9e4a" class="">fill=thickRhombus,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b5-9beb-f905eb92a61d" class="">},</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8193-8684-d9653ff82357" class="">every circle arc/.style={</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81af-8935-ee0c51efc43a" class="">draw=circleArc</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8195-bc31-dc1935397084" class="">},</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8189-9329-dd61465e5490" class="">every long arc/.style={</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ed-a659-dc62b8424be5" class="">draw=longArc</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8155-bf57-e401f917bfdb" class="">}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81f2-9af3-c82df2581468" class="">]</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8144-8720-e2c73b00b52e" class="">\pic[rotate=18,thick rhombus,name=a0];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8134-bb95-ef81721e6f99" class="">\foreach[evaluate=\k as \kmo using int(\k-1)] \k in {1,...,4} {</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81c3-9414-e4c3951aa868" class="">\pic[thick rhombus,name=a\k,align with={a\kmo} along A]; }</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81cb-9421-d0ae2459e63d" class="">\foreach \k in {0,...,4}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81c9-8da8-df2e40b49672" class="">{</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b0-b14e-ef6384ecc2b6" class="">\pic[thin rhombus,name=b\k,align with={a\k} along B]; \pic[thick rhombus,name=c\k,align with={b\k} along A]; \pic[thick rhombus,name=d\k,align with={b\k} along a]; \pic[thick rhombus,name=e\k,align with={c\k} along A]; \foreach \<strong>l</strong>/\<strong>a</strong> in {{0/b},{1/B}}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-819c-912e-ce12877efc46" class="">\pic[thin rhombus,name=f\k\<strong>l</strong>,align with={e\k} along \<strong>a</strong>]; }</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-816c-ac92-e517c7da4c18" class="">\pic[thin rhombus,name=g0,align with={f10} along a];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81a4-8272-cb4f7e1be0e5" class="">\pic[thin rhombus,name=g1,align with={f21} along A];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8141-9383-faf8d0aecc05" class="">\foreach \<strong>l</strong>/\<strong>a</strong> in {{0/a},{1/A}}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-814b-b4f1-e617c990905b" class="">\pic[thick rhombus,name=h\<strong>l</strong>,align with={g\<strong>l</strong>} along \<strong>a</strong>]; \pic[thick rhombus,name=i,align with=g0 along B];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8127-bacb-d71c2e443e9f" class="">\foreach \<strong>l</strong>/\<strong>a</strong> in {{0/a},{1/A}}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81f7-b5c2-e7d9e534fb50" class="">\pic[thick rhombus,name=j\<strong>l</strong>,align with=i along \<strong>a</strong>];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-815c-a96d-f58abc0a6ca6" class="">\<strong>end</strong>{tikzpicture}</p></div><div style="display:contents" dir="auto"><hr id="2d9ac165-e88d-815b-85af-dd6612346e93"/></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8195-8a2f-c7c79323d437" class="">6</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-810d-ac23-dd5e63360172" class="image"><a href="penrose/image25.png"><img style="width:700px" src="penrose/image25.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8153-b78f-d2a5f4fdcce0" class="">The tiles can be styled, either directly or using various keys. Each tile has the following styles applied (in this order):</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81d2-aee6-cd84a4ba2d3d" class="">1. every Penrose Tile</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-814c-b7d2-ca6cff5bb755" class="">2. every &lt;name&gt;</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8152-a77e-d9bbcdaf7d49" class="">3. pic actions</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8108-80fd-ded44a2e1eda" class="">The pic actions are any actions given directly to the tile, as in \pic[draw,thin rhombus];. The kite, dart, and rhombus tiles also have arcs drawn on them and these are styled</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-810f-8f3a-f374a653b549" class="">as every circle arc and every long arc. The names come from the way the</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-819a-b8c6-cd20e574884e" class="">arcs look on the rhombus shapes.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8157-927b-ef32787713ac" class="">One other point is important to note about the tiles. They are actually clipped against themselves. This ensures that the tiles do not overstep their bounds and so when placed alongside each other then they do not go over each other. In practical terms, this means that if drawn then the line width is half that which might be expected (but when placed next to another tile, the two halves combine to the expected width).</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8129-afec-ef0703ce466e" class=""><strong>3.2</strong> <strong>Placing Tiles Automatically</strong></p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8140-8a1d-cef975781af1" class="">There is a way to specify a Penrose tiling using <em>Lindenmayer systems</em>. In brief, this takes a golden triangle or gnomon (or one of the reverse ones) and repeatedly decomposes it into smaller triangles and gnomon. Once a desired level has been reached, the resulting triangles and gnomon are glued together in pairs to create either darts and kites or rhombuses (of both types). This library contains an implementation of this for each of the tilings.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8133-ab18-dc68541f4d95" class="">7</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b1-84de-ded8eaf6bdcd" class="">The user command is:</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b2-858b-f776ff9a22f5" class="">\PenroseDecomposition{&lt;type&gt;}{&lt;level&gt;}{&lt;seed&gt;}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81a7-a97d-c7d80bd42999" class="">where &lt;type&gt; is one of:</p></div><div style="display:contents" dir="auto"><ul id="2d9ac165-e88d-81dd-9586-d4fd6cc277ac" class="bulleted-list"><li style="list-style-type:disc">kite for the kite and dart tiling,</li></ul></div><div style="display:contents" dir="auto"><ul id="2d9ac165-e88d-8132-b838-ce3ae10aef9d" class="bulleted-list"><li style="list-style-type:disc">rhombus for the rhombus tiling,</li></ul></div><div style="display:contents" dir="auto"><ul id="2d9ac165-e88d-81eb-aa3b-d852cec4b9ae" class="bulleted-list"><li style="list-style-type:disc">pentagon for the pentagon tiling.</li></ul></div><div style="display:contents" dir="auto"><ul id="2d9ac165-e88d-818e-b148-fe428b40ee48" class="bulleted-list"><li style="list-style-type:disc">ktriangle for the triangular decomposition used to form the kite and dart tiling but with the individual triangles</li></ul></div><div style="display:contents" dir="auto"><ul id="2d9ac165-e88d-815b-bd3d-f9bbf38fe36e" class="bulleted-list"><li style="list-style-type:disc">rtriangle for the triangular decomposition used to form the rhombus tiling but with the individual triangles.</li></ul></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81da-95e2-c90b3d2a3130" class="">The &lt;seed&gt; is a “word” that will be used to initiate the Lindenmayer system. The key letters in the alphabet for the kite/darts and rhombuses are T, t, G, and g. These actually correspond to the two triangles and two gnomons. For the pentagons, the key letters are P, Q, R, G, B, D. These correspond to the three pentagons, the pentagram, the boat, and the diamond. Other permitted letters are [, ], s, f, +, *, -, _, &gt;. These refer to various transformations (for details, see the implementation).</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8150-832a-c2763a66f3b5" class="">The &lt;level&gt; controls how far to take the iteration. The code is not particularly optimised for speed, and once &lt;level&gt; gets to about 5 or 6 then we are at the“make a cup of tea while compiling” stage, depending on the processor.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8179-af6a-c609896e6685" class="">\<strong>begin</strong>{tikzpicture}[</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ef-b1e6-c2015db3d027" class="">every Penrose tile/.style={draw}, Penrose step=2cm,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81bf-8734-deaa926e1d88" class="">]</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81a0-8d1e-d2d272a18ae2" class="">\PenroseDecomposition{kite}{0}{T} \<strong>end</strong>{tikzpicture}</p></div><div style="display:contents" dir="auto"><hr id="2d9ac165-e88d-8130-9613-ce0f090399a8"/></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8160-9f07-ca1881675979" class="">The same styling keys as for the pic tiles apply, together with some additional ones. These allow styling the tiles by their number: a count is kept of the number of tiles and each tile knows its own number. Specifically, two keys are tried:</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8128-b457-f1dcf2814744" class="">1. Penrose tile &lt;number&gt;, and</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-814e-8fe7-cab0a3ae2976" class="">2. Penrose tile={&lt;number&gt;}{&lt;total&gt;}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8129-be0a-cc29763f0b40" class="">8</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8102-9164-e6449e63c734" class="">A word of warning is in order on the second of these. The &lt;total&gt; is not guar-anteed to be correct. It is done by a quick count at the start of the process and counts those letters which <em>might</em> result in a rendered tile. Not every letter in the resulting word actually does. Nevertheless, this can be used to style a tile based on what proportion of tiles have been rendered.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81dd-9a3f-e19291f3af11" class="">Lastly, Penrose step is used to control the size of the resulting picture.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81bd-ae40-e7d025111467" class="">\<strong>begin</strong>{tikzpicture}[</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8199-ad80-d40c84d80937" class="">every Penrose tile/.style={draw}, Penrose step=4cm,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81bb-8879-dce4835e5d8d" class="">Penrose tile/.code 2 args={</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-815c-b732-d6a44f510968" class="">\pgfmathsetmacro\tint{100*#1/#2} \pgfkeysalso{fill=black!\tint} }</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81e8-9407-e165b1ed8123" class="">]</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8171-8a83-fd1f5ed2b21b" class="">\PenroseDecomposition{rhombus}{3}{T} \<strong>end</strong>{tikzpicture}</p></div><div style="display:contents" dir="auto"><hr id="2d9ac165-e88d-818b-a449-ce62dbdd5e7b"/></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8165-ba02-e8eff1370616" class=""><strong>4</strong> <strong>Deforming Paths</strong></p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-813c-acfc-f8c9f6ef1ab6" class="">This package provides the ability to deform the various tiles. The various tiles can be built from four paths (labelled a, b, c, and d) together with their reverses. By changing these paths, one can get a wide variety of different tiles with the same fundamental matching rules. Indeed, by using asymmetric paths, the matching rules can be enforced without the need for additional decoration.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-817c-9096-c2e8bef0c039" class="">Internally, the penrose library uses the spath3 package for storing and ma-nipulating the paths.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8125-98ee-c66edfe709cb" class="">To create a new edge path, use the key save Penrose path=&lt;edge&gt; where &lt;edge&gt; is a symbol used in the edge description of a tile. There are no constraints on the size of the path as all paths are scaled and transformed to fit the tiles. Once the edge paths have been specified, they are welded together into the tiles using the following command:</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-816c-ae00-e8e6cf1aaaa1" class="">\BakePenroseTile{&lt;name&gt;}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81c0-975e-e48b733b36b4" class="">Here, &lt;name&gt; is one of the names of the tiles. This has global effect, as does the definition of the edge paths. Paths, both sides and tiles, can be cloned via:</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81db-9aeb-c95a427261f3" class="">\tikzset{clone Penrose side path={target}{source}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8160-9584-cc5146459bf6" class="">\tikzset{clone Penrose tile path={target}{source}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81dd-9db8-dff095c79bb7" class="">9</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8121-abe4-cbc9d8b23e35" class="image"><a href="penrose/image28.png"><img style="width:700px" src="penrose/image28.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-814f-8536-cf2007471553" class="">and restored with the same command (but names switched).</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-813b-9ab3-ec91b87d2b00" class="">The initial version of this package used \MakePenroseTile for this command. That command is still available for backwards compatibility.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81bd-8af5-f21288c25901" class="">\<strong>begin</strong>{tikzpicture}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81db-a7fb-f78b8ebcede0" class="">\pic[draw,dart,name=dart];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8137-8fa6-fd84c4aa6de0" class="">\pic[draw,kite,align with=dart along c];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8155-8441-d284ac9f42df" class="">\pic[draw,kite,align with=dart along C];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81a1-b2d2-c859b62ea2f7" class="">\tikzset{clone Penrose tile path={original kite}{kite}} \tikzset{clone Penrose tile path={original dart}{dart}} \path[save Penrose path=a] (0,0) to[out=-30,in=100] (1,0); \path[save Penrose path=c] (0,0) to[out=-40,in=140] (1,0); \BakePenroseTile{kite}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8176-92cd-e75096f2a2a8" class="">\BakePenroseTile{dart}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81d7-ab69-d7a7787df211" class="">\pic[xshift=2cm,draw,dart,name=dart];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8139-a7e7-fe576a383fe3" class="">\pic[draw,kite,align with=dart along c];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b4-b026-f9257d6a4315" class="">\pic[draw,kite,align with=dart along C];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8144-99ec-fa577ca672c2" class="">\tikzset{clone Penrose tile path={kite}{original kite}} \tikzset{clone Penrose tile path={dart}{original dart}} \pic[xshift=4cm,draw,dart,name=dart];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8108-85ad-e4f3e27f63f6" class="">\pic[draw,kite,align with=dart along c];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8159-9218-e5c03e34d4d8" class="">\pic[draw,kite,align with=dart along C];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8133-9c46-f228de916eac" class="">\<strong>end</strong>{tikzpicture}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8158-ad2a-e10c4e685a81" class="">With deformed tiles, there is no guarantee that the inner arcs will match up perfectly.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8139-95a5-fb203d508bd0" class=""><strong>5</strong> <strong>Defining New Tiles</strong></p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-816e-aac8-e598c70c7f23" class="">This package includes the capability to define new tiles. The command to do this is:</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8125-a70f-d1321f879c06" class="">\DefineTile{&lt;name&gt;}{&lt;sides&gt;}{&lt;coordinates&gt;}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8161-b169-fab6fd5595e5" class="">For example,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81bf-8637-f3b293450158" class="">\DefineTile {square}{a A a A}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8125-ae20-c8b8a4544896" class="">{</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8142-b58a-f0419a600ad6" class="">{0,0}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8133-bc00-ede1cdc711f5" class="">{1,0}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8117-8820-c8475ac06a8e" class="">{1,1}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-818a-98b7-e57ffc602d1c" class="">{0,1}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b7-9130-f53d48c80cd6" class="">}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8108-8e16-f64af5741fec" class="">10</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81eb-815e-c8979b7cc083" class="image"><a href="penrose/image29.png"><img style="width:700px" src="penrose/image29.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81cb-a11b-d8f05cda1390" class="">The &lt;sides&gt; is a list of sides for matching rules. Each letter used matches against its opposite case (so it is possible to create a side that matches against itself by using a symbol that TEX regards as having the same upper as lower case; not all symbols work, I’ve used ! successfully). These are also used in path replacing, both a letter and its opposite case are replaced by the corresponding path (but in opposite directions) when the tile is “baked”. The coordinates are passed to the fp module of LATEX3 so can involve complicated expressions. Note that the trigonometric functions for angles in degrees are cosd, sind, and tand.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81c6-a801-e2be0fac2f38" class="">Note that the tile must be baked via the command \BakePenroseTile before it can be used.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8198-9ea8-fbee3a57bda9" class="">The new tile can be used with all the same features as the pre-defined Penrose tiles, except for the Lindenmayer systems.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81d2-98b2-cceeb9d965af" class="">\DefineTile {square}{a A a A}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8149-a65a-cd76a7175fb1" class="">{</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8116-8f4e-e0834440a968" class="">{0,0}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81cc-a35f-f1633a2e4288" class="">{1,0}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8118-84db-c0311f9e0e81" class="">{1,1}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81fe-af6d-e0a820d0b779" class="">{0,1}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8113-baa0-ffb9510646a5" class="">}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8192-90cc-d597a889fe38" class="">\<strong>begin</strong>{tikzpicture}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8144-8839-fe2b6390c2f0" class="">\path[save Penrose path=a] (0,0) to[out=45,in=135] (1,0); \BakePenroseTile{square}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81db-ac26-c4790355e876" class="">\pic[square,name=A,fill=green];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8198-a13c-ebf5de759e48" class="">\pic[square,align with=A along a1 using 2,name=B,fill=red]; \pic[square,align with=A along A1 using 2,fill=red];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8125-95a3-d4f1cf099323" class="">\pic[square,align with=A along A2 using 1,fill=red];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8156-bd94-ef1693d19317" class="">\pic[square,align with=B along a1 using 2,fill=green]; \pic[square,align with=B along a2 using 1,fill=green]; \<strong>end</strong>{tikzpicture}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81e8-8cab-f65a3b6bd826" class=""><strong>6</strong> <strong>More Examples</strong></p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-818f-9ac5-ca87428bed49" class="">Let’s set some aesthetically pleasing shapes.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-811f-aaf3-f47c581aa398" class="">11</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8142-8816-cad2013379eb" class="image"><a href="penrose/image30.png"><img style="width:700px" src="penrose/image30.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8123-97e0-d3e7e7918385" class="">\<strong>begin</strong>{tikzpicture}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-816d-9920-e4bebd79b0ac" class="">\path[save Penrose path=a] (0,0) to[out=-30,in=100] (1,0); \path[save Penrose path=b] (0,0) to[out=0,in=140] (1,0); \path[save Penrose path=c] (0,0) to[out=-40,in=140] (1,0); \BakePenroseTile{thin rhombus}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8141-8fb5-d57db7a41081" class="">\BakePenroseTile{thick rhombus}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8141-aa7e-eb9325772cfc" class="">\BakePenroseTile{golden triangle}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8174-af7c-df078766a18c" class="">\BakePenroseTile{reverse golden triangle}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81c2-830b-c7bed7accc3c" class="">\BakePenroseTile{golden gnomon}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8163-8739-d51982fa788d" class="">\BakePenroseTile{reverse golden gnomon}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8190-aecf-ca89e3ba6112" class="">\BakePenroseTile{kite}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81fc-b9a0-ef71fd20affa" class="">\BakePenroseTile{dart}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81a7-ab86-f097cc020faf" class="">\<strong>end</strong>{tikzpicture}</p></div><div style="display:contents" dir="auto"><hr id="2d9ac165-e88d-81d5-8222-f0df740c2db3"/></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8135-8cd5-d7aedd31cfeb" class="">Styling the first tile. Note that as the pattern is formed by repeating two different initial seeds 5 times, there are 10 “first tiles” in each overall pattern.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8160-a83f-e4248b60e58e" class="">\<strong>begin</strong>{tikzpicture}[</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8186-93d1-d0a3c35d24a1" class="">every Penrose tile/.style={draw},</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-814b-a7bb-dd429d4589ba" class="">Penrose tile 1/.style={fill=yellow},</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b4-8b18-c121460e7702" class="">]</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81be-ad02-ca0b4104a9e7" class="">\foreach \tp/\pos in</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81d0-b18d-d1f9d1aec734" class="">{rhombus/0cm,rtriangle/2.5cm,kite/5cm,ktriangle/7.5cm} {</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ad-838e-f640a78331e9" class="">\<strong>begin</strong>{scope}[xshift=\pos]</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81f8-8224-f7c48fc8089d" class="">\foreach[evaluate=\k as \mk using {\k+Mod(\k,2)},evaluate=\k as \ax using {Mod(\k,2) == 0 ? &quot;T&quot; : &quot;t&quot;}] \k in {0,...,9} { \<strong>begin</strong>{scope}[rotate=\mk*36]</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8196-b919-fb8e666ee4fb" class="">\PenroseDecomposition{\tp}{1}{\ax}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81fa-98e4-eb2fac5a22a2" class="">\<strong>end</strong>{scope}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-810f-a33b-ee851b1c5c5b" class="">}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-812a-b1f0-f3e1fb5333e2" class="">\<strong>end</strong>{scope}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8104-b85f-e4397e0004dc" class="">}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81e4-b4b5-fb034fca3edd" class="">\<strong>end</strong>{tikzpicture}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-812c-8a93-fbd122079e9a" class="">A more detailed decomposition, with more and more tinting applied to teach tile. Roughly half of the counted tiles are rendered, and the ordering in which they are rendered is not at first an obvious one (though it is in general from “outside in”).</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ce-bf47-de628c219798" class="">12</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8129-b194-e17c9bd522cf" class="">Note that the key tint fill colour is not a TikZ native. It is defined as:</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8193-9b31-d87ceeaa208a" class="">\makeatletter</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81db-9e32-de544f0942f7" class="">\tikzset{</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8146-ab19-d765ac6aa3ef" class="">tint fill colour/.code={%</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-815d-8bc8-f480cdad3a75" class="">\edef\@temp{%</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-819b-9f10-f05f373138b3" class="">\def\noexpand\tikz@fillcolor{\tikz@fillcolor!#1}% \noexpand\tikz@addoption{%</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8117-a092-e0541be524e2" class="">\noexpand\pgfsetfillcolor{\tikz@fillcolor!#1}% }%</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8138-8e01-dbc350c2fb7c" class="">}%</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8146-ae58-cc7a8d4d49d3" class="">\@temp</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-816e-9e21-d46cace16602" class="">}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-811d-a816-f006478b4dfa" class="">}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8148-a030-f6c63596d0e7" class="">\makeatother</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81d0-b499-f13eb503a630" class="">\<strong>begin</strong>{tikzpicture}[</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8100-bfd0-c4816a07f0cf" class="">every Penrose tile/.style={draw},</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81a5-8fa9-ee9e1bf080e9" class="">every kite/.style={fill=reverseGoldenTriangle},</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-810f-b187-e7622d980053" class="">every dart/.style={fill=goldenTriangle},</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-815e-af58-edba3fd87396" class="">Penrose tile/.code 2 args={</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b3-a030-f45f607caa16" class="">\pgfmathsetmacro\tint{100*(1 - 1.5*#1/#2))}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8165-91cc-d9cc40e1e925" class="">\pgfkeysalso{tint fill colour=\tint}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b1-8240-f7d52b14efec" class="">}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8169-8b08-d2c4b0b60291" class="">]</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8144-8e10-cbd70876e928" class="">\foreach[evaluate=\k as \mk using {\k+Mod(\k,2)},evaluate=\k as \ax using {Mod(\k,2) == 0 ? &quot;T&quot; : &quot;t&quot;}] \k in {0,...,9} { \<strong>begin</strong>{scope}[rotate=\mk*36]</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8132-854e-ced46d22f24a" class="">\PenroseDecomposition[Penrose step=5cm]{kite}{4}{\ax}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-815a-bb66-ea5ac01bbc07" class="">\<strong>end</strong>{scope}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-811a-84d3-ee84ec9d8df5" class="">}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-819f-9dd6-eb47f7fcd5c5" class="">\<strong>end</strong>{tikzpicture}</p></div><div style="display:contents" dir="auto"><hr id="2d9ac165-e88d-81ea-8b87-d708e30b5888"/></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8197-8f8f-c95d7152756d" class="">13</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81e6-b3d5-e638b89836af" class="image"><a href="penrose/image31.png"><img style="width:700px" src="penrose/image31.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8128-bf1b-f6a0a6990a63" class="">An example with “manual placement”.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-813a-be62-f1ff0ed4b14d" class="">14</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-819c-afb8-cf59b9b83bc3" class="">\<strong>begin</strong>{tikzpicture}[</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8103-9fb1-cb1aa0128d4c" class="">every Penrose pic/.style={</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8179-9c35-c69f126c2a4a" class="">draw=black,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-819e-9fd3-e42ca7cb333f" class="">ultra thick,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8176-aeb1-f73b97231c42" class="">},</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-811d-9e21-e7347e7ab5d7" class="">every kite/.style={</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8120-9c02-c1df6459b750" class="">fill=kite,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-813b-a9ae-cbb73b8c8db9" class="">},</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81c9-bf40-e8e2f1ce21c1" class="">every dart/.style={</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8102-8819-e1c4202054f6" class="">fill=dart,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81fe-ba7e-f6f4f0c6c490" class="">},</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8152-988a-d09c493b37f2" class="">every circle arc/.style={</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8138-bb92-c6e041ab1836" class="">draw=circleArc</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8134-8e8b-d9f4e106bc80" class="">},</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-819e-9151-fd5d0d885fa7" class="">every long arc/.style={</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81e5-a00e-e634d352d83b" class="">draw=longArc</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8163-901a-ef5ca316667f" class="">}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8111-a6c3-d97cbc092b3a" class="">]</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8171-a9aa-c542ec04709a" class="">\pic[dart,name=a0];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ef-b712-e32c654d51ec" class="">\foreach[evaluate=\k as \kmo using int(\k-1)] \k in {1,...,4} { \pic[dart,name=a\k,align with={a\kmo} along a];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8152-8d5f-e69a783205d6" class="">}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-811b-83a2-fe42a3979905" class="">\foreach \k in {0,...,4} {</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-813f-9f69-d17f2ed19677" class="">\foreach \<strong>l</strong>/\e/\ee in {0/c/a,1/C/A} {</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81f9-9485-c2d25311fec9" class="">\pic[kite,name=b\<strong>l</strong>\k,align with={a\k} along \e];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81a8-841f-ef8925f68c6f" class="">\pic[dart,name=c\<strong>l</strong>\k,align with={b\<strong>l</strong>\k} along \ee];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8131-b64d-c0ed240aff85" class="">\pic[kite,name=d\<strong>l</strong>\k,align with={c\<strong>l</strong>\k} along \e];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-813a-8cf1-e601c8e1b78c" class="">}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81a9-b890-c7d0e04ba107" class="">\pic[kite,name=e\k,align with={c0\k} along C];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8116-ac50-ce8322e28a0c" class="">\pic[dart,name=f\k,align with={c0\k} along a];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-813d-a0c2-cd5efa4290b3" class="">\foreach \e in {c,C} {</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8114-8d80-f2c87a740ee3" class="">\pic[kite,name=g\k,align with={f\k} along \e];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8176-b930-fe2ae303da22" class="">}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8143-8b7b-cd7d5760f1e8" class="">}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8129-be39-f085241dd7c5" class="">\<strong>end</strong>{tikzpicture}</p></div><div style="display:contents" dir="auto"><hr id="2d9ac165-e88d-817f-b87f-ecc652a3b676"/></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-816a-9790-d544f7cd6ff0" class="">15</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81e6-a28e-e8dc8bda9a92" class="image"><a href="penrose/image32.png"><img style="width:700px" src="penrose/image32.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81fb-a6b4-f69935509e6c" class="">The decomposition rules for the Lindenmayer system can be illustrated by drawing each tile together with the result of one decomposition superimposed on top.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-817b-b034-ded668cb727e" class="">\foreach \ax in {T,t,G,g} {</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81df-b504-c3fe9f67d23a" class="">\<strong>begin</strong>{tikzpicture}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81c2-afa8-e86c62de7686" class="">\foreach \tp/\pos in</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81fd-9a8a-d16251173cb0" class="">{rhombus/0cm,rtriangle/2cm,kite/4cm,ktriangle/6cm} {</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81e3-b7c2-f4ee7425b594" class="">\<strong>begin</strong>{scope}[xshift=\pos]</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b7-ac18-d39d85b63d90" class="">\PenroseDecomposition[every path/.style={draw=red,ultra thick}]{\tp}{0}{\ax}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8109-b3aa-fe648e60c3ba" class="">\PenroseDecomposition[every path/.style={fill=gray!50,fill opacity=.5,draw=black}]{\tp}{1}{\ax}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81d2-9741-cab5abf0d280" class="">\<strong>end</strong>{scope}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8149-8b95-e072aebda3a0" class="">}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8187-9e86-c87485a3fb33" class="">\<strong>end</strong>{tikzpicture}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8135-8388-d7da680b65d6" class="">}</p></div><div style="display:contents" dir="auto"><hr id="2d9ac165-e88d-81cf-bb84-fd93f0b81118"/></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81d4-8c9a-fcf106298205" class="">16</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8126-855d-e757252f7753" class="image"><a href="penrose/image33.png"><img style="width:700px" src="penrose/image33.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8107-8ca3-c888b8d0a4a1" class="">The tiles can make interesting forms by themselves.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ed-a575-f771848630ed" class="">17</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8147-a350-fca344d93f73" class="">\<strong>begin</strong>{tikzpicture}[</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-810f-9df3-ea1920f2e266" class="">scale=2,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-818a-a192-f0ec48309d09" class="">every Penrose pic/.style={</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ce-a563-cf7059db317e" class="">transform shape,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ce-94f5-cc52062b2a0e" class="">},</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-817d-98d2-e66b4017a3be" class="">every golden triangle/.style={</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-815b-810a-ef71a0c6c690" class="">draw=black,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8150-91c3-c36adc5c11f8" class="">ultra thick,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-819b-96fc-eb806954ff4a" class="">fill=goldenTriangle,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8104-9bf6-e483a4c7d7ff" class="">},</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-815f-a700-cb6c7bf43692" class="">every reverse golden triangle/.style={</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8199-a7e0-e35875c0a5d1" class="">draw=black,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8117-8f09-cd4533378de3" class="">ultra thick,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81fe-96d7-ebe0ab801a41" class="">fill=reverseGoldenTriangle,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-810e-a434-d4fdb1d39ce7" class="">},</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ab-90bd-d50fc0626e80" class="">every golden gnomon/.style={</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81e9-96cc-f7d64bf9040b" class="">draw=black,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-818c-82ec-fc901814ce38" class="">ultra thick,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-815c-bb89-dc8e8197f5d4" class="">fill=goldenGnomon,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8192-894d-f4d764f525c6" class="">},</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b2-a216-d5149e9bcc87" class="">every reverse golden gnomon/.style={</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81f9-978a-c03ce75665b6" class="">draw=black,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81bf-945e-fe3ab89f727e" class="">ultra thick,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81a5-a688-f5de53c6501a" class="">fill=reverseGoldenGnomon,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-817d-9fa0-d46206fc4e1c" class="">},</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81da-8e27-ef21e3a8dfa2" class="">]</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81fa-8acf-fc0425f058f1" class="">\pic[golden triangle,name=a];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b9-a56b-f0ba8c65e77b" class="">\pic[reverse golden triangle,align with=a along a]; \pic[reverse golden triangle,align with=a along b]; \pic[reverse golden triangle,align with=a along c]; \<strong>begin</strong>{scope}[xshift=2cm]</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-818a-8aa4-db6c8165b2fa" class="">\pic[reverse golden triangle,name=a];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b1-836d-ff6073b673f3" class="">\pic[golden triangle,align with=a along A];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ec-99bd-f78a98c68fdd" class="">\pic[golden triangle,align with=a along B];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8115-85df-eb22974bfa36" class="">\pic[golden triangle,align with=a along C];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81c8-8834-cf4fc74613ca" class="">\<strong>end</strong>{scope}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8186-b472-e6f91ada3cf2" class="">\<strong>begin</strong>{scope}[yshift=-3cm]</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8179-8bc9-cf4190f61ea0" class="">\pic[golden gnomon,name=a];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8147-a6e8-dbabfce35515" class="">\pic[reverse golden gnomon,align with=a along C]; \pic[reverse golden gnomon,align with=a along b]; \pic[reverse golden gnomon,align with=a along A]; \<strong>begin</strong>{scope}[xshift=2cm]</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8164-b349-c01c1ef70640" class="">\pic[reverse golden gnomon,name=a];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8113-bbd5-f83dd4debc2e" class="">\pic[golden gnomon,align with=a along c];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81a2-bccc-dd8ab49afc4b" class="">\pic[golden gnomon,align with=a along B];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ad-a2cd-e68706031f92" class="">\pic[golden gnomon,align with=a along a];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81af-8094-f43b5b2c06d4" class="">\<strong>end</strong>{scope}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81e1-80d1-c3833c37c026" class="">\<strong>end</strong>{scope}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81eb-bb55-d242c4bf24df" class="">\<strong>end</strong>{tikzpicture}</p></div><div style="display:contents" dir="auto"><hr id="2d9ac165-e88d-8171-bff3-f30a182e72e6"/></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81f9-9d22-ff3d23fa7e4b" class="">18</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81e7-9e55-fcd1277a6519" class="image"><a href="penrose/image34.png"><img style="width:700px" src="penrose/image34.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8109-aade-f842d2cb968c" class="">19</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8112-b6fa-fcb71108ad57" class="">\<strong>begin</strong>{tikzpicture}[</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81e5-8313-f06f8bc19489" class="">every rhombus/.style={</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81a0-a11c-f7515308dd9e" class="">draw=black,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8110-a8c2-e504221077c2" class="">ultra thick,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8141-b0df-e541d3f0bc74" class="">},</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81e0-9bb0-dbe17db395d2" class="">every thin rhombus/.style={</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81cd-9b43-ced176b3a049" class="">every rhombus/.try,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ba-a238-de9a07c193a3" class="">fill=thinRhombus,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-811a-8e18-e4d02d9e4831" class="">},</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8181-b78e-e34675206fca" class="">every thick rhombus/.style={</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8113-986a-f0549a750882" class="">every rhombus/.try,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8181-b111-c4a1eee2d65f" class="">fill=thickRhombus,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8103-810f-d6fe2274d732" class="">},</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8136-874e-d353f7df09c7" class="">every circle arc/.style={</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81d9-9edb-c080748c983d" class="">draw=circleArc</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8120-874a-e6f554e912dd" class="">},</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8122-82a2-e13a1629f3db" class="">every long arc/.style={</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8109-934c-ddd94f6414be" class="">draw=longArc</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ce-a969-e6dd477a3bb2" class="">}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-818a-a78e-eb0d73228118" class="">]</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-816f-afc2-f2874cccfddd" class="">\pic[rotate=18,thick rhombus,name=a0];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8179-872a-f28618a5568b" class="">\foreach[evaluate=\k as \kmo using int(\k-1)] \k in {1,...,4} {</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81a0-a381-d79e139c85d0" class="">\pic[thick rhombus,name=a\k,align with={a\kmo} along A]; }</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81bb-91c6-c64265427f7f" class="">\foreach \k in {0,...,4}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ef-96d9-cb0eff19909c" class="">{</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81de-aade-e5cfcd00824a" class="">\pic[thin rhombus,name=b\k,align with={a\k} along B]; \pic[thick rhombus,name=c\k,align with={b\k} along A]; \pic[thick rhombus,name=d\k,align with={b\k} along a]; \pic[thick rhombus,name=e\k,align with={c\k} along A]; \foreach \<strong>l</strong>/\<strong>a</strong> in {{0/b},{1/B}}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-812e-a4bd-c85dbb8d367c" class="">\pic[thin rhombus,name=f\k\<strong>l</strong>,align with={e\k} along \<strong>a</strong>]; }</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8100-9e1e-d2d7a2a25654" class="">\pic[thin rhombus,name=g0,align with={f10} along a];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81db-87e2-cadd621d71c9" class="">\pic[thin rhombus,name=g1,align with={f21} along A];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8175-8ad7-db78166219fa" class="">\foreach \<strong>l</strong>/\<strong>a</strong> in {{0/a},{1/A}}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-811b-8e57-f485fa4d1c2d" class="">\pic[thick rhombus,name=h\<strong>l</strong>,align with={g\<strong>l</strong>} along \<strong>a</strong>]; \pic[thick rhombus,name=i,align with=g0 along B];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ce-bc09-f0fa5c030fb4" class="">\foreach \<strong>l</strong>/\<strong>a</strong> in {{0/a},{1/A}}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-815c-8c75-dfe50569e642" class="">\pic[thick rhombus,name=j\<strong>l</strong>,align with=i along \<strong>a</strong>];</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-810c-9741-c1f274bbf523" class="">\<strong>end</strong>{tikzpicture}</p></div><div style="display:contents" dir="auto"><hr id="2d9ac165-e88d-8179-8898-ccdcc40e6781"/></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81a3-b9ac-c0cffbdebd2d" class="">20</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-816c-a964-e2391b39b624" class="image"><a href="penrose/image35.png"><img style="width:700px" src="penrose/image35.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-818d-9c42-c88290c43570" class="">Lastly, here’s an example that generates full page patterns.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8156-8403-e05e734041a2" class="">\foreach \tp/\lvl in {rhombus/5,rhombus/6,kite/5,kite/6}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-813e-ad60-c32bf4169a44" class="">{</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8158-8ed5-d7eba0ce7db2" class="">\<strong>begin</strong>{tikzpicture}[</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ef-91de-fb5d65c12c96" class="">every Penrose tile/.style={draw},</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8136-856d-e95a477903bb" class="">remember picture,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-818e-a242-f98615af4ace" class="">overlay,</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-811b-9699-c6c235731d09" class="">scale=20</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8128-b868-fc8f4d1621dc" class="">]</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-818b-8af8-f8f0f4c63e33" class="">\coordinate (a) at (current page.center);</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-814a-9fce-dc47907be29f" class="">\<strong>begin</strong>{scope}[shift={(a)}]</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81c3-8b0d-e9a378a33350" class="">\foreach[evaluate=\k as \mk using {\k+Mod(\k,2)},evaluate=\k as \ax using {Mod(\k,2) == 0 ? &quot;T&quot; : &quot;t&quot;}] \k in {0,...,9} { \<strong>begin</strong>{scope}[rotate=\mk*36]</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8163-8b39-fc3a4db908ec" class="">\PenroseDecomposition{\tp}{\lvl}{\ax}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b3-8f24-d8180275b510" class="">\<strong>end</strong>{scope}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-817d-a666-e0af12ed1d3b" class="">}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-815d-9031-f68daaca94f9" class="">\<strong>end</strong>{scope}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81d0-a96c-ed6e2797519a" class="">\<strong>end</strong>{tikzpicture}</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b7-82fc-c60d11490f2b" class="">\<strong>newpage</strong></p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81a3-81b5-e0a330d9f581" class="">}</p></div><div style="display:contents" dir="auto"><hr id="2d9ac165-e88d-8176-9abe-c8b4d7a978d6"/></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b1-bb81-c2148b38c921" class="">21</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-816c-b78c-fb131480b5ad" class="image"><a href="penrose/image36.png"><img style="width:700px" src="penrose/image36.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8119-aa67-f5ed272e8097" class="">22</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8153-879f-d29c4720120a" class="image"><a href="penrose/image37.png"><img style="width:700px" src="penrose/image37.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8123-81ce-e9108c5ad9b8" class="">23</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8163-944d-dfdd182a294a" class="image"><a href="penrose/image38.png"><img style="width:700px" src="penrose/image38.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81eb-a366-d08658325bec" class="">24</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8115-8f1c-c6862ae87262" class="image"><a href="penrose/image39.png"><img style="width:700px" src="penrose/image39.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81f5-940d-ea62bf593955" class="">25</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

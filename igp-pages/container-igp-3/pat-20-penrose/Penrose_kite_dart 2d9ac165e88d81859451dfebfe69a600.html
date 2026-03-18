@@ -1,0 +1,713 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Penrose_kite_dart</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2d9ac165-e88d-8185-9451-dfebfe69a600" class="page sans"><header><h1 class="page-title" dir="auto">Penrose_kite_dart</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8113-8e0d-eae8f8e1e27e" class="image"><a href="Penrose_kite_dart/image7.png"><img style="width:700px" src="Penrose_kite_dart/image7.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-816a-b684-c1f0ef795ec5" class="image"><a href="Penrose_kite_dart/image8.png"><img style="width:700px" src="Penrose_kite_dart/image8.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81f3-b35c-ca468b024866" class="image"><a href="Penrose_kite_dart/image1.png"><img style="width:700px" src="Penrose_kite_dart/image1.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-814d-b887-d4560d6f5c58" class=""><strong>Penrose tiling</strong></p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81c4-83ee-f22480c72833" class=""><strong>How to make a</strong></p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-813a-9cc8-ecc5739909f3" class="">A tiling is a way to cover a flat</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81f2-80a4-fc5e72a5f01c" class="">rectangles, while in the right-</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8197-8b38-f8f56a4c6036" class="">hand octagons and squares. You</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-812e-a914-e86c76fba429" class="">have probably seen many picture they are</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8191-80b2-e792c1213454" class="image"><a href="Penrose_kite_dart/image3.png"><img style="width:235.9943084716797px" src="Penrose_kite_dart/image3.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81c5-9601-ffcb68ec3d57" class="">surface using a fixed collection</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b4-8916-d4c4f8e3c4f7" class="">of shapes. In the left-hand</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8194-8670-ee89369ab65c" class="">picture the tiles are</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-818e-afe8-d597084e37ce" class="">different tilings around your</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-817b-8fe4-cac85f3936ab" class="">home or in the streets!</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-811c-a262-d83c60426416" class="">In each of these examples, you could draw the tiling pattern on tracing paper and then shift the paper so that the lines once again match up with the tiles. Mathematicians wondered whether it was possible to make a tiling which <em>didn’t</em>have this property: a tiling where the tracing paper would never match the pattern again, no matter how far you moved it or in which direction. Such a tiling is called <strong>aperiodic</strong> and there are actually many examples of them.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ed-a5e7-c24535c4726c" class="">The most famous example of an aperiodic tiling is called a <strong>Penrose tiling</strong>, named after the mathematician and physicist Roger Penrose. A Penrose tiling uses only two shapes, with rules on how they are allowed to go together. These shapes are called kites and darts, and in the version given here the red dots have to line up when the shapes are placed next to each other. This means, for example, that the dart cannot sit on top of the kite. Three possible ways <strong>Kite</strong> <strong>Dart</strong></p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8157-8616-e7c69bf86acf" class="">to start a Penrose tiling are given below: they are called the ‘star’, ‘sun’ and ‘ace’ respectively. There are 4 other ways to arrange the tiles around a point: can you find them all? (Answer on the other side!)</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81ab-b30e-dcd1d9a542f9" class="image"><a href="Penrose_kite_dart/image4.png"><img style="width:345.9942932128906px" src="Penrose_kite_dart/image4.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81e3-966a-ef6fec5097cc" class="image"><a href="Penrose_kite_dart/image5.png"><img style="width:352.99713134765625px" src="Penrose_kite_dart/image5.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-810d-95ba-fdc93e46fbe4" class="image"><a href="Penrose_kite_dart/image6.png"><img style="width:341.9886169433594px" src="Penrose_kite_dart/image6.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81ae-98d3-e9fa67434240" class="">Visit mathscraftnz.org | Tweet to#mathscraftnz | Emailmathscraftnz@gmail.com</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8175-b725-dbbf199e28da" class="image"><a href="Penrose_kite_dart/image11.png"><img style="width:624.0056762695312px" src="Penrose_kite_dart/image11.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81e0-bd94-f439c9ff7d54" class="image"><a href="Penrose_kite_dart/image9.png"><img style="width:700px" src="Penrose_kite_dart/image9.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8154-8cf7-c34024538373" class="">Here are the 7 ways to fit the tiles around a point. Did you find them all?</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81c3-ad0d-eb583063c891" class="">Some of these starting patterns will force you to place other tiles in certain places, while others give you a free choice about what to do next. There are actually <strong>infinitely many</strong> ways to make a Penrose tiling! If you start with the star or the sun you can make a tiling</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-818f-b42d-ea617180859f" class="">with 5-fold symmetry around its centre. Other tiling patterns may have a <em>local</em> 5-fold symmetry, but this is destroyed as you build further outwards.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81d2-9abd-e78af7c1ae97" class="">Penrose tilings are amazing mathematical objects. Any region of tiles that you make will be repeated infinitely often in <em>every</em> possible Penrose tiling. This means that if you were standing on a plaza which was Penrose tiled in every direction, you couldn’t look around you to see the local pattern of tiles and be able to tell where you were within the whole pattern, nor be able to tell which of the different tilings you were in. This is not surprising for a periodic tiling, like the rectangles we saw earlier, but it seems amazing for a tiling which is aperiodic.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8195-a3da-cfa27fed614e" class="">pentagon within a pentagon as shown, so that is why this magical number keeps appearing. The ratio of the long to the short sides of the kites and darts is φ:1. The ratio of the areas of the kites and darts is φ:1. The ratio of the number of kites to the number of darts in any Penrose tiling is φ:1. Can you find any other examples of φ appearing?</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-819d-a9bc-f4463ec9bcdc" class="image"><a href="Penrose_kite_dart/image10.png"><img style="width:516.9886474609375px" src="Penrose_kite_dart/image10.png"/></a></figure></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8147-a89e-e321d217a2c3" class="">The <strong>golden</strong> ratio, φ, appears everywhere in a Penrose tiling. This number is the ratio of the side of a pentagon to its chord, and is about 1.618. The kites and darts themselves can be created by drawing a</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8169-bd77-cf3446dfb9a8" class="">It is possible to tile kites and darts using smaller kites and darts. This means that if we start with a tiling, we can use this method to get an even more intricate Penrose tiling. Scaling up this new tiling so the smaller kites and darts are the same size as the ones we first started with, we have created a method of making a bigger Penrose tiling from a smaller one. This also shows that a Penrose tiling is a kind of <strong>fractal</strong>, as it has self-similarity.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8125-b930-c64c0df3ed97" class="">You could tile your kitchen floor or bathroom wall with Penrose tiles: something similar has been done on the pavements in Oxford (outside the Maths Department at the University of Oxford) and Helsinki (on Keskuskatu Street). But a more intriguing use of Penrose tiles has been found.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-812d-bfd9-d0d630e203a0" class="">In 1982 a crystallographer called Dan Shechtman discovered a strange phenomenon called <strong>quasicrystals</strong>. Looking at an alloy of aluminium and manganese that he had made, he noticed a pattern with 10-fold symmetry. Chemists believed that only symmetries of orders 2, 3, 4 or 6 could exist in crystals, so they considered Shechtman’s work to be a mistake. But it turned out that he was right and that he had discovered a kind of 3-dimensional Penrose tiling. Shechtman was awarded the Nobel Prize in Chemistry in 2011 for his discovery, which is now being developed to make non-stick coatings in frying pans and to make stronger kinds of steel for armour and surgical equipment.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8105-9d8e-ca9de9611dde" class="">Download and print your own Penrose tiles from <span style="border-bottom:0.05em solid">http://bit.ly/2bHENpd</span>. Read more about Penrose tilings in this wonderful article by Martin Gardner: <span style="border-bottom:0.05em solid">http://bit.ly/2bnS3EB</span>.</p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81a8-a461-fc84df25c0d6" class="">Visit mathscraftnz.org | Tweet to#mathscraftnz | Emailmathscraftnz@gmail.com</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
