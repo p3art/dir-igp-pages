@@ -1,0 +1,3715 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>pat-30-A-J-Lee-rcm_py_code</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2d9ac165-e88d-81ad-9821-e5ca08565f07" class="page sans"><header><h1 class="page-title" dir="auto">pat-30-A-J-Lee-rcm_py_code</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><h1 id="2d9ac165-e88d-8174-b5ed-edb6214c47d9" class="">view .ipynb online</h1></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81fe-a589-f782628605d9" class=""><a href="https://ipynb.js.org/">https://ipynb.js.org/</a></p></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81e7-a234-e25996c585f7" class="">
+</p></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2d9ac165-e88d-814d-8339-c9936908d6ee" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all"># A-J-Lee-1.py
+# 2021-10-29
+# 2025-05-11
+#
+# python 3.8.2
+# run on https://replit.com
+# run on ubuntu 22.04 LTS
+#
+# 要執行本程式, 請按上方 run▶
+#
+# view .ipynb online
+# https://ipynb.js.org/
+# https://htmtopdf.herokuapp.com/ipynbviewer/
+#
+# replit browser zoom scale set to 100%
+#
+import numpy as np
+import matplotlib.pyplot as plot         # 載入繪圖模組 pyplot, 重新命名為 plot
+import matplotlib.font_manager as fontManager
+#
+from shapely import affinity
+from shapely.geometry import LineString, Point
+#
+# -------------------------------------------------
+#
+def set_graphic_area(width,height) :
+
+    cm2inch = 1/2.54    # inch per cm
+    #
+    # define graphic area
+    #
+    left_margin = 1.4   # cm
+    right_margin = 1.2  # cm
+    #
+    figure_width  = width  # cm , from xmin to xmax
+    figure_height = height # cm , from ymin to ymax
+    #
+    top_margin = 1.0    # cm
+    bottom_margin = 1.0 # cm
+    #
+    box_width = left_margin + figure_width + right_margin   # cm
+    box_height = top_margin + figure_height + bottom_margin # cm
+    #
+    top_value    = 1.0 - top_margin / box_height
+    bottom_value = bottom_margin / box_height
+    left_value   = left_margin / box_width
+    right_value  = 1.0 - right_margin / box_width
+    #
+    return (box_width*cm2inch,box_height*cm2inch,top_value,bottom_value,left_value,right_value,width)
+    #
+# end of def
+#
+def shapely_Arc(cxy, r, start_angle, end_angle) :
+
+    numsegments = 720
+    # The coordinates of the arc
+    theta = np.radians(np.linspace(start_angle, end_angle, numsegments))
+    x = cxy[0] + r * np.cos(theta)
+    y = cxy[1] + r * np.sin(theta)
+    Arc = LineString(np.column_stack([x, y]))
+    return Arc
+    #
+# end of def
+#
+def motif_line(LS, MYcolor, ZORDER, LINEWIDTH) :
+    #
+    xs,ys = LS.xy
+    ax.plot(xs, ys, color=MYcolor, alpha=1.0, linewidth=LINEWIDTH, solid_capstyle=&#x27;round&#x27;, zorder=ZORDER)
+    return
+#
+def motif_fill(LS, color, ZORDER, Alpha) :
+    #
+    xs,ys = LS.xy
+    ax.fill(xs, ys, alpha=Alpha, closed=True, edgecolor=None, facecolor=color, fill=True, zorder=ZORDER)
+    return
+#
+def polygon_line(poly, MYcolor, ZORDER, LINEWIDTH) :
+    #
+    xs, ys = poly.exterior.coords.xy
+    ax.plot(xs, ys, color=MYcolor, alpha=1.0, linewidth=LINEWIDTH, solid_capstyle=&#x27;round&#x27;, zorder=ZORDER)
+    return
+#
+# ---------------------------------------------------
+#
+print(&#x27;main running ...&#x27;)
+#
+# r = 20/np.cos(np.pi/3)
+# print(r)
+
+# A4 紙張大小是 21.0cm x 29.7cm
+# dy = r0+ty
+dx = 5.0
+dy = 8.660254037844386
+tup7 = set_graphic_area((4*dx+2)*1.0, (2*dy+2)*1.0)
+# 呼叫 pyplot.figure(), 建立一個圖表物件, 並成為目前圖表物件
+fig = plot.figure(figsize=(tup7[0], tup7[1]))
+# 圖表的繪圖區域被分為1個子圖, 1 row, 1 column, plot to index 1
+ax = fig.add_subplot(1,1,1)
+fig.subplots_adjust(
+                top    = tup7[2] ,
+                bottom = tup7[3] ,
+                left   = tup7[4] ,
+                right  = tup7[5] ,
+                )
+#
+# 設定X軸的顯示範圍, from xmin to xmax
+plot.xlim(-6, 16)
+# 設定Y軸的顯示範圍, from ymin to ymax
+plot.ylim(-dy-1, dy+1)
+# get current axes, set X,Y same ratio &amp; scale
+plot.gca().set_aspect(&#x27;equal&#x27;, adjustable=&#x27;box&#x27;) 
+#
+xvalues = [-5,0,5,10,15]
+yvalues = [-dy,0,dy]
+plot.xticks(xvalues)
+plot.yticks(yvalues)
+plot.tick_params(labelsize=14)
+#
+plot.grid(False)
+ax.set_axis_on()    # will turn on  grid line
+# ax.set_axis_off() # will turn off grid line
+#
+# ---------------------------------------------------------
+#
+r0 = 5
+cxy = (0,0)
+myfont = fontManager.FontProperties(fname=&#x27;./fonts/msjh.ttc&#x27;)
+#
+# find its_1 distance
+pA = ( r0, r0)
+pB = (-r0, r0)
+pC = (-r0,-r0)
+pD = ( r0,-r0)
+#
+line_1 = LineString([pA, pC])
+line_2 = LineString([pB, pD])
+line_3 = affinity.rotate(line_1, 15, pC)
+line_4 = affinity.rotate(line_2,-15, pD)
+#
+its_1    = line_3.intersection(line_4)
+its_1_xy = (its_1.x, its_1.y)
+#
+tx = 0
+ty = its_1_xy[1]
+#
+pA = ( r0, r0+ty)
+pB = (-r0, r0+ty)
+pC = (-r0,-r0-ty)
+pD = ( r0,-r0-ty)
+#
+line_AD = LineString([pA, pD])
+line_AB = LineString([pA, pB])
+line_BC = LineString([pB, pC])
+line_CD = LineString([pC, pD])
+line_AC = LineString([pA, pC])
+#
+tmp_1 = LineString([pC, cxy])
+tmp_2 = LineString([pD, cxy])
+tmp_3 = LineString([pC, pD])
+#
+for tmp in (tmp_1, tmp_2, tmp_3) :
+    xs, ys = tmp.xy
+    ax.plot(xs, ys, color=&#x27;green&#x27;, alpha=1.0, linewidth=0.8, solid_capstyle=&#x27;round&#x27;, zorder=10) 
+# end for
+#
+plot.savefig(&#x27;./png/fig-1A.png&#x27;, format=&quot;png&quot;, dpi=300)
+#
+for tmp in (tmp_1, tmp_2, tmp_3) :
+    r_tmp = affinity.rotate(tmp, 180, cxy)
+    xs, ys = r_tmp.xy
+    ax.plot(xs, ys, color=&#x27;green&#x27;, alpha=1.0, linewidth=0.8, solid_capstyle=&#x27;round&#x27;, zorder=10) 
+# end for
+#
+plot.savefig(&#x27;./png/fig-1B.png&#x27;, format=&quot;png&quot;, dpi=300)
+#
+square_xy = [pA, pB, pC, pD, pA]
+square    = LineString(square_xy)
+#
+line_1 = LineString([pA, pC])
+line_2 = LineString([pB, pD])
+#
+for item in (square, line_1, line_2) :
+    xs, ys = item.xy
+    ax.plot(xs, ys, color=&#x27;green&#x27;, alpha=1.0, linewidth=0.8, solid_capstyle=&#x27;round&#x27;, zorder=10) 
+# end for
+#
+plot.savefig(&#x27;./png/fig-1C.png&#x27;, format=&quot;png&quot;, dpi=300)
+#
+text1_xy = (-r0-0.9, 5*np.sqrt(3)+0.25)
+ax.annotate(r&#x27;$5\sqrt{3}=8.66$&#x27;, text1_xy,
+            color=&#x27;blue&#x27;,
+            fontproperties=myfont,
+            fontsize=16, 
+            zorder=70)
+#
+text2_xy = (r0-1.5, -r0-ty+0.2)
+ax.annotate(&quot;60°&quot;, text2_xy,
+            color=&#x27;red&#x27;,
+            fontproperties=myfont,
+            fontsize=16, 
+            zorder=10)
+#
+text3_xy = (-r0+0.5, -r0-ty+0.2)
+ax.annotate(&quot;60°&quot;, text3_xy,
+            color=&#x27;red&#x27;,
+            fontproperties=myfont,
+            fontsize=16, 
+            zorder=10)
+#
+plot.savefig(&#x27;./png/fig-1D.png&#x27;, format=&quot;png&quot;, dpi=300)
+#
+square_new_xy = [pC, pD, pA, pB]
+square_new    = LineString(square_new_xy)
+#
+tx = Point(pC).distance(Point(pD))
+t_square_new = affinity.translate(square_new, tx, 0, 0)
+xs, ys = t_square_new.xy
+ax.plot(xs, ys, color=&#x27;indigo&#x27;, alpha=1.0, linewidth=0.8, dashes=[10, 4, 10, 4], solid_capstyle=&#x27;round&#x27;, zorder=20)
+#
+plot.savefig(&#x27;./png/fig-1E.png&#x27;, format=&quot;png&quot;, dpi=300)
+#
+cir_down_1 = shapely_Arc(( r0,-r0*np.sqrt(3)), 2*r0, 0, 180)
+cir_upL    = shapely_Arc((-r0, r0*np.sqrt(3)), 2*r0, 270, 360)
+cir_upR    = shapely_Arc((3*r0, r0*np.sqrt(3)), 2*r0, 180, 270)
+motif_line(cir_down_1, &#x27;cyan&#x27;, 10, 1.0)
+motif_line(cir_upL,    &#x27;cyan&#x27;, 10, 1.0)
+motif_line(cir_upR,    &#x27;cyan&#x27;, 10, 1.0)
+#
+plot.savefig(&#x27;./png/fig-1F.png&#x27;, format=&quot;png&quot;, dpi=300)
+#
+up_H_line_1_xy = [(-3*r0,r0*np.sqrt(3)), (3*r0,r0*np.sqrt(3))]
+up_H_line_2_xy = [(-1*r0,r0*np.sqrt(3)), (5*r0,r0*np.sqrt(3))]
+up_H_line_1    = LineString(up_H_line_1_xy)
+up_H_line_2    = LineString(up_H_line_2_xy)
+up_H_line_1_rP30 = affinity.rotate(up_H_line_1, 30, ( 3*r0, r0*np.sqrt(3)))
+up_H_line_2_rN30 = affinity.rotate(up_H_line_2,-30, (-1*r0, r0*np.sqrt(3)))
+V_line_L = LineString([( -r0,-r0*np.sqrt(3)), (-r0,  r0*np.sqrt(3))])
+V_line_R = LineString([(3*r0,-r0*np.sqrt(3)), (3*r0, r0*np.sqrt(3))])
+#
+its_L1 = V_line_L.intersection(up_H_line_1_rP30)
+its_R1 = V_line_R.intersection(up_H_line_2_rN30)
+its_L1_xy = (its_L1.x, its_L1.y)
+its_R1_xy = (its_R1.x, its_R1.y)
+#
+line_RU_its_L1 = LineString([(3*r0, r0*np.sqrt(3)), its_L1_xy])
+line_LU_its_R1 = LineString([( -r0, r0*np.sqrt(3)), its_R1_xy])
+motif_line(line_RU_its_L1, &#x27;red&#x27;, 10, 1.0)
+motif_line(line_LU_its_R1, &#x27;red&#x27;, 10, 1.0)
+#
+plot.savefig(&#x27;./png/fig-1G.png&#x27;, format=&quot;png&quot;, dpi=300)
+#
+line_3 = affinity.rotate(line_2, -15, pD)
+line_4 = affinity.rotate(line_2, -45, pD)
+its_41 = line_RU_its_L1.intersection(line_3)
+its_51 = line_LU_its_R1.intersection(line_4)
+its_41_xy = ( its_41.x, its_41.y)
+its_51_xy = ( its_51.x, its_51.y)
+#
+tmp_4 = LineString([its_41_xy, pD])
+tmp_5 = LineString([its_51_xy, pD])
+motif_line(tmp_4, &#x27;gray&#x27;, 10, 1.0)
+motif_line(tmp_5, &#x27;gray&#x27;, 10, 1.0)
+#
+plot.savefig(&#x27;./png/fig-1H.png&#x27;, format=&quot;png&quot;, dpi=300)
+#
+tmp_6 = affinity.rotate(tmp_4, 52.5, its_41_xy)
+its_61 = LineString([(r0,-r0*np.sqrt(3)), (r0,r0*np.sqrt(3))]).intersection(tmp_6)
+its_62 = cir_down_1.intersection(tmp_6)
+its_61_xy = ( its_61.x, its_61.y)
+tmp_7 = LineString([its_41_xy, its_61_xy])
+xs, ys = tmp_7.xy
+ax.plot(xs, ys, color=&#x27;red&#x27;, alpha=1.0, linewidth=0.8, dashes=[10, 4, 10, 4], solid_capstyle=&#x27;round&#x27;, zorder=20)
+#
+d99 = its_61.distance(its_62)
+print(d99)
+cir_center = shapely_Arc(its_61_xy, d99, 0, 360)
+motif_line(cir_center, &#x27;darkgreen&#x27;, 10, 1.0)
+#
+plot.savefig(&#x27;./png/fig-1I.png&#x27;, format=&quot;png&quot;, dpi=300)
+#
+its_70 = LineString([(r0,-r0*np.sqrt(3)), (r0,r0*np.sqrt(3))]).intersection(cir_center)
+#
+its_71 = its_70.geoms[1]
+d1 = its_71.distance(Point(pD))
+cir_down_2 = shapely_Arc((r0,-r0*np.sqrt(3)), d1, 0, 180)
+motif_line(cir_down_2, &#x27;cyan&#x27;, 10, 1.0)
+#
+plot.savefig(&#x27;./png/fig-1J.png&#x27;,format=&quot;png&quot;,dpi=150)
+#
+r10 = 8.92
+point_1_xy = (r10,0)
+point_2_xy = (r10*np.cos(5*np.pi/12), r10*np.sin(5*np.pi/12))
+point_3_xy = (r10*np.cos(7*np.pi/12), r10*np.sin(7*np.pi/12))
+point_1    = Point(point_1_xy)
+point_2    = Point(point_2_xy)
+point_3    = Point(point_3_xy)
+d1 = point_2.distance(point_3) / 2
+d2 = r10 - d1
+#
+Hline = LineString([(r10+d1,0), (-r10-d1,0)])
+line_left  = affinity.rotate(Hline,105, cxy)
+line_right = affinity.rotate(Hline, 75, cxy)
+#
+cir_2 = shapely_Arc(cxy, d2, 0, 360)
+#
+line_p2_p3 = LineString([point_2_xy, point_3_xy])
+bisector_degree = (90-15)/2
+mid_1 = line_p2_p3.interpolate(0.5, normalized = True)
+mid_2 = affinity.rotate(mid_1, 90-15, point_2_xy)
+mid_1_xy = (mid_1.x, mid_1.y)
+mid_2_xy = (mid_2.x, mid_2.y)
+line_mid_1_to_2 = LineString([mid_1_xy, mid_2_xy])
+#
+line_A = affinity.rotate(line_p2_p3, bisector_degree, point_2_xy)
+line_B = affinity.rotate(line_p2_p3,-bisector_degree, point_3_xy)
+its_1    = line_A.intersection(line_B)
+its_1_xy = (its_1.x, its_1.y)
+line_a   = LineString([point_2_xy, its_1_xy])
+line_b   = LineString([point_3_xy, its_1_xy])
+#
+its_2 = line_a.intersection(line_mid_1_to_2)
+its_2_xy = (its_2.x, its_2.y)
+key_cir = shapely_Arc(its_2_xy, 0.08, 0, 360)
+#
+tmp_1_xy = (mid_2.x, point_2_xy[1])
+tmp_2_xy = (mid_2.x, 0)
+line_tmp = LineString([tmp_1_xy, tmp_2_xy])
+its_3    = line_a.intersection(line_tmp)
+its_3_xy = (its_3.x, its_3.y)
+#
+d_its2_to_its3 = its_2.distance(its_3)
+distance = d_its2_to_its3 - 0.24
+line_base = LineString([its_2_xy, its_3_xy])
+key_posi = line_base.interpolate(distance)
+key_posi_xy = (key_posi.x, key_posi.y)
+#
+t0x = mid_2.x - key_posi.x
+t0y = mid_2.y - key_posi.y
+ext_0 = affinity.translate(mid_2, 10*t0x, 10*t0y, 0)
+line_mid_2_to_ext_0 = LineString([mid_2_xy, (ext_0.x,ext_0.y)])
+ext_p0 = line_mid_2_to_ext_0.intersection(Hline)
+ext_p0_xy = (ext_p0.x, ext_p0.y)
+#
+line_key = LineString([mid_1_xy, key_posi_xy, mid_2_xy, ext_p0_xy])
+#
+hline = LineString([(r10,0), (0,0)])
+r45_Hline = affinity.rotate(hline, 45, cxy)
+r60_Hline = affinity.rotate(hline, 60, cxy)
+#
+its_4 = line_key.intersection(r45_Hline)
+its_5 = line_key.intersection(r60_Hline)
+its_4_xy = (its_4.x, its_4.y)
+its_5_xy = (its_5.x, its_5.y)
+d4 = its_4.distance(Point(cxy))
+d5 = its_5.distance(Point(cxy))
+#
+key_1_xy = [its_4_xy, key_posi_xy, mid_1_xy]
+key_2_xy = [(-key_posi_xy[0], key_posi_xy[1]), (-its_4_xy[0], its_4_xy[1])]
+line_key_xy = key_1_xy + key_2_xy
+line_key    = LineString(line_key_xy)
+#
+t1x = mid_1.x - key_posi.x
+t1y = mid_1.y - key_posi.y
+ext_1 = affinity.translate(mid_1, 5*t1x, 5*t1y, 0)
+ext_1_xy = ( ext_1.x, ext_1.y)
+ext_2_xy = (-ext_1.x, ext_1.y)
+#
+for degree in (0,30,60,90,120,150,180,210,240,270,300,330) :
+    r_line_key = affinity.rotate(line_key, degree+15, cxy)
+    t_line_key = affinity.translate(r_line_key, r0, -r0*np.sqrt(3))
+    motif_line(t_line_key, &#x27;blue&#x27;, 55, 1.0)
+# end for
+#
+its_61_xy = (its_61.x, its_61.y)
+start_xy = (its_61.x, its_61.y - 2.3)
+key_1_xy = [key_posi_xy, mid_1_xy]
+key_1    = LineString(key_1_xy)
+r_key_1  = affinity.rotate(key_1, 15, cxy)
+t_key_1  = affinity.translate(r_key_1, r0, -r0*np.sqrt(3))
+final_key_1_xy = [start_xy, t_key_1.coords[0], t_key_1.coords[1]]
+final_key_1    = LineString(final_key_1_xy)
+#
+reflect_about_Yaxis  = [-1, 0, 0, 1, 0,0] 
+refY_final_key_1 = affinity.affine_transform(final_key_1, reflect_about_Yaxis)
+final_key_2 = affinity.translate(refY_final_key_1, 2*r0, 0)
+#
+its_end = cir_down_1.intersection(LineString([(r0, -r0*np.sqrt(3)), (r0, -r0*np.sqrt(3)+2*r0)]))
+#
+set_left  = affinity.rotate(final_key_1,-75, its_61_xy)
+set_right = affinity.rotate(final_key_2, 75, its_61_xy)
+#
+left_line_xy  = [set_left.coords[2],  (its_end.x, its_end.y)]
+right_line_xy = [set_right.coords[2], (its_end.x, its_end.y)]
+left_line  = LineString(left_line_xy)
+right_line = LineString(right_line_xy)
+#
+for degree in (0,60,240,300) :
+    r_set_left   = affinity.rotate(set_left,   degree, (r0, -r0*np.sqrt(3)))
+    r_set_right  = affinity.rotate(set_right,  degree, (r0, -r0*np.sqrt(3)))
+    r_left_line  = affinity.rotate(left_line,  degree, (r0, -r0*np.sqrt(3)))
+    r_right_line = affinity.rotate(right_line, degree, (r0, -r0*np.sqrt(3)))
+    #
+    motif_line(r_set_left,  &#x27;black&#x27;, 55, 1.0)
+    motif_line(r_set_right, &#x27;black&#x27;, 55, 1.0)
+    motif_line(r_left_line,  &#x27;black&#x27;, 55, 1.0)
+    motif_line(r_right_line, &#x27;black&#x27;, 55, 1.0)
+# end for
+#
+r30_mid_1 = affinity.rotate(mid_1, 30, cxy)
+r30_mid_1_xy = (r30_mid_1.x, r30_mid_1.y)
+my_line_1 = LineString([ext_1_xy, mid_1_xy])
+my_line_2 = LineString([ext_2_xy, mid_1_xy])
+r30_my_line_2 = affinity.rotate(my_line_2, 30, cxy)
+ext_z1    = my_line_1.intersection(r30_my_line_2)
+ext_z1_xy = ( ext_z1.x, ext_z1.y)
+up_motif = LineString([mid_1_xy, ext_z1_xy, r30_mid_1_xy])
+#
+for degree in (0,60,240,300) :
+    r_up_motif = affinity.rotate(up_motif, degree+15, cxy)
+    t_up_motif = affinity.translate(r_up_motif, r0, -r0*np.sqrt(3))
+    motif_line(t_up_motif, &#x27;magenta&#x27;, 55, 1.0)
+# end for
+#
+ax.set_title(&#x27;rcm-12 15°&#x27;, fontsize=16)
+plot.savefig(&#x27;./png/fig-1K.png&#x27;,format=&quot;png&quot;,dpi=150)
+#
+## ==============================================================================================
+#
+posi_1 = affinity.rotate(ext_z1, 15, cxy)
+posi_2 = affinity.translate(posi_1, r0, -r0*np.sqrt(3))
+posi_2_xy = (posi_2.x, posi_2.y)
+posi_3_xy = (posi_2.x+2*r0, posi_2.y)
+#
+cir_98 = shapely_Arc(posi_2_xy, 0.1, 0, 360)
+cir_99 = shapely_Arc(posi_3_xy, 0.1, 0, 360)
+motif_fill(cir_98, &#x27;blue&#x27;,  75, 1.0)
+motif_fill(cir_99, &#x27;green&#x27;, 75, 1.0)
+#
+for degree in (0,30,60,90,120,150,180,210,240,270,300,330) :
+    r_line_key = affinity.rotate(line_key, degree+15, cxy)
+    t_line_key = affinity.translate(r_line_key, r0, -r0*np.sqrt(3))
+    L_line_key = affinity.rotate(t_line_key, 180, posi_2_xy)
+    R_line_key = affinity.rotate(t_line_key, 180, posi_3_xy)
+    #
+    motif_line(L_line_key, &#x27;blue&#x27;, 55, 1.0)
+    motif_line(R_line_key, &#x27;blue&#x27;, 55, 1.0)
+# end for
+#
+ax.set_title(&#x27;rcm-12 15°&#x27;, fontsize=16)
+plot.savefig(&#x27;./png/fig-1L.png&#x27;,format=&quot;png&quot;,dpi=150)
+#
+for degree in (0,60,240,300) :
+    r_set_left   = affinity.rotate(set_left,   degree, (r0, -r0*np.sqrt(3)))
+    r_set_right  = affinity.rotate(set_right,  degree, (r0, -r0*np.sqrt(3)))
+    r_left_line  = affinity.rotate(left_line,  degree, (r0, -r0*np.sqrt(3)))
+    r_right_line = affinity.rotate(right_line, degree, (r0, -r0*np.sqrt(3)))
+    #
+    L_set_left   = affinity.rotate(r_set_left,   180, posi_2_xy)
+    L_set_right  = affinity.rotate(r_set_right,  180, posi_2_xy)
+    L_left_line  = affinity.rotate(r_left_line,  180, posi_2_xy)
+    L_right_line = affinity.rotate(r_right_line, 180, posi_2_xy)    
+    #
+    R_set_left   = affinity.rotate(r_set_left,   180, posi_3_xy)
+    R_set_right  = affinity.rotate(r_set_right,  180, posi_3_xy)
+    R_left_line  = affinity.rotate(r_left_line,  180, posi_3_xy)
+    R_right_line = affinity.rotate(r_right_line, 180, posi_3_xy)    
+    #    
+    motif_line(L_set_left,   &#x27;black&#x27;, 55, 1.0)
+    motif_line(L_set_right,  &#x27;black&#x27;, 55, 1.0)
+    motif_line(L_left_line,  &#x27;black&#x27;, 55, 1.0)
+    motif_line(L_right_line, &#x27;black&#x27;, 55, 1.0)
+    #    
+    motif_line(R_set_left,   &#x27;black&#x27;, 55, 1.0)
+    motif_line(R_set_right,  &#x27;black&#x27;, 55, 1.0)
+    motif_line(R_left_line,  &#x27;black&#x27;, 55, 1.0)
+    motif_line(R_right_line, &#x27;black&#x27;, 55, 1.0)    
+# end for
+#
+ax.set_title(&#x27;rcm-12 15°&#x27;, fontsize=16)
+plot.savefig(&#x27;./png/fig-1M.png&#x27;,format=&quot;png&quot;,dpi=150)
+#
+for degree in (0,60,240,300) :
+    r_up_motif = affinity.rotate(up_motif, degree+15, cxy)
+    t_up_motif = affinity.translate(r_up_motif, r0, -r0*np.sqrt(3))
+    #
+    L_up_motif   = affinity.rotate(t_up_motif, 180, posi_2_xy)
+    R_up_motif   = affinity.rotate(t_up_motif, 180, posi_3_xy)
+    #
+    motif_line(L_up_motif, &#x27;magenta&#x27;, 55, 1.0)
+    motif_line(R_up_motif, &#x27;magenta&#x27;, 55, 1.0)
+# end for
+#
+ax.set_title(&#x27;rcm-12 15°&#x27;, fontsize=16)
+plot.savefig(&#x27;./png/fig-1N.png&#x27;,format=&quot;png&quot;,dpi=150)
+#
+## ==============================================================================================
+#
+mask_pA1 = (3*r0,-r0*np.sqrt(3)-0.03)
+mask_pB1 = ( -r0,-r0*np.sqrt(3)-0.03)
+mask_pC1 = ( -r0,-r0*np.sqrt(3)-0.97)
+mask_pD1 = (3*r0,-r0*np.sqrt(3)-0.97)
+#
+mask_down_xy = [mask_pA1, mask_pB1, mask_pC1, mask_pD1, mask_pA1]
+mask_down = LineString(mask_down_xy)
+mask_up   = affinity.rotate(mask_down, 180, (r0,0))
+#
+motif_fill(mask_down, &#x27;white&#x27;, 60, 1.0)
+motif_fill(mask_up,   &#x27;white&#x27;, 60, 1.0)
+#
+mask_pA2 = (3*r0+0.03, r0*np.sqrt(3))
+mask_pB2 = (3*r0+0.03,-r0*np.sqrt(3))
+mask_pC2 = (3*r0+0.97,-r0*np.sqrt(3))
+mask_pD2 = (3*r0+0.97, r0*np.sqrt(3))
+#
+mask_right_xy = [mask_pA2, mask_pB2, mask_pC2, mask_pD2, mask_pA2]
+mask_right = LineString(mask_right_xy)
+mask_left  = affinity.rotate(mask_right, 180, (r0,0))
+#
+motif_fill(mask_right, &#x27;white&#x27;, 60, 1.0)
+motif_fill(mask_left,  &#x27;white&#x27;, 60, 1.0)
+#
+ax.set_title(&#x27;rcm-12 15°&#x27;, fontsize=16)
+plot.savefig(&#x27;./png/fig-1P.png&#x27;,format=&quot;png&quot;,dpi=150)
+#
+print(&#x27;done&#x27;)
+plot.show()</code></pre></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-814b-b515-c8372a72040d" class=""><mark class="highlight-red">##########################################################################</mark></p></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2d9ac165-e88d-8159-ba94-f939b1212f49" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all"># A-J-Lee-2A.py
+# 2021-10-29
+# 2025-05-12
+#
+# python 3.8.2
+# run on https://replit.com
+# run on ubuntu 22.04 LTS
+#
+# 要執行本程式, 請按上方 run▶
+#
+# view .ipynb online
+# https://ipynb.js.org/
+# https://htmtopdf.herokuapp.com/ipynbviewer/
+#
+# replit browser zoom scale set to 100%
+#
+import numpy as np
+import matplotlib.pyplot as plot  # 載入繪圖模組 pyplot, 重新命名為 plot
+#
+from shapely import affinity
+from shapely.geometry import LineString, Point
+#
+# -------------------------------------------------
+#
+def set_graphic_area(width,height) :
+
+    cm2inch = 1/2.54    # inch per cm
+    #
+    # define graphic area
+    #
+    left_margin = 1.4   # cm
+    right_margin = 1.2  # cm
+    #
+    figure_width  = width  # cm , from xmin to xmax
+    figure_height = height # cm , from ymin to ymax
+    #
+    top_margin = 1.0    # cm
+    bottom_margin = 1.0 # cm
+    #
+    box_width = left_margin + figure_width + right_margin   # cm
+    box_height = top_margin + figure_height + bottom_margin # cm
+    #
+    top_value    = 1.0 - top_margin / box_height
+    bottom_value = bottom_margin / box_height
+    left_value   = left_margin / box_width
+    right_value  = 1.0 - right_margin / box_width
+    #
+    return (box_width*cm2inch,box_height*cm2inch,top_value,bottom_value,left_value,right_value,width)
+    #
+# end of def
+#
+def shapely_Arc(cxy, r, start_angle, end_angle) :
+
+    numsegments = 720
+    # The coordinates of the arc
+    theta = np.radians(np.linspace(start_angle, end_angle, numsegments))
+    x = cxy[0] + r * np.cos(theta)
+    y = cxy[1] + r * np.sin(theta)
+    Arc = LineString(np.column_stack([x, y]))
+    return Arc
+    #
+# end of def
+#
+def motif_line(LS, MYcolor, ZORDER, LINEWIDTH) :
+    #
+    xs,ys = LS.xy
+    ax.plot(xs, ys, color=MYcolor, alpha=1.0, linewidth=LINEWIDTH, solid_capstyle=&#x27;round&#x27;, zorder=ZORDER)
+    return
+#
+def motif_fill(LS, color, ZORDER, Alpha) :
+    #
+    xs,ys = LS.xy
+    ax.fill(xs, ys, alpha=Alpha, closed=True, edgecolor=None, facecolor=color, fill=True, zorder=ZORDER)
+    return
+#
+def polygon_line(poly, MYcolor, ZORDER, LINEWIDTH) :
+    #
+    xs, ys = poly.exterior.coords.xy
+    ax.plot(xs, ys, color=MYcolor, alpha=1.0, linewidth=LINEWIDTH, solid_capstyle=&#x27;round&#x27;, zorder=ZORDER)
+    return
+#
+# ---------------------------------------------------
+#
+print(&#x27;main running ...&#x27;)
+#
+# r = 20/np.cos(np.pi/3)
+# print(r)
+
+# A4 紙張大小是 21.0cm x 29.7cm
+# dy = r0+ty
+dx = 5.0
+dy = 8.660254037844386
+tup7 = set_graphic_area((4*dx+2)*1.0, (2*dy+2)*1.0)
+# 呼叫 pyplot.figure(), 建立一個圖表物件, 並成為目前圖表物件
+fig = plot.figure(figsize=(tup7[0], tup7[1]))
+# 圖表的繪圖區域被分為1個子圖, 1 row, 1 column, plot to index 1
+ax = fig.add_subplot(1,1,1)
+fig.subplots_adjust(
+                top    = tup7[2] ,
+                bottom = tup7[3] ,
+                left   = tup7[4] ,
+                right  = tup7[5] ,
+                )
+#
+# 設定X軸的顯示範圍, from xmin to xmax
+plot.xlim(-6, 16)
+# 設定Y軸的顯示範圍, from ymin to ymax
+plot.ylim(-dy-1, dy+1)
+# get current axes, set X,Y same ratio &amp; scale
+plot.gca().set_aspect(&#x27;equal&#x27;, adjustable=&#x27;box&#x27;) 
+#
+xvalues = [-5,0,5,10,15]
+yvalues = [-dy,0,dy]
+plot.xticks(xvalues)
+plot.yticks(yvalues)
+plot.tick_params(labelsize=14)
+#
+plot.grid(False)
+ax.set_axis_on()    # will turn on  grid line
+# ax.set_axis_off() # will turn off grid line
+#
+# ---------------------------------------------------------
+#
+# A4 紙張大小是 21.0cm x 29.7cm
+# dy = r0+ty
+dx = 5.0
+dy = 8.660254037844386
+tup7 = set_graphic_area(4*dx+2, 2*dy+2)
+# 呼叫 pyplot.figure(), 建立一個圖表物件, 並成為目前圖表物件
+fig = plot.figure(figsize=(tup7[0], tup7[1]))
+# 圖表的繪圖區域被分為1個子圖, 1 row, 1 column, plot to index 1
+ax = fig.add_subplot(1,1,1)
+fig.subplots_adjust(
+                top    = tup7[2] ,
+                bottom = tup7[3] ,
+                left   = tup7[4] ,
+                right  = tup7[5] ,
+                )
+#
+# 設定X軸的顯示範圍, from xmin to xmax
+plot.xlim(-6, 16)
+# 設定Y軸的顯示範圍, from ymin to ymax
+plot.ylim(-dy-1, dy+1)
+# get current axes, set X,Y same ratio &amp; scale
+plot.gca().set_aspect(&#x27;equal&#x27;, adjustable=&#x27;box&#x27;) 
+#
+xvalues = [-5,0,5,10,15]
+yvalues = [-dy,0,dy]
+plot.xticks(xvalues)
+plot.yticks(yvalues)
+plot.tick_params(labelsize=14)
+#
+plot.grid(False)
+ax.set_axis_on()    # will turn on  grid line
+# ax.set_axis_off() # will turn off grid line
+#
+# ---------------------------------------------------------
+#
+r0 = 5
+cxy = (0,0)
+#
+# find its_1 distance
+pA = ( r0, r0)
+pB = (-r0, r0)
+pC = (-r0,-r0)
+pD = ( r0,-r0)
+#
+line_1 = LineString([pA, pC])
+line_2 = LineString([pB, pD])
+line_3 = affinity.rotate(line_1, 15, pC)
+line_4 = affinity.rotate(line_2,-15, pD)
+#
+its_1    = line_3.intersection(line_4)
+its_1_xy = (its_1.x, its_1.y)
+#
+tx = 0
+ty = its_1_xy[1]
+#
+pA = ( r0, r0+ty)
+pB = (-r0, r0+ty)
+pC = (-r0,-r0-ty)
+pD = ( r0,-r0-ty)
+#
+line_AD = LineString([pA, pD])
+line_AB = LineString([pA, pB])
+line_BC = LineString([pB, pC])
+line_CD = LineString([pC, pD])
+line_AC = LineString([pA, pC])
+#
+tmp_1 = LineString([pC, cxy])
+tmp_2 = LineString([pD, cxy])
+tmp_3 = LineString([pC, pD])
+#
+square_xy = [pA, pB, pC, pD]
+square    = LineString(square_xy)
+motif_line(square, &#x27;green&#x27;, 80, 0.8)
+#
+line_1 = LineString([pA, pC])
+line_2 = LineString([pB, pD])
+#
+square_new_xy = [pC, pD, pA, pB]
+square_new    = LineString(square_new_xy)
+#
+tx = Point(pC).distance(Point(pD))
+t_square_new = affinity.translate(square_new, tx, 0, 0)
+motif_line(t_square_new, &#x27;green&#x27;, 80, 0.8)
+#
+cir_down_1 = shapely_Arc(( r0,-r0*np.sqrt(3)), 2*r0, 0, 180)
+cir_upL    = shapely_Arc((-r0, r0*np.sqrt(3)), 2*r0, 270, 360)
+cir_upR    = shapely_Arc((3*r0, r0*np.sqrt(3)), 2*r0, 180, 270)
+motif_line(cir_down_1, &#x27;cyan&#x27;, 10, 1.0)
+motif_line(cir_upL,    &#x27;cyan&#x27;, 10, 1.0)
+motif_line(cir_upR,    &#x27;cyan&#x27;, 10, 1.0)
+#
+up_H_line_1_xy = [(-3*r0,r0*np.sqrt(3)), (3*r0,r0*np.sqrt(3))]
+up_H_line_2_xy = [(-1*r0,r0*np.sqrt(3)), (5*r0,r0*np.sqrt(3))]
+up_H_line_1    = LineString(up_H_line_1_xy)
+up_H_line_2    = LineString(up_H_line_2_xy)
+up_H_line_1_rP30 = affinity.rotate(up_H_line_1, 30, ( 3*r0, r0*np.sqrt(3)))
+up_H_line_2_rN30 = affinity.rotate(up_H_line_2,-30, (-1*r0, r0*np.sqrt(3)))
+V_line_L = LineString([( -r0,-r0*np.sqrt(3)), (-r0,  r0*np.sqrt(3))])
+V_line_R = LineString([(3*r0,-r0*np.sqrt(3)), (3*r0, r0*np.sqrt(3))])
+#
+its_L1 = V_line_L.intersection(up_H_line_1_rP30)
+its_R1 = V_line_R.intersection(up_H_line_2_rN30)
+its_L1_xy = (its_L1.x, its_L1.y)
+its_R1_xy = (its_R1.x, its_R1.y)
+#
+line_RU_its_L1 = LineString([(3*r0, r0*np.sqrt(3)), its_L1_xy])
+line_LU_its_R1 = LineString([( -r0, r0*np.sqrt(3)), its_R1_xy])
+#
+line_3 = affinity.rotate(line_2, -15, pD)
+line_4 = affinity.rotate(line_2, -45, pD)
+its_41 = line_RU_its_L1.intersection(line_3)
+its_51 = line_LU_its_R1.intersection(line_4)
+its_41_xy = ( its_41.x, its_41.y)
+its_51_xy = ( its_51.x, its_51.y)
+#
+tmp_4 = LineString([its_41_xy, pD])
+tmp_5 = LineString([its_51_xy, pD])
+#
+tmp_6 = affinity.rotate(tmp_4, 52.5, its_41_xy)
+its_61 = LineString([(r0,-r0*np.sqrt(3)), (r0,r0*np.sqrt(3))]).intersection(tmp_6)
+its_62 = cir_down_1.intersection(tmp_6)
+its_61_xy = ( its_61.x, its_61.y)
+tmp_7 = LineString([its_41_xy, its_61_xy])
+#
+d99 = its_61.distance(its_62)
+cir_center = shapely_Arc(its_61_xy, d99, 0, 360)
+#
+its_70 = LineString([(r0,-r0*np.sqrt(3)), (r0,r0*np.sqrt(3))]).intersection(cir_center)
+its_71 = its_70.geoms[1]
+d999 = its_71.distance(Point(pD))
+cir_down_2 = shapely_Arc((r0,-r0*np.sqrt(3)), d999, 0, 180)
+motif_line(cir_down_2, &#x27;green&#x27;, 10, 0.7)
+#
+ax.set_title(&#x27;rcm-12 15°&#x27;, fontsize=16)
+plot.savefig(&#x27;./png-2/fig-2A.png&#x27;,format=&quot;png&quot;,dpi=150)
+#
+# new_center is (r0, -r0**np.sqrt(3))
+r10 = 8.92
+point_1_xy = (r0+r10, 0-r0*np.sqrt(3))
+point_2_xy = (r0+r10*np.cos(5*np.pi/12), r10*np.sin(5*np.pi/12)-r0*np.sqrt(3))
+point_3_xy = (r0+r10*np.cos(7*np.pi/12), r10*np.sin(7*np.pi/12)-r0*np.sqrt(3))
+point_1    = Point(point_1_xy)
+point_2    = Point(point_2_xy)
+point_3    = Point(point_3_xy)
+#
+line_p2_p3 = LineString([point_2_xy, point_3_xy])
+motif_line(line_p2_p3, &#x27;black&#x27;, 10, 0.7)
+d1 = point_2.distance(point_3) / 2
+d2 = r10 - d1
+#
+cir_a1 = shapely_Arc(point_2_xy, d1, 0, 360)
+cir_a2 = shapely_Arc(point_3_xy, d1, 0, 360)
+motif_line(cir_a1, &#x27;green&#x27;, 10, 0.7)
+motif_line(cir_a2, &#x27;green&#x27;, 10, 0.7)
+#
+Hline = LineString([(r0+r10+d1, 0-r0*np.sqrt(3)), (r0-r10-d1, 0-r0*np.sqrt(3))])
+line_left  = affinity.rotate(Hline,105, (r0,-r0*np.sqrt(3)))
+line_right = affinity.rotate(Hline, 75, (r0,-r0*np.sqrt(3)))
+motif_line(line_left,  &#x27;gray&#x27;, 10, 0.7)
+motif_line(line_right, &#x27;gray&#x27;, 10, 0.7)
+#
+# cir_2 = shapely_Arc((r0,-r0*np.sqrt(3)), d999, 0, 360)
+#
+mid_1 = line_p2_p3.interpolate(0.5, normalized = True)
+mid_2 = affinity.rotate(mid_1, 90-15, point_2_xy)
+mid_1_xy = (mid_1.x, mid_1.y)
+mid_2_xy = (mid_2.x, mid_2.y)
+line_mid_1_to_2 = LineString([mid_1_xy, mid_2_xy])
+motif_line(line_mid_1_to_2, &#x27;indigo&#x27;, 10, 0.7)
+#
+bisector_degree = (90-15)/2
+line_A = affinity.rotate(line_p2_p3, bisector_degree, point_2_xy)
+line_B = affinity.rotate(line_p2_p3,-bisector_degree, point_3_xy)
+# motif_line(line_A, &#x27;green&#x27;, 10, 0.7)
+# motif_line(line_B, &#x27;green&#x27;, 10, 0.7)
+#
+its_1    = line_A.intersection(line_B)
+its_1_xy = (its_1.x, its_1.y)
+#
+line_a   = LineString([point_2_xy, its_1_xy])
+line_b   = LineString([point_3_xy, its_1_xy])
+motif_line(line_a, &#x27;green&#x27;, 20, 0.8)
+#
+its_2 = line_a.intersection(line_mid_1_to_2)
+its_2_xy = (its_2.x, its_2.y)
+key_cir_1 = shapely_Arc(its_2_xy, 0.07, 0, 360)
+motif_fill(key_cir_1, &#x27;green&#x27;, 80, 1.0)
+#
+ax.set_title(&#x27;rcm-12 15°&#x27;, fontsize=16)
+plot.savefig(&#x27;./png-2/fig-2B.png&#x27;,format=&quot;png&quot;,dpi=150)
+#
+tmp_1_xy = (mid_2.x, point_2_xy[1])
+tmp_2_xy = (mid_2.x, -r0*np.sqrt(3))
+line_tmp = LineString([tmp_1_xy, tmp_2_xy])
+motif_line(line_tmp, &#x27;cyan&#x27;, 10, 0.7)
+#
+its_3    = line_a.intersection(line_tmp)
+its_3_xy = (its_3.x, its_3.y)
+#
+ax.set_title(&#x27;rcm-12 15°&#x27;, fontsize=16)
+plot.savefig(&#x27;./png-2/fig-2C.png&#x27;,format=&quot;png&quot;,dpi=150)
+#
+line_base = LineString([its_2_xy, its_3_xy])
+motif_line(line_base, &#x27;red&#x27;, 30, 0.9)
+d_its2_to_its3 = its_2.distance(its_3)
+distance = d_its2_to_its3 - 0.24
+#
+key_posi = line_base.interpolate(distance)
+key_posi_xy = (key_posi.x, key_posi.y)
+key_cir_2 = shapely_Arc(key_posi_xy, 0.07, 0, 360)
+motif_fill(key_cir_2, &#x27;black&#x27;, 80, 1.0)
+#
+ax.set_title(&#x27;rcm-12 15°&#x27;, fontsize=16)
+plot.savefig(&#x27;./png-2/fig-2D.png&#x27;,format=&quot;png&quot;,dpi=150)
+#
+t0x = mid_2.x - key_posi.x
+t0y = mid_2.y - key_posi.y
+ext_0 = affinity.translate(mid_2, 10*t0x, 10*t0y, 0)
+line_mid_2_to_ext_0 = LineString([mid_2_xy, (ext_0.x,ext_0.y)])
+ext_p0 = line_mid_2_to_ext_0.intersection(Hline)
+ext_p0_xy = (ext_p0.x, ext_p0.y)
+#
+line_key = LineString([mid_1_xy, key_posi_xy, mid_2_xy, ext_p0_xy])
+motif_line(line_key, &#x27;gray&#x27;, 30, 0.7)
+#
+ax.set_title(&#x27;rcm-12 15°&#x27;, fontsize=16)
+plot.savefig(&#x27;./png-2/fig-2E.png&#x27;,format=&quot;png&quot;,dpi=150)
+#
+hline = LineString([(r0,-r0*np.sqrt(3)), (r0+r10,-r0*np.sqrt(3))])
+r45_Hline = affinity.rotate(hline, 45, (r0,-r0*np.sqrt(3)))
+r60_Hline = affinity.rotate(hline, 60, (r0,-r0*np.sqrt(3)))
+motif_line(r45_Hline, &#x27;gray&#x27;, 30, 0.7)
+motif_line(r60_Hline, &#x27;gray&#x27;, 30, 0.7)
+#
+ax.set_title(&#x27;rcm-12 15°&#x27;, fontsize=16)
+plot.savefig(&#x27;./png-2/fig-2F.png&#x27;,format=&quot;png&quot;,dpi=150)
+#
+its_4 = line_key.intersection(r45_Hline)
+its_5 = line_key.intersection(r60_Hline)
+d4 = its_4.distance(Point(r0,-r0*np.sqrt(3)))
+d5 = its_5.distance(Point(r0,-r0*np.sqrt(3)))
+#
+d4_cir = shapely_Arc((r0,-r0*np.sqrt(3)), d4, 0, 180)
+d5_cir = shapely_Arc((r0,-r0*np.sqrt(3)), d5, 0, 180)
+motif_line(d4_cir, &#x27;magenta&#x27;, 30, 0.7)
+motif_line(d5_cir, &#x27;magenta&#x27;, 30, 0.7)
+#
+ax.set_title(&#x27;rcm-12 15°&#x27;, fontsize=16)
+plot.savefig(&#x27;./png-2/fig-2G.png&#x27;,format=&quot;png&quot;,dpi=150)
+#
+its_4_xy = (its_4.x, its_4.y)
+its_5_xy = (its_5.x, its_5.y)
+key_1_xy = [its_4_xy, key_posi_xy, mid_1_xy]
+key_2_xy = [(2*r0-key_posi_xy[0], key_posi_xy[1]), (2*r0-its_4_xy[0], its_4_xy[1])]
+line_key_xy = key_1_xy + key_2_xy
+line_key    = LineString(line_key_xy)
+motif_line(line_key, &#x27;blue&#x27;, 30, 1.0)
+#
+ax.set_title(&#x27;rcm-12 15°&#x27;, fontsize=16)
+plot.savefig(&#x27;./png-2/fig-2H.png&#x27;,format=&quot;png&quot;,dpi=150)
+#
+t1x = mid_1.x - key_posi.x
+t1y = mid_1.y - key_posi.y
+ext_1 = affinity.translate(mid_1, 5*t1x, 5*t1y, 0)
+ext_1_xy = ( ext_1.x, ext_1.y)
+ext_2_xy = (-ext_1.x, ext_1.y)
+#
+for degree in (30,60,90,120,150,180,210,240,270,300,330) :
+    r_line_key = affinity.rotate(line_key, degree, (r0,-r0*np.sqrt(3)))
+    motif_line(r_line_key, &#x27;blue&#x27;, 55, 1.0)
+# end for
+#
+mask_pA1 = (3*r0,-r0*np.sqrt(3)-0.03)
+mask_pB1 = ( -r0,-r0*np.sqrt(3)-0.03)
+mask_pC1 = ( -r0,-r0*np.sqrt(3)-0.97)
+mask_pD1 = (3*r0,-r0*np.sqrt(3)-0.97)
+#
+mask_down_xy = [mask_pA1, mask_pB1, mask_pC1, mask_pD1, mask_pA1]
+mask_down = LineString(mask_down_xy)
+motif_fill(mask_down, &#x27;white&#x27;, 60, 1.0)
+#
+ax.set_title(&#x27;rcm-12 15°&#x27;, fontsize=16)
+plot.savefig(&#x27;./png-2/fig-2I.png&#x27;,format=&quot;png&quot;,dpi=150)
+#
+its_201    = line_left.intersection(cir_down_1)
+its_201_xy = (its_201.x, its_201.y)
+cir_201 = shapely_Arc(its_201_xy, 0.07, 0, 360)
+motif_fill(cir_201, &#x27;red&#x27;, 60, 1.0)
+#
+r30_mid_1    = affinity.rotate(mid_1, 30, (r0,-r0*np.sqrt(3)))
+r30_mid_1_xy = (r30_mid_1.x, r30_mid_1.y)
+up_motif_xy = [mid_1_xy, its_201_xy, r30_mid_1_xy]
+up_motif    = LineString(up_motif_xy)
+motif_line(up_motif, &#x27;magenta&#x27;, 55, 1.0)
+#
+ax.set_title(&#x27;rcm-12 15°&#x27;, fontsize=16)
+plot.savefig(&#x27;./png-2/fig-2J.png&#x27;,format=&quot;png&quot;,dpi=150)
+#
+print(&#x27;done&#x27;)</code></pre></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8136-af3c-dc0becf1208b" class="">
+</p></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2d9ac165-e88d-81e2-9296-ef2bf9dd62ef" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all"># A-J-Lee-2B.py
+# 2021-10-29
+# 2025-05-12
+#
+# python 3.8.2
+# run on https://replit.com
+# run on ubuntu 22.04 LTS
+#
+# 要執行本程式, 請按上方 run▶
+#
+# view .ipynb online
+# https://ipynb.js.org/
+# https://htmtopdf.herokuapp.com/ipynbviewer/
+#
+# replit browser zoom scale set to 100%
+#
+import numpy as np
+import matplotlib.pyplot as plot         # 載入繪圖模組 pyplot, 重新命名為 plot
+#import matplotlib.font_manager as fontManager
+#
+from shapely import affinity
+from shapely.geometry import LineString, Point
+#
+# -------------------------------------------------
+#
+def set_graphic_area(width,height) :
+
+    cm2inch = 1/2.54    # inch per cm
+    #
+    # define graphic area
+    #
+    left_margin = 1.4   # cm
+    right_margin = 1.2  # cm
+    #
+    figure_width  = width  # cm , from xmin to xmax
+    figure_height = height # cm , from ymin to ymax
+    #
+    top_margin = 1.0    # cm
+    bottom_margin = 1.0 # cm
+    #
+    box_width = left_margin + figure_width + right_margin   # cm
+    box_height = top_margin + figure_height + bottom_margin # cm
+    #
+    top_value    = 1.0 - top_margin / box_height
+    bottom_value = bottom_margin / box_height
+    left_value   = left_margin / box_width
+    right_value  = 1.0 - right_margin / box_width
+    #
+    return (box_width*cm2inch,box_height*cm2inch,top_value,bottom_value,left_value,right_value,width)
+    #
+# end of def
+#
+def shapely_Arc(cxy, r, start_angle, end_angle) :
+
+    numsegments = 720
+    # The coordinates of the arc
+    theta = np.radians(np.linspace(start_angle, end_angle, numsegments))
+    x = cxy[0] + r * np.cos(theta)
+    y = cxy[1] + r * np.sin(theta)
+    Arc = LineString(np.column_stack([x, y]))
+    return Arc
+    #
+# end of def
+#
+def motif_line(LS, MYcolor, ZORDER, LINEWIDTH) :
+    #
+    xs,ys = LS.xy
+    ax.plot(xs, ys, color=MYcolor, alpha=1.0, linewidth=LINEWIDTH, solid_capstyle=&#x27;round&#x27;, zorder=ZORDER)
+    return
+#
+def motif_fill(LS, color, ZORDER, Alpha) :
+    #
+    xs,ys = LS.xy
+    ax.fill(xs, ys, alpha=Alpha, closed=True, edgecolor=None, facecolor=color, fill=True, zorder=ZORDER)
+    return
+#
+def polygon_line(poly, MYcolor, ZORDER, LINEWIDTH) :
+    #
+    xs, ys = poly.exterior.coords.xy
+    ax.plot(xs, ys, color=MYcolor, alpha=1.0, linewidth=LINEWIDTH, solid_capstyle=&#x27;round&#x27;, zorder=ZORDER)
+    return
+#
+# ---------------------------------------------------
+#
+print(&#x27;main running ...&#x27;)
+#
+# A4 紙張大小是 21.0cm x 29.7cm
+# dy = r0+ty
+dx = 5.0
+dy = 8.660254037844386
+tup7 = set_graphic_area(4*dx+2, 2*dy+2)
+# 呼叫 pyplot.figure(), 建立一個圖表物件, 並成為目前圖表物件
+fig = plot.figure(figsize=(tup7[0], tup7[1]))
+# 圖表的繪圖區域被分為1個子圖, 1 row, 1 column, plot to index 1
+ax = fig.add_subplot(1,1,1)
+fig.subplots_adjust(
+                top    = tup7[2] ,
+                bottom = tup7[3] ,
+                left   = tup7[4] ,
+                right  = tup7[5] ,
+                )
+#
+# 設定X軸的顯示範圍, from xmin to xmax
+plot.xlim(-6, 16)
+# 設定Y軸的顯示範圍, from ymin to ymax
+plot.ylim(-dy-1, dy+1)
+# get current axes, set X,Y same ratio &amp; scale
+plot.gca().set_aspect(&#x27;equal&#x27;, adjustable=&#x27;box&#x27;) 
+#
+xvalues = [-5,0,5,10,15]
+yvalues = [-dy,0,dy]
+plot.xticks(xvalues)
+plot.yticks(yvalues)
+plot.tick_params(labelsize=14)
+#
+plot.grid(False)
+ax.set_axis_on()    # will turn on  grid line
+# ax.set_axis_off() # will turn off grid line
+#
+# ---------------------------------------------------------
+#
+r0 = 5
+cxy = (0,0)
+#
+# find its_1 distance
+pA = ( r0, r0)
+pB = (-r0, r0)
+pC = (-r0,-r0)
+pD = ( r0,-r0)
+#
+line_1 = LineString([pA, pC])
+line_2 = LineString([pB, pD])
+line_3 = affinity.rotate(line_1, 15, pC)
+line_4 = affinity.rotate(line_2,-15, pD)
+#
+its_1    = line_3.intersection(line_4)
+its_1_xy = (its_1.x, its_1.y)
+#
+tx = 0
+ty = its_1_xy[1]
+#
+pA = ( r0, r0+ty)
+pB = (-r0, r0+ty)
+pC = (-r0,-r0-ty)
+pD = ( r0,-r0-ty)
+#
+line_AD = LineString([pA, pD])
+line_AB = LineString([pA, pB])
+line_BC = LineString([pB, pC])
+line_CD = LineString([pC, pD])
+line_AC = LineString([pA, pC])
+#
+tmp_1 = LineString([pC, cxy])
+tmp_2 = LineString([pD, cxy])
+tmp_3 = LineString([pC, pD])
+#
+square_xy = [pA, pB, pC, pD]
+square    = LineString(square_xy)
+motif_line(square, &#x27;green&#x27;, 80, 0.8)
+#
+line_1 = LineString([pA, pC])
+line_2 = LineString([pB, pD])
+#
+square_new_xy = [pC, pD, pA, pB]
+square_new    = LineString(square_new_xy)
+#
+tx = Point(pC).distance(Point(pD))
+t_square_new = affinity.translate(square_new, tx, 0, 0)
+motif_line(t_square_new, &#x27;green&#x27;, 80, 0.8)
+#
+cir_down_1 = shapely_Arc(( r0,-r0*np.sqrt(3)), 2*r0, 0, 180)
+cir_upL    = shapely_Arc((-r0, r0*np.sqrt(3)), 2*r0, 270, 360)
+cir_upR    = shapely_Arc((3*r0, r0*np.sqrt(3)), 2*r0, 180, 270)
+motif_line(cir_down_1, &#x27;cyan&#x27;, 10, 1.0)
+motif_line(cir_upL,    &#x27;cyan&#x27;, 10, 1.0)
+motif_line(cir_upR,    &#x27;cyan&#x27;, 10, 1.0)
+#
+up_H_line_1_xy = [(-3*r0,r0*np.sqrt(3)), (3*r0,r0*np.sqrt(3))]
+up_H_line_2_xy = [(-1*r0,r0*np.sqrt(3)), (5*r0,r0*np.sqrt(3))]
+up_H_line_1    = LineString(up_H_line_1_xy)
+up_H_line_2    = LineString(up_H_line_2_xy)
+up_H_line_1_rP30 = affinity.rotate(up_H_line_1, 30, ( 3*r0, r0*np.sqrt(3)))
+up_H_line_2_rN30 = affinity.rotate(up_H_line_2,-30, (-1*r0, r0*np.sqrt(3)))
+V_line_L = LineString([( -r0,-r0*np.sqrt(3)), (-r0,  r0*np.sqrt(3))])
+V_line_R = LineString([(3*r0,-r0*np.sqrt(3)), (3*r0, r0*np.sqrt(3))])
+#
+its_L1 = V_line_L.intersection(up_H_line_1_rP30)
+its_R1 = V_line_R.intersection(up_H_line_2_rN30)
+its_L1_xy = (its_L1.x, its_L1.y)
+its_R1_xy = (its_R1.x, its_R1.y)
+#
+line_RU_its_L1 = LineString([(3*r0, r0*np.sqrt(3)), its_L1_xy])
+line_LU_its_R1 = LineString([( -r0, r0*np.sqrt(3)), its_R1_xy])
+#
+line_3 = affinity.rotate(line_2, -15, pD)
+line_4 = affinity.rotate(line_2, -45, pD)
+its_41 = line_RU_its_L1.intersection(line_3)
+its_51 = line_LU_its_R1.intersection(line_4)
+its_41_xy = ( its_41.x, its_41.y)
+its_51_xy = ( its_51.x, its_51.y)
+#
+tmp_4 = LineString([its_41_xy, pD])
+tmp_5 = LineString([its_51_xy, pD])
+#
+tmp_6 = affinity.rotate(tmp_4, 52.5, its_41_xy)
+its_61 = LineString([(r0,-r0*np.sqrt(3)), (r0,r0*np.sqrt(3))]).intersection(tmp_6)
+its_62 = cir_down_1.intersection(tmp_6)
+its_61_xy = ( its_61.x, its_61.y)
+tmp_7 = LineString([its_41_xy, its_61_xy])
+#
+d99 = its_61.distance(its_62)
+cir_center = shapely_Arc(its_61_xy, d99, 0, 360)
+#
+its_70 = LineString([(r0,-r0*np.sqrt(3)), (r0,r0*np.sqrt(3))]).intersection(cir_center)
+its_71 = its_70.geoms[1]
+d999 = its_71.distance(Point(pD))
+cir_down_2 = shapely_Arc((r0,-r0*np.sqrt(3)), d999, 0, 180)
+motif_line(cir_down_2, &#x27;green&#x27;, 10, 0.7)
+#
+# new_center is (r0, -r0**np.sqrt(3))
+r10 = 8.92
+point_1_xy = (r0+r10, 0-r0*np.sqrt(3))
+point_2_xy = (r0+r10*np.cos(5*np.pi/12), r10*np.sin(5*np.pi/12)-r0*np.sqrt(3))
+point_3_xy = (r0+r10*np.cos(7*np.pi/12), r10*np.sin(7*np.pi/12)-r0*np.sqrt(3))
+point_1    = Point(point_1_xy)
+point_2    = Point(point_2_xy)
+point_3    = Point(point_3_xy)
+#
+line_p2_p3 = LineString([point_2_xy, point_3_xy])
+d1 = point_2.distance(point_3) / 2
+d2 = r10 - d1
+#
+Hline = LineString([(r0+r10+d1, 0-r0*np.sqrt(3)), (r0-r10-d1, 0-r0*np.sqrt(3))])
+line_left  = affinity.rotate(Hline,105, (r0,-r0*np.sqrt(3)))
+line_right = affinity.rotate(Hline, 75, (r0,-r0*np.sqrt(3)))
+#
+mid_1 = line_p2_p3.interpolate(0.5, normalized = True)
+mid_2 = affinity.rotate(mid_1, 90-15, point_2_xy)
+mid_1_xy = (mid_1.x, mid_1.y)
+mid_2_xy = (mid_2.x, mid_2.y)
+line_mid_1_to_2 = LineString([mid_1_xy, mid_2_xy])
+#
+bisector_degree = (90-15)/2
+line_A = affinity.rotate(line_p2_p3, bisector_degree, point_2_xy)
+line_B = affinity.rotate(line_p2_p3,-bisector_degree, point_3_xy)
+#
+its_1    = line_A.intersection(line_B)
+its_1_xy = (its_1.x, its_1.y)
+#
+line_a   = LineString([point_2_xy, its_1_xy])
+line_b   = LineString([point_3_xy, its_1_xy])
+#
+its_2 = line_a.intersection(line_mid_1_to_2)
+its_2_xy = (its_2.x, its_2.y)
+#
+tmp_1_xy = (mid_2.x, point_2_xy[1])
+tmp_2_xy = (mid_2.x, -r0*np.sqrt(3))
+line_tmp = LineString([tmp_1_xy, tmp_2_xy])
+#
+its_3    = line_a.intersection(line_tmp)
+its_3_xy = (its_3.x, its_3.y)
+#
+line_base = LineString([its_2_xy, its_3_xy])
+d_its2_to_its3 = its_2.distance(its_3)
+distance = d_its2_to_its3 - 0.24
+#
+key_posi = line_base.interpolate(distance)
+key_posi_xy = (key_posi.x, key_posi.y)
+key_cir_2 = shapely_Arc(key_posi_xy, 0.07, 0, 360)
+#
+t0x = mid_2.x - key_posi.x
+t0y = mid_2.y - key_posi.y
+ext_0 = affinity.translate(mid_2, 10*t0x, 10*t0y, 0)
+line_mid_2_to_ext_0 = LineString([mid_2_xy, (ext_0.x,ext_0.y)])
+ext_p0 = line_mid_2_to_ext_0.intersection(Hline)
+ext_p0_xy = (ext_p0.x, ext_p0.y)
+#
+line_key = LineString([mid_1_xy, key_posi_xy, mid_2_xy, ext_p0_xy])
+#
+hline = LineString([(r0,-r0*np.sqrt(3)), (r0+r10,-r0*np.sqrt(3))])
+r45_Hline = affinity.rotate(hline, 45, (r0,-r0*np.sqrt(3)))
+r60_Hline = affinity.rotate(hline, 60, (r0,-r0*np.sqrt(3)))
+#
+its_4 = line_key.intersection(r45_Hline)
+its_5 = line_key.intersection(r60_Hline)
+d4 = its_4.distance(Point(r0,-r0*np.sqrt(3)))
+d5 = its_5.distance(Point(r0,-r0*np.sqrt(3)))
+#
+d4_cir = shapely_Arc((r0,-r0*np.sqrt(3)), d4, 0, 180)
+d5_cir = shapely_Arc((r0,-r0*np.sqrt(3)), d5, 0, 180)
+motif_line(d4_cir, &#x27;magenta&#x27;, 30, 0.7)
+motif_line(d5_cir, &#x27;magenta&#x27;, 30, 0.7)
+#
+its_4_xy = (its_4.x, its_4.y)
+its_5_xy = (its_5.x, its_5.y)
+key_1_xy = [its_4_xy, key_posi_xy, mid_1_xy]
+key_2_xy = [(2*r0-key_posi_xy[0], key_posi_xy[1]), (2*r0-its_4_xy[0], its_4_xy[1])]
+line_key_xy = key_1_xy + key_2_xy
+line_key    = LineString(line_key_xy)
+#
+t1x = mid_1.x - key_posi.x
+t1y = mid_1.y - key_posi.y
+ext_1 = affinity.translate(mid_1, 5*t1x, 5*t1y, 0)
+ext_1_xy = ( ext_1.x, ext_1.y)
+ext_2_xy = (-ext_1.x, ext_1.y)
+#
+for degree in (0,30,60,90,120,150,180,210,240,270,300,330) :
+    r_line_key = affinity.rotate(line_key, degree+15, (r0,-r0*np.sqrt(3)))
+    motif_line(r_line_key, &#x27;blue&#x27;, 55, 1.0)
+# end for
+#
+mask_pA1 = (3*r0,-r0*np.sqrt(3)-0.03)
+mask_pB1 = ( -r0,-r0*np.sqrt(3)-0.03)
+mask_pC1 = ( -r0,-r0*np.sqrt(3)-0.97)
+mask_pD1 = (3*r0,-r0*np.sqrt(3)-0.97)
+#
+mask_down_xy = [mask_pA1, mask_pB1, mask_pC1, mask_pD1, mask_pA1]
+mask_down = LineString(mask_down_xy)
+motif_fill(mask_down, &#x27;white&#x27;, 60, 1.0)
+#
+its_201    = line_left.intersection(cir_down_1)
+its_201_xy = (its_201.x, its_201.y)
+#
+r30_mid_1    = affinity.rotate(mid_1, 30, (r0,-r0*np.sqrt(3)))
+r30_mid_1_xy = (r30_mid_1.x, r30_mid_1.y)
+up_motif_xy = [mid_1_xy, its_201_xy, r30_mid_1_xy]
+up_motif   = LineString(up_motif_xy)
+r_up_motif = affinity.rotate(up_motif, 15, (r0,-r0*np.sqrt(3)))
+motif_line(r_up_motif, &#x27;magenta&#x27;, 55, 1.0)
+#
+ax.set_title(&#x27;rcm-12 15°&#x27;, fontsize=16)
+plot.savefig(&#x27;./png-2/fig-2K.png&#x27;,format=&quot;png&quot;,dpi=150)
+#
+print(&#x27;done&#x27;)</code></pre></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-813b-9f0c-e3d4a024eb7a" class=""><mark class="highlight-red">##########################################################################</mark></p></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2d9ac165-e88d-81f4-a845-f8b7934870f6" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all"># A-J-Lee-2B.py
+# 2021-10-29
+# 2025-05-12
+#
+# python 3.8.2
+# run on https://replit.com
+# run on ubuntu 22.04 LTS
+#
+# 要執行本程式, 請按上方 run▶
+#
+# view .ipynb online
+# https://ipynb.js.org/
+# https://htmtopdf.herokuapp.com/ipynbviewer/
+#
+# replit browser zoom scale set to 100%
+#
+import numpy as np
+import matplotlib.pyplot as plot         # 載入繪圖模組 pyplot, 重新命名為 plot
+#import matplotlib.font_manager as fontManager
+#
+from shapely import affinity
+from shapely.geometry import LineString, Point
+#
+# -------------------------------------------------
+#
+def set_graphic_area(width,height) :
+
+    cm2inch = 1/2.54    # inch per cm
+    #
+    # define graphic area
+    #
+    left_margin = 1.4   # cm
+    right_margin = 1.2  # cm
+    #
+    figure_width  = width  # cm , from xmin to xmax
+    figure_height = height # cm , from ymin to ymax
+    #
+    top_margin = 1.0    # cm
+    bottom_margin = 1.0 # cm
+    #
+    box_width = left_margin + figure_width + right_margin   # cm
+    box_height = top_margin + figure_height + bottom_margin # cm
+    #
+    top_value    = 1.0 - top_margin / box_height
+    bottom_value = bottom_margin / box_height
+    left_value   = left_margin / box_width
+    right_value  = 1.0 - right_margin / box_width
+    #
+    return (box_width*cm2inch,box_height*cm2inch,top_value,bottom_value,left_value,right_value,width)
+    #
+# end of def
+#
+def shapely_Arc(cxy, r, start_angle, end_angle) :
+
+    numsegments = 720
+    # The coordinates of the arc
+    theta = np.radians(np.linspace(start_angle, end_angle, numsegments))
+    x = cxy[0] + r * np.cos(theta)
+    y = cxy[1] + r * np.sin(theta)
+    Arc = LineString(np.column_stack([x, y]))
+    return Arc
+    #
+# end of def
+#
+def motif_line(LS, MYcolor, ZORDER, LINEWIDTH) :
+    #
+    xs,ys = LS.xy
+    ax.plot(xs, ys, color=MYcolor, alpha=1.0, linewidth=LINEWIDTH, solid_capstyle=&#x27;round&#x27;, zorder=ZORDER)
+    return
+#
+def motif_fill(LS, color, ZORDER, Alpha) :
+    #
+    xs,ys = LS.xy
+    ax.fill(xs, ys, alpha=Alpha, closed=True, edgecolor=None, facecolor=color, fill=True, zorder=ZORDER)
+    return
+#
+def polygon_line(poly, MYcolor, ZORDER, LINEWIDTH) :
+    #
+    xs, ys = poly.exterior.coords.xy
+    ax.plot(xs, ys, color=MYcolor, alpha=1.0, linewidth=LINEWIDTH, solid_capstyle=&#x27;round&#x27;, zorder=ZORDER)
+    return
+#
+# ---------------------------------------------------
+#
+print(&#x27;main running ...&#x27;)
+#
+# A4 紙張大小是 21.0cm x 29.7cm
+# dy = r0+ty
+dx = 5.0
+dy = 8.660254037844386
+tup7 = set_graphic_area(4*dx+2, 2*dy+2)
+# 呼叫 pyplot.figure(), 建立一個圖表物件, 並成為目前圖表物件
+fig = plot.figure(figsize=(tup7[0], tup7[1]))
+# 圖表的繪圖區域被分為1個子圖, 1 row, 1 column, plot to index 1
+ax = fig.add_subplot(1,1,1)
+fig.subplots_adjust(
+                top    = tup7[2] ,
+                bottom = tup7[3] ,
+                left   = tup7[4] ,
+                right  = tup7[5] ,
+                )
+#
+# 設定X軸的顯示範圍, from xmin to xmax
+plot.xlim(-6, 16)
+# 設定Y軸的顯示範圍, from ymin to ymax
+plot.ylim(-dy-1, dy+1)
+# get current axes, set X,Y same ratio &amp; scale
+plot.gca().set_aspect(&#x27;equal&#x27;, adjustable=&#x27;box&#x27;) 
+#
+xvalues = [-5,0,5,10,15]
+yvalues = [-dy,0,dy]
+plot.xticks(xvalues)
+plot.yticks(yvalues)
+plot.tick_params(labelsize=14)
+#
+plot.grid(False)
+ax.set_axis_on()    # will turn on  grid line
+# ax.set_axis_off() # will turn off grid line
+#
+# ---------------------------------------------------------
+#
+r0 = 5
+cxy = (0,0)
+#
+# find its_1 distance
+pA = ( r0, r0)
+pB = (-r0, r0)
+pC = (-r0,-r0)
+pD = ( r0,-r0)
+#
+line_1 = LineString([pA, pC])
+line_2 = LineString([pB, pD])
+line_3 = affinity.rotate(line_1, 15, pC)
+line_4 = affinity.rotate(line_2,-15, pD)
+#
+its_1    = line_3.intersection(line_4)
+its_1_xy = (its_1.x, its_1.y)
+#
+tx = 0
+ty = its_1_xy[1]
+#
+pA = ( r0, r0+ty)
+pB = (-r0, r0+ty)
+pC = (-r0,-r0-ty)
+pD = ( r0,-r0-ty)
+#
+line_AD = LineString([pA, pD])
+line_AB = LineString([pA, pB])
+line_BC = LineString([pB, pC])
+line_CD = LineString([pC, pD])
+line_AC = LineString([pA, pC])
+#
+tmp_1 = LineString([pC, cxy])
+tmp_2 = LineString([pD, cxy])
+tmp_3 = LineString([pC, pD])
+#
+square_xy = [pA, pB, pC, pD]
+square    = LineString(square_xy)
+motif_line(square, &#x27;green&#x27;, 80, 0.8)
+#
+line_1 = LineString([pA, pC])
+line_2 = LineString([pB, pD])
+#
+square_new_xy = [pC, pD, pA, pB]
+square_new    = LineString(square_new_xy)
+#
+tx = Point(pC).distance(Point(pD))
+t_square_new = affinity.translate(square_new, tx, 0, 0)
+motif_line(t_square_new, &#x27;green&#x27;, 80, 0.8)
+#
+cir_down_1 = shapely_Arc(( r0,-r0*np.sqrt(3)), 2*r0, 0, 180)
+cir_upL    = shapely_Arc((-r0, r0*np.sqrt(3)), 2*r0, 270, 360)
+cir_upR    = shapely_Arc((3*r0, r0*np.sqrt(3)), 2*r0, 180, 270)
+motif_line(cir_down_1, &#x27;cyan&#x27;, 10, 1.0)
+motif_line(cir_upL,    &#x27;cyan&#x27;, 10, 1.0)
+motif_line(cir_upR,    &#x27;cyan&#x27;, 10, 1.0)
+#
+up_H_line_1_xy = [(-3*r0,r0*np.sqrt(3)), (3*r0,r0*np.sqrt(3))]
+up_H_line_2_xy = [(-1*r0,r0*np.sqrt(3)), (5*r0,r0*np.sqrt(3))]
+up_H_line_1    = LineString(up_H_line_1_xy)
+up_H_line_2    = LineString(up_H_line_2_xy)
+up_H_line_1_rP30 = affinity.rotate(up_H_line_1, 30, ( 3*r0, r0*np.sqrt(3)))
+up_H_line_2_rN30 = affinity.rotate(up_H_line_2,-30, (-1*r0, r0*np.sqrt(3)))
+V_line_L = LineString([( -r0,-r0*np.sqrt(3)), (-r0,  r0*np.sqrt(3))])
+V_line_R = LineString([(3*r0,-r0*np.sqrt(3)), (3*r0, r0*np.sqrt(3))])
+#
+its_L1 = V_line_L.intersection(up_H_line_1_rP30)
+its_R1 = V_line_R.intersection(up_H_line_2_rN30)
+its_L1_xy = (its_L1.x, its_L1.y)
+its_R1_xy = (its_R1.x, its_R1.y)
+#
+line_RU_its_L1 = LineString([(3*r0, r0*np.sqrt(3)), its_L1_xy])
+line_LU_its_R1 = LineString([( -r0, r0*np.sqrt(3)), its_R1_xy])
+#
+line_3 = affinity.rotate(line_2, -15, pD)
+line_4 = affinity.rotate(line_2, -45, pD)
+its_41 = line_RU_its_L1.intersection(line_3)
+its_51 = line_LU_its_R1.intersection(line_4)
+its_41_xy = ( its_41.x, its_41.y)
+its_51_xy = ( its_51.x, its_51.y)
+#
+tmp_4 = LineString([its_41_xy, pD])
+tmp_5 = LineString([its_51_xy, pD])
+#
+tmp_6 = affinity.rotate(tmp_4, 52.5, its_41_xy)
+its_61 = LineString([(r0,-r0*np.sqrt(3)), (r0,r0*np.sqrt(3))]).intersection(tmp_6)
+its_62 = cir_down_1.intersection(tmp_6)
+its_61_xy = ( its_61.x, its_61.y)
+tmp_7 = LineString([its_41_xy, its_61_xy])
+#
+d99 = its_61.distance(its_62)
+cir_center = shapely_Arc(its_61_xy, d99, 0, 360)
+#
+its_70 = LineString([(r0,-r0*np.sqrt(3)), (r0,r0*np.sqrt(3))]).intersection(cir_center)
+its_71 = its_70.geoms[1]
+d999 = its_71.distance(Point(pD))
+cir_down_2 = shapely_Arc((r0,-r0*np.sqrt(3)), d999, 0, 180)
+motif_line(cir_down_2, &#x27;green&#x27;, 10, 0.7)
+#
+# new_center is (r0, -r0**np.sqrt(3))
+r10 = 8.92
+point_1_xy = (r0+r10, 0-r0*np.sqrt(3))
+point_2_xy = (r0+r10*np.cos(5*np.pi/12), r10*np.sin(5*np.pi/12)-r0*np.sqrt(3))
+point_3_xy = (r0+r10*np.cos(7*np.pi/12), r10*np.sin(7*np.pi/12)-r0*np.sqrt(3))
+point_1    = Point(point_1_xy)
+point_2    = Point(point_2_xy)
+point_3    = Point(point_3_xy)
+#
+line_p2_p3 = LineString([point_2_xy, point_3_xy])
+d1 = point_2.distance(point_3) / 2
+d2 = r10 - d1
+#
+Hline = LineString([(r0+r10+d1, 0-r0*np.sqrt(3)), (r0-r10-d1, 0-r0*np.sqrt(3))])
+line_left  = affinity.rotate(Hline,105, (r0,-r0*np.sqrt(3)))
+line_right = affinity.rotate(Hline, 75, (r0,-r0*np.sqrt(3)))
+#
+mid_1 = line_p2_p3.interpolate(0.5, normalized = True)
+mid_2 = affinity.rotate(mid_1, 90-15, point_2_xy)
+mid_1_xy = (mid_1.x, mid_1.y)
+mid_2_xy = (mid_2.x, mid_2.y)
+line_mid_1_to_2 = LineString([mid_1_xy, mid_2_xy])
+#
+bisector_degree = (90-15)/2
+line_A = affinity.rotate(line_p2_p3, bisector_degree, point_2_xy)
+line_B = affinity.rotate(line_p2_p3,-bisector_degree, point_3_xy)
+#
+its_1    = line_A.intersection(line_B)
+its_1_xy = (its_1.x, its_1.y)
+#
+line_a   = LineString([point_2_xy, its_1_xy])
+line_b   = LineString([point_3_xy, its_1_xy])
+#
+its_2 = line_a.intersection(line_mid_1_to_2)
+its_2_xy = (its_2.x, its_2.y)
+#
+tmp_1_xy = (mid_2.x, point_2_xy[1])
+tmp_2_xy = (mid_2.x, -r0*np.sqrt(3))
+line_tmp = LineString([tmp_1_xy, tmp_2_xy])
+#
+its_3    = line_a.intersection(line_tmp)
+its_3_xy = (its_3.x, its_3.y)
+#
+line_base = LineString([its_2_xy, its_3_xy])
+d_its2_to_its3 = its_2.distance(its_3)
+distance = d_its2_to_its3 - 0.24
+#
+key_posi = line_base.interpolate(distance)
+key_posi_xy = (key_posi.x, key_posi.y)
+key_cir_2 = shapely_Arc(key_posi_xy, 0.07, 0, 360)
+#
+t0x = mid_2.x - key_posi.x
+t0y = mid_2.y - key_posi.y
+ext_0 = affinity.translate(mid_2, 10*t0x, 10*t0y, 0)
+line_mid_2_to_ext_0 = LineString([mid_2_xy, (ext_0.x,ext_0.y)])
+ext_p0 = line_mid_2_to_ext_0.intersection(Hline)
+ext_p0_xy = (ext_p0.x, ext_p0.y)
+#
+line_key = LineString([mid_1_xy, key_posi_xy, mid_2_xy, ext_p0_xy])
+#
+hline = LineString([(r0,-r0*np.sqrt(3)), (r0+r10,-r0*np.sqrt(3))])
+r45_Hline = affinity.rotate(hline, 45, (r0,-r0*np.sqrt(3)))
+r60_Hline = affinity.rotate(hline, 60, (r0,-r0*np.sqrt(3)))
+#
+its_4 = line_key.intersection(r45_Hline)
+its_5 = line_key.intersection(r60_Hline)
+d4 = its_4.distance(Point(r0,-r0*np.sqrt(3)))
+d5 = its_5.distance(Point(r0,-r0*np.sqrt(3)))
+#
+d4_cir = shapely_Arc((r0,-r0*np.sqrt(3)), d4, 0, 180)
+d5_cir = shapely_Arc((r0,-r0*np.sqrt(3)), d5, 0, 180)
+motif_line(d4_cir, &#x27;magenta&#x27;, 30, 0.7)
+motif_line(d5_cir, &#x27;magenta&#x27;, 30, 0.7)
+#
+its_4_xy = (its_4.x, its_4.y)
+its_5_xy = (its_5.x, its_5.y)
+key_1_xy = [its_4_xy, key_posi_xy, mid_1_xy]
+key_2_xy = [(2*r0-key_posi_xy[0], key_posi_xy[1]), (2*r0-its_4_xy[0], its_4_xy[1])]
+line_key_xy = key_1_xy + key_2_xy
+line_key    = LineString(line_key_xy)
+#
+t1x = mid_1.x - key_posi.x
+t1y = mid_1.y - key_posi.y
+ext_1 = affinity.translate(mid_1, 5*t1x, 5*t1y, 0)
+ext_1_xy = ( ext_1.x, ext_1.y)
+ext_2_xy = (-ext_1.x, ext_1.y)
+#
+for degree in (0,30,60,90,120,150,180,210,240,270,300,330) :
+    r_line_key = affinity.rotate(line_key, degree+15, (r0,-r0*np.sqrt(3)))
+    motif_line(r_line_key, &#x27;blue&#x27;, 55, 1.0)
+# end for
+#
+mask_pA1 = (3*r0,-r0*np.sqrt(3)-0.03)
+mask_pB1 = ( -r0,-r0*np.sqrt(3)-0.03)
+mask_pC1 = ( -r0,-r0*np.sqrt(3)-0.97)
+mask_pD1 = (3*r0,-r0*np.sqrt(3)-0.97)
+#
+mask_down_xy = [mask_pA1, mask_pB1, mask_pC1, mask_pD1, mask_pA1]
+mask_down = LineString(mask_down_xy)
+motif_fill(mask_down, &#x27;white&#x27;, 60, 1.0)
+#
+its_201    = line_left.intersection(cir_down_1)
+its_201_xy = (its_201.x, its_201.y)
+#
+r30_mid_1    = affinity.rotate(mid_1, 30, (r0,-r0*np.sqrt(3)))
+r30_mid_1_xy = (r30_mid_1.x, r30_mid_1.y)
+up_motif_xy = [mid_1_xy, its_201_xy, r30_mid_1_xy]
+up_motif   = LineString(up_motif_xy)
+r_up_motif = affinity.rotate(up_motif, 15, (r0,-r0*np.sqrt(3)))
+motif_line(r_up_motif, &#x27;magenta&#x27;, 55, 1.0)
+#
+ax.set_title(&#x27;rcm-12 15°&#x27;, fontsize=16)
+plot.savefig(&#x27;./png-2/fig-2K.png&#x27;,format=&quot;png&quot;,dpi=150)
+#
+print(&#x27;done&#x27;)</code></pre></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-811e-a227-d7247119fba9" class=""><mark class="highlight-red">##########################################################################</mark></p></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2d9ac165-e88d-8115-80ac-ff84fc2cf5e7" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all"># A-J-Lee-2C.py
+# 2021-10-29
+# 2025-05-12
+#
+# python 3.8.2
+# run on https://replit.com
+# run on ubuntu 22.04 LTS
+#
+# 要執行本程式, 請按上方 run▶
+#
+# view .ipynb online
+# https://ipynb.js.org/
+# https://htmtopdf.herokuapp.com/ipynbviewer/
+#
+# replit browser zoom scale set to 100%
+#
+import numpy as np
+import matplotlib.pyplot as plot         # 載入繪圖模組 pyplot, 重新命名為 plot
+#import matplotlib.font_manager as fontManager
+#
+from shapely import affinity
+from shapely.geometry import LineString, Point
+#
+# -------------------------------------------------
+#
+def set_graphic_area(width,height) :
+
+    cm2inch = 1/2.54    # inch per cm
+    #
+    # define graphic area
+    #
+    left_margin = 1.4   # cm
+    right_margin = 1.2  # cm
+    #
+    figure_width  = width  # cm , from xmin to xmax
+    figure_height = height # cm , from ymin to ymax
+    #
+    top_margin = 1.0    # cm
+    bottom_margin = 1.0 # cm
+    #
+    box_width = left_margin + figure_width + right_margin   # cm
+    box_height = top_margin + figure_height + bottom_margin # cm
+    #
+    top_value    = 1.0 - top_margin / box_height
+    bottom_value = bottom_margin / box_height
+    left_value   = left_margin / box_width
+    right_value  = 1.0 - right_margin / box_width
+    #
+    return (box_width*cm2inch,box_height*cm2inch,top_value,bottom_value,left_value,right_value,width)
+    #
+# end of def
+#
+def shapely_Arc(cxy, r, start_angle, end_angle) :
+
+    numsegments = 720
+    # The coordinates of the arc
+    theta = np.radians(np.linspace(start_angle, end_angle, numsegments))
+    x = cxy[0] + r * np.cos(theta)
+    y = cxy[1] + r * np.sin(theta)
+    Arc = LineString(np.column_stack([x, y]))
+    return Arc
+    #
+# end of def
+#
+def motif_line(LS, MYcolor, ZORDER, LINEWIDTH) :
+    #
+    xs,ys = LS.xy
+    ax.plot(xs, ys, color=MYcolor, alpha=1.0, linewidth=LINEWIDTH, solid_capstyle=&#x27;round&#x27;, zorder=ZORDER)
+    return
+#
+def motif_fill(LS, color, ZORDER, Alpha) :
+    #
+    xs,ys = LS.xy
+    ax.fill(xs, ys, alpha=Alpha, closed=True, edgecolor=None, facecolor=color, fill=True, zorder=ZORDER)
+    return
+#
+def polygon_line(poly, MYcolor, ZORDER, LINEWIDTH) :
+    #
+    xs, ys = poly.exterior.coords.xy
+    ax.plot(xs, ys, color=MYcolor, alpha=1.0, linewidth=LINEWIDTH, solid_capstyle=&#x27;round&#x27;, zorder=ZORDER)
+    return
+#
+# ---------------------------------------------------
+#
+print(&#x27;main running ...&#x27;)
+#
+# A4 紙張大小是 21.0cm x 29.7cm
+# dy = r0+ty
+dx = 5.0
+dy = 8.660254037844386
+tup7 = set_graphic_area(4*dx+2, 2*dy+2)
+# 呼叫 pyplot.figure(), 建立一個圖表物件, 並成為目前圖表物件
+fig = plot.figure(figsize=(tup7[0], tup7[1]))
+# 圖表的繪圖區域被分為1個子圖, 1 row, 1 column, plot to index 1
+ax = fig.add_subplot(1,1,1)
+fig.subplots_adjust(
+                top    = tup7[2] ,
+                bottom = tup7[3] ,
+                left   = tup7[4] ,
+                right  = tup7[5] ,
+                )
+#
+# 設定X軸的顯示範圍, from xmin to xmax
+plot.xlim(-6, 16)
+# 設定Y軸的顯示範圍, from ymin to ymax
+plot.ylim(-dy-1, dy+1)
+# get current axes, set X,Y same ratio &amp; scale
+plot.gca().set_aspect(&#x27;equal&#x27;, adjustable=&#x27;box&#x27;) 
+#
+xvalues = [-5,0,5,10,15]
+yvalues = [-dy,0,dy]
+plot.xticks(xvalues)
+plot.yticks(yvalues)
+plot.tick_params(labelsize=14)
+#
+plot.grid(False)
+ax.set_axis_on()    # will turn on  grid line
+# ax.set_axis_off() # will turn off grid line
+#
+# -------------------------------------------
+#
+r0 = 5
+cxy = (0,0)
+#
+# find its_1 distance
+pA = ( r0, r0)
+pB = (-r0, r0)
+pC = (-r0,-r0)
+pD = ( r0,-r0)
+#
+line_1 = LineString([pA, pC])
+line_2 = LineString([pB, pD])
+line_3 = affinity.rotate(line_1, 15, pC)
+line_4 = affinity.rotate(line_2,-15, pD)
+#
+its_1    = line_3.intersection(line_4)
+its_1_xy = (its_1.x, its_1.y)
+#
+tx = 0
+ty = its_1_xy[1]
+#
+pA = ( r0, r0+ty)
+pB = (-r0, r0+ty)
+pC = (-r0,-r0-ty)
+pD = ( r0,-r0-ty)
+#
+line_AD = LineString([pA, pD])
+line_AB = LineString([pA, pB])
+line_BC = LineString([pB, pC])
+line_CD = LineString([pC, pD])
+line_AC = LineString([pA, pC])
+#
+tmp_1 = LineString([pC, cxy])
+tmp_2 = LineString([pD, cxy])
+tmp_3 = LineString([pC, pD])
+#
+square_xy = [pA, pB, pC, pD]
+square    = LineString(square_xy)
+motif_line(square, &#x27;green&#x27;, 80, 0.8)
+#
+line_1 = LineString([pA, pC])
+line_2 = LineString([pB, pD])
+#
+square_new_xy = [pC, pD, pA, pB]
+square_new    = LineString(square_new_xy)
+#
+tx = Point(pC).distance(Point(pD))
+t_square_new = affinity.translate(square_new, tx, 0, 0)
+motif_line(t_square_new, &#x27;green&#x27;, 80, 0.8)
+#
+cir_down_1 = shapely_Arc(( r0,-r0*np.sqrt(3)), 2*r0, 0, 180)
+cir_upL    = shapely_Arc((-r0, r0*np.sqrt(3)), 2*r0, 270, 360)
+cir_upR    = shapely_Arc((3*r0, r0*np.sqrt(3)), 2*r0, 180, 270)
+motif_line(cir_down_1, &#x27;cyan&#x27;, 10, 1.0)
+motif_line(cir_upL,    &#x27;cyan&#x27;, 10, 1.0)
+motif_line(cir_upR,    &#x27;cyan&#x27;, 10, 1.0)
+#
+up_H_line_1_xy = [(-3*r0,r0*np.sqrt(3)), (3*r0,r0*np.sqrt(3))]
+up_H_line_2_xy = [(-1*r0,r0*np.sqrt(3)), (5*r0,r0*np.sqrt(3))]
+up_H_line_1    = LineString(up_H_line_1_xy)
+up_H_line_2    = LineString(up_H_line_2_xy)
+up_H_line_1_rP30 = affinity.rotate(up_H_line_1, 30, ( 3*r0, r0*np.sqrt(3)))
+up_H_line_2_rN30 = affinity.rotate(up_H_line_2,-30, (-1*r0, r0*np.sqrt(3)))
+V_line_L = LineString([( -r0,-r0*np.sqrt(3)), (-r0,  r0*np.sqrt(3))])
+V_line_R = LineString([(3*r0,-r0*np.sqrt(3)), (3*r0, r0*np.sqrt(3))])
+#
+its_L1 = V_line_L.intersection(up_H_line_1_rP30)
+its_R1 = V_line_R.intersection(up_H_line_2_rN30)
+its_L1_xy = (its_L1.x, its_L1.y)
+its_R1_xy = (its_R1.x, its_R1.y)
+#
+line_RU_its_L1 = LineString([(3*r0, r0*np.sqrt(3)), its_L1_xy])
+line_LU_its_R1 = LineString([( -r0, r0*np.sqrt(3)), its_R1_xy])
+#
+line_3 = affinity.rotate(line_2, -15, pD)
+line_4 = affinity.rotate(line_2, -45, pD)
+its_41 = line_RU_its_L1.intersection(line_3)
+its_51 = line_LU_its_R1.intersection(line_4)
+its_41_xy = ( its_41.x, its_41.y)
+its_51_xy = ( its_51.x, its_51.y)
+#
+tmp_4 = LineString([its_41_xy, pD])
+tmp_5 = LineString([its_51_xy, pD])
+#
+tmp_6 = affinity.rotate(tmp_4, 52.5, its_41_xy)
+its_61 = LineString([(r0,-r0*np.sqrt(3)), (r0,r0*np.sqrt(3))]).intersection(tmp_6)
+its_62 = cir_down_1.intersection(tmp_6)
+its_61_xy = ( its_61.x, its_61.y)
+tmp_7 = LineString([its_41_xy, its_61_xy])
+#
+d99 = its_61.distance(its_62)
+cir_center = shapely_Arc(its_61_xy, d99, 0, 360)
+#
+its_70 = LineString([(r0,-r0*np.sqrt(3)), (r0,r0*np.sqrt(3))]).intersection(cir_center)
+its_71 = its_70.geoms[1]
+d1 = its_71.distance(Point(pD))
+cir_down_2 = shapely_Arc((r0,-r0*np.sqrt(3)), d1, 0, 180)
+motif_line(cir_down_2, &#x27;cyan&#x27;, 10, 1.0)
+#
+r10 = 8.92
+point_1_xy = (r10,0)
+point_2_xy = (r10*np.cos(5*np.pi/12), r10*np.sin(5*np.pi/12))
+point_3_xy = (r10*np.cos(7*np.pi/12), r10*np.sin(7*np.pi/12))
+point_1    = Point(point_1_xy)
+point_2    = Point(point_2_xy)
+point_3    = Point(point_3_xy)
+d1 = point_2.distance(point_3) / 2
+d2 = r10 - d1
+#
+Hline = LineString([(r10+d1,0), (-r10-d1,0)])
+line_left  = affinity.rotate(Hline,105, cxy)
+line_right = affinity.rotate(Hline, 75, cxy)
+#
+cir_2 = shapely_Arc(cxy, d2, 0, 360)
+#
+line_p2_p3 = LineString([point_2_xy, point_3_xy])
+bisector_degree = (90-15)/2
+mid_1 = line_p2_p3.interpolate(0.5, normalized = True)
+mid_2 = affinity.rotate(mid_1, 90-15, point_2_xy)
+mid_1_xy = (mid_1.x, mid_1.y)
+mid_2_xy = (mid_2.x, mid_2.y)
+line_mid_1_to_2 = LineString([mid_1_xy, mid_2_xy])
+#
+line_A = affinity.rotate(line_p2_p3, bisector_degree, point_2_xy)
+line_B = affinity.rotate(line_p2_p3,-bisector_degree, point_3_xy)
+its_1    = line_A.intersection(line_B)
+its_1_xy = (its_1.x, its_1.y)
+line_a   = LineString([point_2_xy, its_1_xy])
+line_b   = LineString([point_3_xy, its_1_xy])
+#
+its_2 = line_a.intersection(line_mid_1_to_2)
+its_2_xy = (its_2.x, its_2.y)
+key_cir = shapely_Arc(its_2_xy, 0.08, 0, 360)
+#
+tmp_1_xy = (mid_2.x, point_2_xy[1])
+tmp_2_xy = (mid_2.x, 0)
+line_tmp = LineString([tmp_1_xy, tmp_2_xy])
+its_3    = line_a.intersection(line_tmp)
+its_3_xy = (its_3.x, its_3.y)
+#
+d_its2_to_its3 = its_2.distance(its_3)
+distance = d_its2_to_its3 - 0.24
+line_base = LineString([its_2_xy, its_3_xy])
+key_posi = line_base.interpolate(distance)
+key_posi_xy = (key_posi.x, key_posi.y)
+#
+t0x = mid_2.x - key_posi.x
+t0y = mid_2.y - key_posi.y
+ext_0 = affinity.translate(mid_2, 10*t0x, 10*t0y, 0)
+line_mid_2_to_ext_0 = LineString([mid_2_xy, (ext_0.x,ext_0.y)])
+ext_p0 = line_mid_2_to_ext_0.intersection(Hline)
+ext_p0_xy = (ext_p0.x, ext_p0.y)
+#
+line_key = LineString([mid_1_xy, key_posi_xy, mid_2_xy, ext_p0_xy])
+#
+hline = LineString([(r10,0), (0,0)])
+r45_Hline = affinity.rotate(hline, 45, cxy)
+r60_Hline = affinity.rotate(hline, 60, cxy)
+#
+its_4 = line_key.intersection(r45_Hline)
+its_5 = line_key.intersection(r60_Hline)
+its_4_xy = (its_4.x, its_4.y)
+its_5_xy = (its_5.x, its_5.y)
+d4 = its_4.distance(Point(cxy))
+d5 = its_5.distance(Point(cxy))
+#
+key_1_xy = [its_4_xy, key_posi_xy, mid_1_xy]
+key_2_xy = [(-key_posi_xy[0], key_posi_xy[1]), (-its_4_xy[0], its_4_xy[1])]
+line_key_xy = key_1_xy + key_2_xy
+line_key    = LineString(line_key_xy)
+#
+t1x = mid_1.x - key_posi.x
+t1y = mid_1.y - key_posi.y
+ext_1 = affinity.translate(mid_1, 5*t1x, 5*t1y, 0)
+ext_1_xy = ( ext_1.x, ext_1.y)
+ext_2_xy = (-ext_1.x, ext_1.y)
+#
+for degree in (0,30,60,90,120,150,180,210,240,270,300,330) :
+    r_line_key = affinity.rotate(line_key, degree+15, cxy)
+    t_line_key = affinity.translate(r_line_key, r0, -r0*np.sqrt(3))
+    motif_line(t_line_key, &#x27;blue&#x27;, 55, 1.0)
+# end for
+#
+its_61_xy = (its_61.x, its_61.y)
+start_xy = (its_61.x, its_61.y - 2.3)
+key_1_xy = [key_posi_xy, mid_1_xy]
+key_1    = LineString(key_1_xy)
+r_key_1  = affinity.rotate(key_1, 15, cxy)
+t_key_1  = affinity.translate(r_key_1, r0, -r0*np.sqrt(3))
+final_key_1_xy = [start_xy, t_key_1.coords[0], t_key_1.coords[1]]
+final_key_1    = LineString(final_key_1_xy)
+#
+reflect_about_Yaxis  = [-1, 0, 0, 1, 0,0] 
+refY_final_key_1 = affinity.affine_transform(final_key_1, reflect_about_Yaxis)
+final_key_2 = affinity.translate(refY_final_key_1, 2*r0, 0)
+#
+its_end = cir_down_1.intersection(LineString([(r0, -r0*np.sqrt(3)), (r0, -r0*np.sqrt(3)+2*r0)]))
+#
+set_left  = affinity.rotate(final_key_1,-75, its_61_xy)
+set_right = affinity.rotate(final_key_2, 75, its_61_xy)
+#
+left_line_xy  = [set_left.coords[2],  (its_end.x, its_end.y)]
+right_line_xy = [set_right.coords[2], (its_end.x, its_end.y)]
+left_line  = LineString(left_line_xy)
+right_line = LineString(right_line_xy)
+#
+for degree in (0,60,240,300) :
+    r_set_left   = affinity.rotate(set_left,   degree, (r0, -r0*np.sqrt(3)))
+    r_set_right  = affinity.rotate(set_right,  degree, (r0, -r0*np.sqrt(3)))
+    r_left_line  = affinity.rotate(left_line,  degree, (r0, -r0*np.sqrt(3)))
+    r_right_line = affinity.rotate(right_line, degree, (r0, -r0*np.sqrt(3)))
+    #
+    motif_line(r_set_left,  &#x27;blue&#x27;, 55, 1.0)
+    motif_line(r_set_right, &#x27;blue&#x27;, 55, 1.0)
+    motif_line(r_left_line,  &#x27;blue&#x27;, 55, 1.0)
+    motif_line(r_right_line, &#x27;blue&#x27;, 55, 1.0)
+# end for
+#
+r30_mid_1 = affinity.rotate(mid_1, 30, cxy)
+r30_mid_1_xy = (r30_mid_1.x, r30_mid_1.y)
+my_line_1 = LineString([ext_1_xy, mid_1_xy])
+my_line_2 = LineString([ext_2_xy, mid_1_xy])
+r30_my_line_2 = affinity.rotate(my_line_2, 30, cxy)
+ext_z1    = my_line_1.intersection(r30_my_line_2)
+ext_z1_xy = ( ext_z1.x, ext_z1.y)
+up_motif = LineString([mid_1_xy, ext_z1_xy, r30_mid_1_xy])
+#
+for degree in (0,60,240,300) :
+    r_up_motif = affinity.rotate(up_motif, degree+15, cxy)
+    t_up_motif = affinity.translate(r_up_motif, r0, -r0*np.sqrt(3))
+    motif_line(t_up_motif, &#x27;blue&#x27;, 55, 1.0)
+# end for
+#
+ax.set_title(&#x27;rcm-12 15°&#x27;, fontsize=16)
+plot.savefig(&#x27;./png-2/fig-2L.png&#x27;,format=&quot;png&quot;,dpi=150)
+#
+## =====================================================
+#
+posi_1 = affinity.rotate(ext_z1, 15, cxy)
+posi_2 = affinity.translate(posi_1, r0, -r0*np.sqrt(3))
+posi_2_xy = (posi_2.x, posi_2.y)
+posi_3_xy = (posi_2.x+2*r0, posi_2.y)
+#
+cir_98 = shapely_Arc(posi_2_xy, 0.1, 0, 360)
+cir_99 = shapely_Arc(posi_3_xy, 0.1, 0, 360)
+motif_fill(cir_98, &#x27;blue&#x27;,  75, 1.0)
+motif_fill(cir_99, &#x27;green&#x27;, 75, 1.0)
+#
+for degree in (0,30,60,90,120,150,180,210,240,270,300,330) :
+    r_line_key = affinity.rotate(line_key, degree+15, cxy)
+    t_line_key = affinity.translate(r_line_key, r0, -r0*np.sqrt(3))
+    L_line_key = affinity.rotate(t_line_key, 180, posi_2_xy)
+    R_line_key = affinity.rotate(t_line_key, 180, posi_3_xy)
+    #
+    motif_line(L_line_key, &#x27;blue&#x27;, 55, 1.0)
+    motif_line(R_line_key, &#x27;blue&#x27;, 55, 1.0)
+# end for
+#
+for degree in (0,60,240,300) :
+    r_set_left   = affinity.rotate(set_left,   degree, (r0, -r0*np.sqrt(3)))
+    r_set_right  = affinity.rotate(set_right,  degree, (r0, -r0*np.sqrt(3)))
+    r_left_line  = affinity.rotate(left_line,  degree, (r0, -r0*np.sqrt(3)))
+    r_right_line = affinity.rotate(right_line, degree, (r0, -r0*np.sqrt(3)))
+    #
+    L_set_left   = affinity.rotate(r_set_left,   180, posi_2_xy)
+    L_set_right  = affinity.rotate(r_set_right,  180, posi_2_xy)
+    L_left_line  = affinity.rotate(r_left_line,  180, posi_2_xy)
+    L_right_line = affinity.rotate(r_right_line, 180, posi_2_xy)    
+    #
+    R_set_left   = affinity.rotate(r_set_left,   180, posi_3_xy)
+    R_set_right  = affinity.rotate(r_set_right,  180, posi_3_xy)
+    R_left_line  = affinity.rotate(r_left_line,  180, posi_3_xy)
+    R_right_line = affinity.rotate(r_right_line, 180, posi_3_xy)    
+    #    
+    motif_line(L_set_left,   &#x27;blue&#x27;, 55, 1.0)
+    motif_line(L_set_right,  &#x27;blue&#x27;, 55, 1.0)
+    motif_line(L_left_line,  &#x27;blue&#x27;, 55, 1.0)
+    motif_line(L_right_line, &#x27;blue&#x27;, 55, 1.0)
+    #    
+    motif_line(R_set_left,   &#x27;blue&#x27;, 55, 1.0)
+    motif_line(R_set_right,  &#x27;blue&#x27;, 55, 1.0)
+    motif_line(R_left_line,  &#x27;blue&#x27;, 55, 1.0)
+    motif_line(R_right_line, &#x27;blue&#x27;, 55, 1.0)    
+# end for
+#
+for degree in (0,60,240,300) :
+    r_up_motif = affinity.rotate(up_motif, degree+15, cxy)
+    t_up_motif = affinity.translate(r_up_motif, r0, -r0*np.sqrt(3))
+    #
+    L_up_motif   = affinity.rotate(t_up_motif, 180, posi_2_xy)
+    R_up_motif   = affinity.rotate(t_up_motif, 180, posi_3_xy)
+    #
+    motif_line(L_up_motif, &#x27;blue&#x27;, 55, 1.0)
+    motif_line(R_up_motif, &#x27;blue&#x27;, 55, 1.0)
+# end for
+#
+ax.set_title(&#x27;rcm-12 15°&#x27;, fontsize=16)
+plot.savefig(&#x27;./png-2/fig-2M.png&#x27;,format=&quot;png&quot;,dpi=150)
+#
+## ======================================================
+#
+mask_pA1 = (3*r0,-r0*np.sqrt(3)-0.03)
+mask_pB1 = ( -r0,-r0*np.sqrt(3)-0.03)
+mask_pC1 = ( -r0,-r0*np.sqrt(3)-0.97)
+mask_pD1 = (3*r0,-r0*np.sqrt(3)-0.97)
+#
+mask_down_xy = [mask_pA1, mask_pB1, mask_pC1, mask_pD1, mask_pA1]
+mask_down = LineString(mask_down_xy)
+mask_up   = affinity.rotate(mask_down, 180, (r0,0))
+#
+motif_fill(mask_down, &#x27;white&#x27;, 60, 1.0)
+motif_fill(mask_up,   &#x27;white&#x27;, 60, 1.0)
+#
+mask_pA2 = (3*r0+0.03, r0*np.sqrt(3))
+mask_pB2 = (3*r0+0.03,-r0*np.sqrt(3))
+mask_pC2 = (3*r0+0.97,-r0*np.sqrt(3))
+mask_pD2 = (3*r0+0.97, r0*np.sqrt(3))
+#
+mask_right_xy = [mask_pA2, mask_pB2, mask_pC2, mask_pD2, mask_pA2]
+mask_right = LineString(mask_right_xy)
+mask_left  = affinity.rotate(mask_right, 180, (r0,0))
+#
+motif_fill(mask_right, &#x27;white&#x27;, 60, 1.0)
+motif_fill(mask_left,  &#x27;white&#x27;, 60, 1.0)
+#
+ax.set_title(&#x27;rcm-12 15°&#x27;, fontsize=16)
+plot.savefig(&#x27;./png-2/fig-2N.png&#x27;,format=&quot;png&quot;,dpi=150)
+#
+print(&#x27;done&#x27;)</code></pre></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-81b4-9670-f1761610fa10" class="">##########################################################################</p></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2d9ac165-e88d-8121-998d-de89feeb02d1" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all"># A-J-Lee-2D.py
+# 2021-10-29
+# 2025-05-12
+#
+# python 3.8.2
+# run on https://replit.com
+# run on ubuntu 22.04 LTS
+#
+# 要執行本程式, 請按上方 run▶
+#
+# view .ipynb online
+# https://ipynb.js.org/
+# https://htmtopdf.herokuapp.com/ipynbviewer/
+#
+# replit browser zoom scale set to 100%
+#
+import numpy as np
+import matplotlib.pyplot as plot         # 載入繪圖模組 pyplot, 重新命名為 plot
+#import matplotlib.font_manager as fontManager
+#
+from shapely import affinity
+from shapely.geometry import LineString, Point
+#
+# -------------------------------------------------
+#
+def set_graphic_area(width,height) :
+
+    cm2inch = 1/2.54    # inch per cm
+    #
+    # define graphic area
+    #
+    left_margin = 1.4   # cm
+    right_margin = 1.2  # cm
+    #
+    figure_width  = width  # cm , from xmin to xmax
+    figure_height = height # cm , from ymin to ymax
+    #
+    top_margin = 1.0    # cm
+    bottom_margin = 1.0 # cm
+    #
+    box_width = left_margin + figure_width + right_margin   # cm
+    box_height = top_margin + figure_height + bottom_margin # cm
+    #
+    top_value    = 1.0 - top_margin / box_height
+    bottom_value = bottom_margin / box_height
+    left_value   = left_margin / box_width
+    right_value  = 1.0 - right_margin / box_width
+    #
+    return (box_width*cm2inch,box_height*cm2inch,top_value,bottom_value,left_value,right_value,width)
+    #
+# end of def
+#
+def shapely_Arc(cxy, r, start_angle, end_angle) :
+
+    numsegments = 720
+    # The coordinates of the arc
+    theta = np.radians(np.linspace(start_angle, end_angle, numsegments))
+    x = cxy[0] + r * np.cos(theta)
+    y = cxy[1] + r * np.sin(theta)
+    Arc = LineString(np.column_stack([x, y]))
+    return Arc
+    #
+# end of def
+#
+def motif_line(LS, MYcolor, ZORDER, LINEWIDTH) :
+    #
+    xs,ys = LS.xy
+    ax.plot(xs, ys, color=MYcolor, alpha=1.0, linewidth=LINEWIDTH, solid_capstyle=&#x27;round&#x27;, zorder=ZORDER)
+    return
+#
+def motif_fill(LS, color, ZORDER, Alpha) :
+    #
+    xs,ys = LS.xy
+    ax.fill(xs, ys, alpha=Alpha, closed=True, edgecolor=None, facecolor=color, fill=True, zorder=ZORDER)
+    return
+#
+def polygon_line(poly, MYcolor, ZORDER, LINEWIDTH) :
+    #
+    xs, ys = poly.exterior.coords.xy
+    ax.plot(xs, ys, color=MYcolor, alpha=1.0, linewidth=LINEWIDTH, solid_capstyle=&#x27;round&#x27;, zorder=ZORDER)
+    return
+#
+# ---------------------------------------------------
+#
+print(&#x27;main running ...&#x27;)
+#
+# A4 紙張大小是 21.0cm x 29.7cm
+# dy = r0+ty
+dx = 5.0
+dy = 8.660254037844386
+tup7 = set_graphic_area(4*dx+2, 2*dy+2)
+# 呼叫 pyplot.figure(), 建立一個圖表物件, 並成為目前圖表物件
+fig = plot.figure(figsize=(tup7[0], tup7[1]))
+# 圖表的繪圖區域被分為1個子圖, 1 row, 1 column, plot to index 1
+ax = fig.add_subplot(1,1,1)
+fig.subplots_adjust(
+                top    = tup7[2] ,
+                bottom = tup7[3] ,
+                left   = tup7[4] ,
+                right  = tup7[5] ,
+                )
+#
+# 設定X軸的顯示範圍, from xmin to xmax
+plot.xlim(-6, 16)
+# 設定Y軸的顯示範圍, from ymin to ymax
+plot.ylim(-dy-1, dy+1)
+# get current axes, set X,Y same ratio &amp; scale
+plot.gca().set_aspect(&#x27;equal&#x27;, adjustable=&#x27;box&#x27;) 
+#
+xvalues = [-5,0,5,10,15]
+yvalues = [-dy,0,dy]
+plot.xticks(xvalues)
+plot.yticks(yvalues)
+plot.tick_params(labelsize=14)
+#
+plot.grid(False)
+ax.set_axis_on()    # will turn on  grid line
+# ax.set_axis_off() # will turn off grid line
+#
+# -------------------------------------------
+#
+r0 = 5
+cxy = (0,0)
+#
+pA = ( r0, r0)
+pB = (-r0, r0)
+pC = (-r0,-r0)
+pD = ( r0,-r0)
+#
+line_1 = LineString([pA, pC])
+line_2 = LineString([pB, pD])
+line_3 = affinity.rotate(line_1, 15, pC)
+line_4 = affinity.rotate(line_2,-15, pD)
+#
+its_1    = line_3.intersection(line_4)
+its_1_xy = (its_1.x, its_1.y)
+#
+tx = 0
+ty = its_1_xy[1]
+#
+pA = ( r0, r0+ty)
+pB = (-r0, r0+ty)
+pC = (-r0,-r0-ty)
+pD = ( r0,-r0-ty)
+#
+line_AD = LineString([pA, pD])
+line_AB = LineString([pA, pB])
+line_BC = LineString([pB, pC])
+line_CD = LineString([pC, pD])
+line_AC = LineString([pA, pC])
+#
+tmp_1 = LineString([pC, cxy])
+tmp_2 = LineString([pD, cxy])
+tmp_3 = LineString([pC, pD])
+#
+square_xy = [pA, pB, pC, pD]
+square    = LineString(square_xy)
+motif_line(square, &#x27;green&#x27;, 80, 0.8)
+#
+line_1 = LineString([pA, pC])
+line_2 = LineString([pB, pD])
+#
+square_new_xy = [pC, pD, pA, pB]
+square_new    = LineString(square_new_xy)
+#
+tx = Point(pC).distance(Point(pD))
+t_square_new = affinity.translate(square_new, tx, 0, 0)
+motif_line(t_square_new, &#x27;green&#x27;, 80, 0.8)
+#
+cir_down_1 = shapely_Arc(( r0,-r0*np.sqrt(3)), 2*r0, 0, 180)
+cir_upL    = shapely_Arc((-r0, r0*np.sqrt(3)), 2*r0, 270, 360)
+cir_upR    = shapely_Arc((3*r0, r0*np.sqrt(3)), 2*r0, 180, 270)
+#
+up_H_line_1_xy = [(-3*r0,r0*np.sqrt(3)), (3*r0,r0*np.sqrt(3))]
+up_H_line_2_xy = [(-1*r0,r0*np.sqrt(3)), (5*r0,r0*np.sqrt(3))]
+up_H_line_1    = LineString(up_H_line_1_xy)
+up_H_line_2    = LineString(up_H_line_2_xy)
+up_H_line_1_rP30 = affinity.rotate(up_H_line_1, 30, ( 3*r0, r0*np.sqrt(3)))
+up_H_line_2_rN30 = affinity.rotate(up_H_line_2,-30, (-1*r0, r0*np.sqrt(3)))
+V_line_L = LineString([( -r0,-r0*np.sqrt(3)), (-r0,  r0*np.sqrt(3))])
+V_line_R = LineString([(3*r0,-r0*np.sqrt(3)), (3*r0, r0*np.sqrt(3))])
+#
+its_L1 = V_line_L.intersection(up_H_line_1_rP30)
+its_R1 = V_line_R.intersection(up_H_line_2_rN30)
+its_L1_xy = (its_L1.x, its_L1.y)
+its_R1_xy = (its_R1.x, its_R1.y)
+#
+line_RU_its_L1 = LineString([(3*r0, r0*np.sqrt(3)), its_L1_xy])
+line_LU_its_R1 = LineString([( -r0, r0*np.sqrt(3)), its_R1_xy])
+#
+line_3 = affinity.rotate(line_2, -15, pD)
+line_4 = affinity.rotate(line_2, -45, pD)
+its_41 = line_RU_its_L1.intersection(line_3)
+its_51 = line_LU_its_R1.intersection(line_4)
+its_41_xy = ( its_41.x, its_41.y)
+its_51_xy = ( its_51.x, its_51.y)
+#
+tmp_4 = LineString([its_41_xy, pD])
+tmp_5 = LineString([its_51_xy, pD])
+#
+tmp_6 = affinity.rotate(tmp_4, 52.5, its_41_xy)
+its_61 = LineString([(r0,-r0*np.sqrt(3)), (r0,r0*np.sqrt(3))]).intersection(tmp_6)
+its_62 = cir_down_1.intersection(tmp_6)
+its_61_xy = ( its_61.x, its_61.y)
+tmp_7 = LineString([its_41_xy, its_61_xy])
+#
+d99 = its_61.distance(its_62)
+cir_center = shapely_Arc(its_61_xy, d99, 0, 360)
+#
+its_70 = LineString([(r0,-r0*np.sqrt(3)), (r0,r0*np.sqrt(3))]).intersection(cir_center)
+its_71 = its_70.geoms[1]
+d1 = its_71.distance(Point(pD))
+cir_down_2 = shapely_Arc((r0,-r0*np.sqrt(3)), d1, 0, 180)
+#
+r10 = 8.92
+point_1_xy = (r10,0)
+point_2_xy = (r10*np.cos(5*np.pi/12), r10*np.sin(5*np.pi/12))
+point_3_xy = (r10*np.cos(7*np.pi/12), r10*np.sin(7*np.pi/12))
+point_1    = Point(point_1_xy)
+point_2    = Point(point_2_xy)
+point_3    = Point(point_3_xy)
+d1 = point_2.distance(point_3) / 2
+d2 = r10 - d1
+#
+Hline = LineString([(r10+d1,0), (-r10-d1,0)])
+line_left  = affinity.rotate(Hline,105, cxy)
+line_right = affinity.rotate(Hline, 75, cxy)
+#
+cir_2 = shapely_Arc(cxy, d2, 0, 360)
+#
+line_p2_p3 = LineString([point_2_xy, point_3_xy])
+bisector_degree = (90-15)/2
+mid_1 = line_p2_p3.interpolate(0.5, normalized = True)
+mid_2 = affinity.rotate(mid_1, 90-15, point_2_xy)
+mid_1_xy = (mid_1.x, mid_1.y)
+mid_2_xy = (mid_2.x, mid_2.y)
+line_mid_1_to_2 = LineString([mid_1_xy, mid_2_xy])
+#
+line_A = affinity.rotate(line_p2_p3, bisector_degree, point_2_xy)
+line_B = affinity.rotate(line_p2_p3,-bisector_degree, point_3_xy)
+its_1    = line_A.intersection(line_B)
+its_1_xy = (its_1.x, its_1.y)
+line_a   = LineString([point_2_xy, its_1_xy])
+line_b   = LineString([point_3_xy, its_1_xy])
+#
+its_2 = line_a.intersection(line_mid_1_to_2)
+its_2_xy = (its_2.x, its_2.y)
+key_cir = shapely_Arc(its_2_xy, 0.08, 0, 360)
+#
+tmp_1_xy = (mid_2.x, point_2_xy[1])
+tmp_2_xy = (mid_2.x, 0)
+line_tmp = LineString([tmp_1_xy, tmp_2_xy])
+its_3    = line_a.intersection(line_tmp)
+its_3_xy = (its_3.x, its_3.y)
+#
+d_its2_to_its3 = its_2.distance(its_3)
+distance = d_its2_to_its3 - 0.24
+line_base = LineString([its_2_xy, its_3_xy])
+key_posi = line_base.interpolate(distance)
+key_posi_xy = (key_posi.x, key_posi.y)
+#
+t0x = mid_2.x - key_posi.x
+t0y = mid_2.y - key_posi.y
+ext_0 = affinity.translate(mid_2, 10*t0x, 10*t0y, 0)
+line_mid_2_to_ext_0 = LineString([mid_2_xy, (ext_0.x,ext_0.y)])
+ext_p0 = line_mid_2_to_ext_0.intersection(Hline)
+ext_p0_xy = (ext_p0.x, ext_p0.y)
+#
+line_key = LineString([mid_1_xy, key_posi_xy, mid_2_xy, ext_p0_xy])
+#
+hline = LineString([(r10,0), (0,0)])
+r45_Hline = affinity.rotate(hline, 45, cxy)
+r60_Hline = affinity.rotate(hline, 60, cxy)
+#
+its_4 = line_key.intersection(r45_Hline)
+its_5 = line_key.intersection(r60_Hline)
+its_4_xy = (its_4.x, its_4.y)
+its_5_xy = (its_5.x, its_5.y)
+d4 = its_4.distance(Point(cxy))
+d5 = its_5.distance(Point(cxy))
+#
+key_1_xy = [its_4_xy, key_posi_xy, mid_1_xy]
+key_2_xy = [(-key_posi_xy[0], key_posi_xy[1]), (-its_4_xy[0], its_4_xy[1])]
+line_key_xy = key_1_xy + key_2_xy
+line_key    = LineString(line_key_xy)
+#
+t1x = mid_1.x - key_posi.x
+t1y = mid_1.y - key_posi.y
+ext_1 = affinity.translate(mid_1, 5*t1x, 5*t1y, 0)
+ext_1_xy = ( ext_1.x, ext_1.y)
+ext_2_xy = (-ext_1.x, ext_1.y)
+#
+for degree in (0,30,60,90,120,150,180,210,240,270,300,330) :
+    r_line_key = affinity.rotate(line_key, degree+15, cxy)
+    t_line_key = affinity.translate(r_line_key, r0, -r0*np.sqrt(3))
+    motif_line(t_line_key, &#x27;blue&#x27;, 55, 1.0)
+# end for
+#
+its_61_xy = (its_61.x, its_61.y)
+start_xy = (its_61.x, its_61.y - 2.3)
+key_1_xy = [key_posi_xy, mid_1_xy]
+key_1    = LineString(key_1_xy)
+r_key_1  = affinity.rotate(key_1, 15, cxy)
+t_key_1  = affinity.translate(r_key_1, r0, -r0*np.sqrt(3))
+final_key_1_xy = [start_xy, t_key_1.coords[0], t_key_1.coords[1]]
+final_key_1    = LineString(final_key_1_xy)
+#
+reflect_about_Yaxis  = [-1, 0, 0, 1, 0,0] 
+refY_final_key_1 = affinity.affine_transform(final_key_1, reflect_about_Yaxis)
+final_key_2 = affinity.translate(refY_final_key_1, 2*r0, 0)
+#
+its_end = cir_down_1.intersection(LineString([(r0, -r0*np.sqrt(3)), (r0, -r0*np.sqrt(3)+2*r0)]))
+#
+set_left  = affinity.rotate(final_key_1,-75, its_61_xy)
+set_right = affinity.rotate(final_key_2, 75, its_61_xy)
+#
+left_line_xy  = [set_left.coords[2],  (its_end.x, its_end.y)]
+right_line_xy = [set_right.coords[2], (its_end.x, its_end.y)]
+left_line  = LineString(left_line_xy)
+right_line = LineString(right_line_xy)
+#
+for degree in (0,60,240,300) :
+    r_set_left   = affinity.rotate(set_left,   degree, (r0, -r0*np.sqrt(3)))
+    r_set_right  = affinity.rotate(set_right,  degree, (r0, -r0*np.sqrt(3)))
+    r_left_line  = affinity.rotate(left_line,  degree, (r0, -r0*np.sqrt(3)))
+    r_right_line = affinity.rotate(right_line, degree, (r0, -r0*np.sqrt(3)))
+    #
+    motif_line(r_set_left,  &#x27;blue&#x27;, 55, 1.0)
+    motif_line(r_set_right, &#x27;blue&#x27;, 55, 1.0)
+    motif_line(r_left_line,  &#x27;blue&#x27;, 55, 1.0)
+    motif_line(r_right_line, &#x27;blue&#x27;, 55, 1.0)
+# end for
+#
+r30_mid_1 = affinity.rotate(mid_1, 30, cxy)
+r30_mid_1_xy = (r30_mid_1.x, r30_mid_1.y)
+my_line_1 = LineString([ext_1_xy, mid_1_xy])
+my_line_2 = LineString([ext_2_xy, mid_1_xy])
+r30_my_line_2 = affinity.rotate(my_line_2, 30, cxy)
+ext_z1    = my_line_1.intersection(r30_my_line_2)
+ext_z1_xy = ( ext_z1.x, ext_z1.y)
+up_motif = LineString([mid_1_xy, ext_z1_xy, r30_mid_1_xy])
+#
+for degree in (0,60,240,300) :
+    r_up_motif = affinity.rotate(up_motif, degree+15, cxy)
+    t_up_motif = affinity.translate(r_up_motif, r0, -r0*np.sqrt(3))
+    motif_line(t_up_motif, &#x27;blue&#x27;, 55, 1.0)
+# end for
+#
+posi_1 = affinity.rotate(ext_z1, 15, cxy)
+posi_2 = affinity.translate(posi_1, r0, -r0*np.sqrt(3))
+posi_2_xy = (posi_2.x, posi_2.y)
+posi_3_xy = (posi_2.x+2*r0, posi_2.y)
+#
+for degree in (0,30,60,90,120,150,180,210,240,270,300,330) :
+    r_line_key = affinity.rotate(line_key, degree+15, cxy)
+    t_line_key = affinity.translate(r_line_key, r0, -r0*np.sqrt(3))
+    L_line_key = affinity.rotate(t_line_key, 180, posi_2_xy)
+    R_line_key = affinity.rotate(t_line_key, 180, posi_3_xy)
+    #
+    motif_line(L_line_key, &#x27;blue&#x27;, 55, 1.0)
+    motif_line(R_line_key, &#x27;blue&#x27;, 55, 1.0)
+# end for
+#
+for degree in (0,60,240,300) :
+    r_set_left   = affinity.rotate(set_left,   degree, (r0, -r0*np.sqrt(3)))
+    r_set_right  = affinity.rotate(set_right,  degree, (r0, -r0*np.sqrt(3)))
+    r_left_line  = affinity.rotate(left_line,  degree, (r0, -r0*np.sqrt(3)))
+    r_right_line = affinity.rotate(right_line, degree, (r0, -r0*np.sqrt(3)))
+    #
+    L_set_left   = affinity.rotate(r_set_left,   180, posi_2_xy)
+    L_set_right  = affinity.rotate(r_set_right,  180, posi_2_xy)
+    L_left_line  = affinity.rotate(r_left_line,  180, posi_2_xy)
+    L_right_line = affinity.rotate(r_right_line, 180, posi_2_xy)    
+    #
+    R_set_left   = affinity.rotate(r_set_left,   180, posi_3_xy)
+    R_set_right  = affinity.rotate(r_set_right,  180, posi_3_xy)
+    R_left_line  = affinity.rotate(r_left_line,  180, posi_3_xy)
+    R_right_line = affinity.rotate(r_right_line, 180, posi_3_xy)    
+    #    
+    motif_line(L_set_left,   &#x27;blue&#x27;, 55, 1.0)
+    motif_line(L_set_right,  &#x27;blue&#x27;, 55, 1.0)
+    motif_line(L_left_line,  &#x27;blue&#x27;, 55, 1.0)
+    motif_line(L_right_line, &#x27;blue&#x27;, 55, 1.0)
+    #    
+    motif_line(R_set_left,   &#x27;blue&#x27;, 55, 1.0)
+    motif_line(R_set_right,  &#x27;blue&#x27;, 55, 1.0)
+    motif_line(R_left_line,  &#x27;blue&#x27;, 55, 1.0)
+    motif_line(R_right_line, &#x27;blue&#x27;, 55, 1.0)    
+# end for
+#
+for degree in (0,60,240,300) :
+    r_up_motif = affinity.rotate(up_motif, degree+15, cxy)
+    t_up_motif = affinity.translate(r_up_motif, r0, -r0*np.sqrt(3))
+    #
+    L_up_motif   = affinity.rotate(t_up_motif, 180, posi_2_xy)
+    R_up_motif   = affinity.rotate(t_up_motif, 180, posi_3_xy)
+    #
+    motif_line(L_up_motif, &#x27;blue&#x27;, 55, 1.0)
+    motif_line(R_up_motif, &#x27;blue&#x27;, 55, 1.0)
+# end for
+#
+mask_pA1 = (3*r0,-r0*np.sqrt(3)-0.03)
+mask_pB1 = ( -r0,-r0*np.sqrt(3)-0.03)
+mask_pC1 = ( -r0,-r0*np.sqrt(3)-0.97)
+mask_pD1 = (3*r0,-r0*np.sqrt(3)-0.97)
+#
+mask_down_xy = [mask_pA1, mask_pB1, mask_pC1, mask_pD1, mask_pA1]
+mask_down = LineString(mask_down_xy)
+mask_up   = affinity.rotate(mask_down, 180, (r0,0))
+#
+motif_fill(mask_down, &#x27;white&#x27;, 60, 1.0)
+motif_fill(mask_up,   &#x27;white&#x27;, 60, 1.0)
+#
+mask_pA2 = (3*r0+0.03, r0*np.sqrt(3))
+mask_pB2 = (3*r0+0.03,-r0*np.sqrt(3))
+mask_pC2 = (3*r0+0.97,-r0*np.sqrt(3))
+mask_pD2 = (3*r0+0.97, r0*np.sqrt(3))
+#
+mask_right_xy = [mask_pA2, mask_pB2, mask_pC2, mask_pD2, mask_pA2]
+mask_right = LineString(mask_right_xy)
+mask_left  = affinity.rotate(mask_right, 180, (r0,0))
+#
+motif_fill(mask_right, &#x27;white&#x27;, 60, 1.0)
+motif_fill(mask_left,  &#x27;white&#x27;, 60, 1.0)
+#
+ax.set_title(&#x27;rcm-12 15°&#x27;, fontsize=16)
+plot.savefig(&#x27;./png-2/fig-2P.png&#x27;,format=&quot;png&quot;,dpi=150)
+#
+print(&#x27;done&#x27;)</code></pre></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8117-b23f-f18cab0821fb" class=""><mark class="highlight-red">##########################################################################</mark></p></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2d9ac165-e88d-81fd-81bd-f2a5b1cd3a49" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all"># A-J-Lee-3.py
+# 2021-10-29
+# 2025-05-12
+#
+# python 3.8.2
+# run on https://replit.com
+# run on ubuntu 22.04 LTS
+#
+# 要執行本程式, 請按上方 run▶
+#
+# view .ipynb online
+# https://ipynb.js.org/
+# https://htmtopdf.herokuapp.com/ipynbviewer/
+#
+# replit browser zoom scale set to 100%
+#
+import numpy as np
+import matplotlib.pyplot as plot         # 載入繪圖模組 pyplot, 重新命名為 plot
+#import matplotlib.font_manager as fontManager
+#
+from shapely import affinity
+from shapely.geometry import LineString, Point
+#
+# -------------------------------------------------
+#
+def set_graphic_area(width,height) :
+
+    cm2inch = 1/2.54    # inch per cm
+    #
+    # define graphic area
+    #
+    left_margin = 1.4   # cm
+    right_margin = 1.2  # cm
+    #
+    figure_width  = width  # cm , from xmin to xmax
+    figure_height = height # cm , from ymin to ymax
+    #
+    top_margin = 1.0    # cm
+    bottom_margin = 1.0 # cm
+    #
+    box_width = left_margin + figure_width + right_margin   # cm
+    box_height = top_margin + figure_height + bottom_margin # cm
+    #
+    top_value    = 1.0 - top_margin / box_height
+    bottom_value = bottom_margin / box_height
+    left_value   = left_margin / box_width
+    right_value  = 1.0 - right_margin / box_width
+    #
+    return (box_width*cm2inch,box_height*cm2inch,top_value,bottom_value,left_value,right_value,width)
+    #
+# end of def
+#
+def shapely_Arc(cxy, r, start_angle, end_angle) :
+
+    numsegments = 720
+    # The coordinates of the arc
+    theta = np.radians(np.linspace(start_angle, end_angle, numsegments))
+    x = cxy[0] + r * np.cos(theta)
+    y = cxy[1] + r * np.sin(theta)
+    Arc = LineString(np.column_stack([x, y]))
+    return Arc
+    #
+# end of def
+#
+def motif_line(LS, MYcolor, ZORDER, LINEWIDTH) :
+    #
+    xs,ys = LS.xy
+    ax.plot(xs, ys, color=MYcolor, alpha=1.0, linewidth=LINEWIDTH, solid_capstyle=&#x27;round&#x27;, zorder=ZORDER)
+    return
+#
+def motif_fill(LS, color, ZORDER, Alpha) :
+    #
+    xs,ys = LS.xy
+    ax.fill(xs, ys, alpha=Alpha, closed=True, edgecolor=None, facecolor=color, fill=True, zorder=ZORDER)
+    return
+#
+def polygon_line(poly, MYcolor, ZORDER, LINEWIDTH) :
+    #
+    xs, ys = poly.exterior.coords.xy
+    ax.plot(xs, ys, color=MYcolor, alpha=1.0, linewidth=LINEWIDTH, solid_capstyle=&#x27;round&#x27;, zorder=ZORDER)
+    return
+#
+# ---------------------------------------------------
+#
+print(&#x27;main running ...&#x27;)
+#
+# A4 紙張大小是 21.0cm x 29.7cm
+# dy = r0+ty
+dx = 5.0
+dy = 8.660254037844386
+tup7 = set_graphic_area(8*dx, 4*dy)
+# 呼叫 pyplot.figure(), 建立一個圖表物件, 並成為目前圖表物件
+fig = plot.figure(figsize=(tup7[0], tup7[1]))
+# 圖表的繪圖區域被分為1個子圖, 1 row, 1 column, plot to index 1
+ax = fig.add_subplot(1,1,1)
+fig.subplots_adjust(
+                top    = tup7[2] ,
+                bottom = tup7[3] ,
+                left   = tup7[4] ,
+                right  = tup7[5] ,
+                )
+#
+# 設定X軸的顯示範圍, from xmin to xmax
+plot.xlim(-1*dx, 7*dx)
+# 設定Y軸的顯示範圍, from ymin to ymax
+plot.ylim(-3*dy, 1*dy)
+# get current axes, set X,Y same ratio &amp; scale
+plot.gca().set_aspect(&#x27;equal&#x27;, adjustable=&#x27;box&#x27;) 
+#
+xvalues = []
+yvalues = []
+plot.xticks(xvalues)
+plot.yticks(yvalues)
+plot.tick_params(labelsize=14)
+#
+plot.grid(False)
+ax.set_axis_on()    # will turn on  grid line
+# ax.set_axis_off() # will turn off grid line
+#
+r0 = 5
+cxy = (0,0)
+#
+H_grid_line = LineString([(-1*r0, -1*r0*np.sqrt(3)), (7*r0, -1*r0*np.sqrt(3))])
+V_grid_line = LineString([( 3*r0,  1*r0*np.sqrt(3)), (3*r0, -3*r0*np.sqrt(3))])
+motif_line(H_grid_line, &#x27;magenta&#x27;, 75, 0.8)
+motif_line(V_grid_line, &#x27;magenta&#x27;, 75, 0.8)
+#
+plot.savefig(&#x27;./png-3/fig-3A.png&#x27;,format=&quot;png&quot;,dpi=150)
+#
+# ----------------------------------------------------
+#
+pA = ( r0, r0)
+pB = (-r0, r0)
+pC = (-r0,-r0)
+pD = ( r0,-r0)
+#
+line_1 = LineString([pA, pC])
+line_2 = LineString([pB, pD])
+line_3 = affinity.rotate(line_1, 15, pC)
+line_4 = affinity.rotate(line_2,-15, pD)
+#
+its_1    = line_3.intersection(line_4)
+its_1_xy = (its_1.x, its_1.y)
+#
+tx = 0
+ty = its_1_xy[1]
+#
+pA = ( r0, r0+ty)
+pB = (-r0, r0+ty)
+pC = (-r0,-r0-ty)
+pD = ( r0,-r0-ty)
+#
+line_AD = LineString([pA, pD])
+line_AB = LineString([pA, pB])
+line_BC = LineString([pB, pC])
+line_CD = LineString([pC, pD])
+line_AC = LineString([pA, pC])
+#
+tmp_1 = LineString([pC, cxy])
+tmp_2 = LineString([pD, cxy])
+tmp_3 = LineString([pC, pD])
+#
+line_1 = LineString([pA, pC])
+line_2 = LineString([pB, pD])
+#
+tx = Point(pC).distance(Point(pD))
+#
+cir_down_1 = shapely_Arc(( r0,-r0*np.sqrt(3)), 2*r0, 0, 180)
+cir_upL    = shapely_Arc((-r0, r0*np.sqrt(3)), 2*r0, 270, 360)
+cir_upR    = shapely_Arc((3*r0, r0*np.sqrt(3)), 2*r0, 180, 270)
+#
+up_H_line_1_xy = [(-3*r0,r0*np.sqrt(3)), (3*r0,r0*np.sqrt(3))]
+up_H_line_2_xy = [(-1*r0,r0*np.sqrt(3)), (5*r0,r0*np.sqrt(3))]
+up_H_line_1    = LineString(up_H_line_1_xy)
+up_H_line_2    = LineString(up_H_line_2_xy)
+up_H_line_1_rP30 = affinity.rotate(up_H_line_1, 30, ( 3*r0, r0*np.sqrt(3)))
+up_H_line_2_rN30 = affinity.rotate(up_H_line_2,-30, (-1*r0, r0*np.sqrt(3)))
+V_line_L = LineString([( -r0,-r0*np.sqrt(3)), (-r0,  r0*np.sqrt(3))])
+V_line_R = LineString([(3*r0,-r0*np.sqrt(3)), (3*r0, r0*np.sqrt(3))])
+#
+its_L1 = V_line_L.intersection(up_H_line_1_rP30)
+its_R1 = V_line_R.intersection(up_H_line_2_rN30)
+its_L1_xy = (its_L1.x, its_L1.y)
+its_R1_xy = (its_R1.x, its_R1.y)
+#
+line_RU_its_L1 = LineString([(3*r0, r0*np.sqrt(3)), its_L1_xy])
+line_LU_its_R1 = LineString([( -r0, r0*np.sqrt(3)), its_R1_xy])
+#
+line_3 = affinity.rotate(line_2, -15, pD)
+line_4 = affinity.rotate(line_2, -45, pD)
+its_41 = line_RU_its_L1.intersection(line_3)
+its_51 = line_LU_its_R1.intersection(line_4)
+its_41_xy = ( its_41.x, its_41.y)
+its_51_xy = ( its_51.x, its_51.y)
+#
+tmp_4 = LineString([its_41_xy, pD])
+tmp_5 = LineString([its_51_xy, pD])
+#
+tmp_6 = affinity.rotate(tmp_4, 52.5, its_41_xy)
+its_61 = LineString([(r0,-r0*np.sqrt(3)), (r0,r0*np.sqrt(3))]).intersection(tmp_6)
+its_62 = cir_down_1.intersection(tmp_6)
+its_61_xy = ( its_61.x, its_61.y)
+tmp_7 = LineString([its_41_xy, its_61_xy])
+#
+d99 = its_61.distance(its_62)
+cir_center = shapely_Arc(its_61_xy, d99, 0, 360)
+#
+its_70 = LineString([(r0,-r0*np.sqrt(3)), (r0,r0*np.sqrt(3))]).intersection(cir_center)
+its_71 = its_70.geoms[1]
+d1 = its_71.distance(Point(pD))
+cir_down_2 = shapely_Arc((r0,-r0*np.sqrt(3)), d1, 0, 180)
+#
+r10 = 8.92
+point_1_xy = (r10,0)
+point_2_xy = (r10*np.cos(5*np.pi/12), r10*np.sin(5*np.pi/12))
+point_3_xy = (r10*np.cos(7*np.pi/12), r10*np.sin(7*np.pi/12))
+point_1    = Point(point_1_xy)
+point_2    = Point(point_2_xy)
+point_3    = Point(point_3_xy)
+d1 = point_2.distance(point_3) / 2
+d2 = r10 - d1
+#
+Hline = LineString([(r10+d1,0), (-r10-d1,0)])
+line_left  = affinity.rotate(Hline,105, cxy)
+line_right = affinity.rotate(Hline, 75, cxy)
+#
+cir_2 = shapely_Arc(cxy, d2, 0, 360)
+#
+line_p2_p3 = LineString([point_2_xy, point_3_xy])
+bisector_degree = (90-15)/2
+mid_1 = line_p2_p3.interpolate(0.5, normalized = True)
+mid_2 = affinity.rotate(mid_1, 90-15, point_2_xy)
+mid_1_xy = (mid_1.x, mid_1.y)
+mid_2_xy = (mid_2.x, mid_2.y)
+line_mid_1_to_2 = LineString([mid_1_xy, mid_2_xy])
+#
+line_A = affinity.rotate(line_p2_p3, bisector_degree, point_2_xy)
+line_B = affinity.rotate(line_p2_p3,-bisector_degree, point_3_xy)
+its_1    = line_A.intersection(line_B)
+its_1_xy = (its_1.x, its_1.y)
+line_a   = LineString([point_2_xy, its_1_xy])
+line_b   = LineString([point_3_xy, its_1_xy])
+#
+its_2 = line_a.intersection(line_mid_1_to_2)
+its_2_xy = (its_2.x, its_2.y)
+key_cir = shapely_Arc(its_2_xy, 0.08, 0, 360)
+#
+tmp_1_xy = (mid_2.x, point_2_xy[1])
+tmp_2_xy = (mid_2.x, 0)
+line_tmp = LineString([tmp_1_xy, tmp_2_xy])
+its_3    = line_a.intersection(line_tmp)
+its_3_xy = (its_3.x, its_3.y)
+#
+d_its2_to_its3 = its_2.distance(its_3)
+distance = d_its2_to_its3 - 0.24
+line_base = LineString([its_2_xy, its_3_xy])
+key_posi = line_base.interpolate(distance)
+key_posi_xy = (key_posi.x, key_posi.y)
+#
+t0x = mid_2.x - key_posi.x
+t0y = mid_2.y - key_posi.y
+ext_0 = affinity.translate(mid_2, 10*t0x, 10*t0y, 0)
+line_mid_2_to_ext_0 = LineString([mid_2_xy, (ext_0.x,ext_0.y)])
+ext_p0 = line_mid_2_to_ext_0.intersection(Hline)
+ext_p0_xy = (ext_p0.x, ext_p0.y)
+#
+line_key = LineString([mid_1_xy, key_posi_xy, mid_2_xy, ext_p0_xy])
+#
+hline = LineString([(r10,0), (0,0)])
+r45_Hline = affinity.rotate(hline, 45, cxy)
+r60_Hline = affinity.rotate(hline, 60, cxy)
+#
+its_4 = line_key.intersection(r45_Hline)
+its_5 = line_key.intersection(r60_Hline)
+its_4_xy = (its_4.x, its_4.y)
+its_5_xy = (its_5.x, its_5.y)
+d4 = its_4.distance(Point(cxy))
+d5 = its_5.distance(Point(cxy))
+#
+key_1_xy = [its_4_xy, key_posi_xy, mid_1_xy]
+key_2_xy = [(-key_posi_xy[0], key_posi_xy[1]), (-its_4_xy[0], its_4_xy[1])]
+line_key_xy = key_1_xy + key_2_xy
+line_key    = LineString(line_key_xy)
+#
+t1x = mid_1.x - key_posi.x
+t1y = mid_1.y - key_posi.y
+ext_1 = affinity.translate(mid_1, 5*t1x, 5*t1y, 0)
+ext_1_xy = ( ext_1.x, ext_1.y)
+ext_2_xy = (-ext_1.x, ext_1.y)
+#
+its_61_xy = (its_61.x, its_61.y)
+start_xy = (its_61.x, its_61.y - 2.3)
+key_1_xy = [key_posi_xy, mid_1_xy]
+key_1    = LineString(key_1_xy)
+r_key_1  = affinity.rotate(key_1, 15, cxy)
+t_key_1  = affinity.translate(r_key_1, r0, -r0*np.sqrt(3))
+final_key_1_xy = [start_xy, t_key_1.coords[0], t_key_1.coords[1]]
+final_key_1    = LineString(final_key_1_xy)
+#
+reflect_about_Yaxis  = [-1, 0, 0, 1, 0,0] 
+refY_final_key_1 = affinity.affine_transform(final_key_1, reflect_about_Yaxis)
+final_key_2 = affinity.translate(refY_final_key_1, 2*r0, 0)
+#
+its_end = cir_down_1.intersection(LineString([(r0, -r0*np.sqrt(3)), (r0, -r0*np.sqrt(3)+2*r0)]))
+#
+set_left  = affinity.rotate(final_key_1,-75, its_61_xy)
+set_right = affinity.rotate(final_key_2, 75, its_61_xy)
+#
+left_line_xy  = [set_left.coords[2],  (its_end.x, its_end.y)]
+right_line_xy = [set_right.coords[2], (its_end.x, its_end.y)]
+left_line  = LineString(left_line_xy)
+right_line = LineString(right_line_xy)
+#
+r30_mid_1 = affinity.rotate(mid_1, 30, cxy)
+r30_mid_1_xy = (r30_mid_1.x, r30_mid_1.y)
+my_line_1 = LineString([ext_1_xy, mid_1_xy])
+my_line_2 = LineString([ext_2_xy, mid_1_xy])
+r30_my_line_2 = affinity.rotate(my_line_2, 30, cxy)
+ext_z1    = my_line_1.intersection(r30_my_line_2)
+ext_z1_xy = ( ext_z1.x, ext_z1.y)
+up_motif = LineString([mid_1_xy, ext_z1_xy, r30_mid_1_xy])
+#
+## =======================================================
+#
+posi_1 = affinity.rotate(ext_z1, 15, cxy)
+posi_2 = affinity.translate(posi_1, r0, -r0*np.sqrt(3))
+posi_4 = affinity.rotate(posi_2, 120, (r0,-r0*np.sqrt(3)))
+posi_5 = affinity.rotate(posi_2, 180, (r0,-r0*np.sqrt(3)))
+#
+posi_2_xy = (posi_2.x,      posi_2.y)
+posi_3_xy = (posi_2.x+2*r0, posi_2.y)
+posi_4_xy = (posi_4.x,      posi_4.y)
+posi_5_xy = (posi_5.x,      posi_5.y)
+#
+## =======================================================
+#
+for degree in (0,30,60,90,120,150,180,210,240,270,300,330) :
+    r_line_key = affinity.rotate(line_key, degree+15, cxy)
+    t_line_key = affinity.translate(r_line_key, r0, -r0*np.sqrt(3))
+    #
+    LU_line_key = affinity.rotate(t_line_key, 180, posi_2_xy)
+    RU_line_key = affinity.rotate(t_line_key, 180, posi_3_xy)
+    LD_line_key = affinity.rotate(t_line_key, 180, posi_4_xy)
+    RD_line_key = affinity.rotate(t_line_key, 180, posi_5_xy)    
+    #
+    motif_line(t_line_key,  &#x27;blue&#x27;, 55, 1.0)
+    motif_line(LU_line_key, &#x27;blue&#x27;, 55, 1.0)
+    motif_line(RU_line_key, &#x27;blue&#x27;, 55, 1.0)
+    motif_line(LD_line_key, &#x27;blue&#x27;, 55, 1.0)
+    motif_line(RD_line_key, &#x27;blue&#x27;, 55, 1.0)    
+# end for
+#
+for degree in (0,60,120,180,240,300) :
+    r_set_left   = affinity.rotate(set_left,   degree, (r0, -r0*np.sqrt(3)))
+    r_set_right  = affinity.rotate(set_right,  degree, (r0, -r0*np.sqrt(3)))
+    r_left_line  = affinity.rotate(left_line,  degree, (r0, -r0*np.sqrt(3)))
+    r_right_line = affinity.rotate(right_line, degree, (r0, -r0*np.sqrt(3)))
+    #
+    LU_set_left   = affinity.rotate(r_set_left,   180, posi_2_xy)
+    LU_set_right  = affinity.rotate(r_set_right,  180, posi_2_xy)
+    LU_left_line  = affinity.rotate(r_left_line,  180, posi_2_xy)
+    LU_right_line = affinity.rotate(r_right_line, 180, posi_2_xy)    
+    #
+    RU_set_left   = affinity.rotate(r_set_left,   180, posi_3_xy)
+    RU_set_right  = affinity.rotate(r_set_right,  180, posi_3_xy)
+    RU_left_line  = affinity.rotate(r_left_line,  180, posi_3_xy)
+    RU_right_line = affinity.rotate(r_right_line, 180, posi_3_xy)    
+    # 
+    LD_set_left   = affinity.rotate(r_set_left,   180, posi_4_xy)
+    LD_set_right  = affinity.rotate(r_set_right,  180, posi_4_xy)
+    LD_left_line  = affinity.rotate(r_left_line,  180, posi_4_xy)
+    LD_right_line = affinity.rotate(r_right_line, 180, posi_4_xy)    
+    #
+    RD_set_left   = affinity.rotate(r_set_left,   180, posi_5_xy)
+    RD_set_right  = affinity.rotate(r_set_right,  180, posi_5_xy)
+    RD_left_line  = affinity.rotate(r_left_line,  180, posi_5_xy)
+    RD_right_line = affinity.rotate(r_right_line, 180, posi_5_xy)    
+    #
+    motif_line(r_set_left,    &#x27;blue&#x27;, 55, 1.0)
+    motif_line(r_set_right,   &#x27;blue&#x27;, 55, 1.0)
+    motif_line(r_left_line,   &#x27;blue&#x27;, 55, 1.0)
+    motif_line(r_right_line,  &#x27;blue&#x27;, 55, 1.0)
+    #
+    motif_line(LU_set_left,   &#x27;blue&#x27;, 55, 1.0)
+    motif_line(LU_set_right,  &#x27;blue&#x27;, 55, 1.0)
+    motif_line(LU_left_line,  &#x27;blue&#x27;, 55, 1.0)
+    motif_line(LU_right_line, &#x27;blue&#x27;, 55, 1.0)
+    #    
+    motif_line(RU_set_left,   &#x27;blue&#x27;, 55, 1.0)
+    motif_line(RU_set_right,  &#x27;blue&#x27;, 55, 1.0)
+    motif_line(RU_left_line,  &#x27;blue&#x27;, 55, 1.0)
+    motif_line(RU_right_line, &#x27;blue&#x27;, 55, 1.0)    
+    #        
+    motif_line(LD_set_left,   &#x27;blue&#x27;, 55, 1.0)
+    motif_line(LD_set_right,  &#x27;blue&#x27;, 55, 1.0)
+    motif_line(LD_left_line,  &#x27;blue&#x27;, 55, 1.0)
+    motif_line(LD_right_line, &#x27;blue&#x27;, 55, 1.0)
+    #    
+    motif_line(RD_set_left,   &#x27;blue&#x27;, 55, 1.0)
+    motif_line(RD_set_right,  &#x27;blue&#x27;, 55, 1.0)
+    motif_line(RD_left_line,  &#x27;blue&#x27;, 55, 1.0)
+    motif_line(RD_right_line, &#x27;blue&#x27;, 55, 1.0)   
+# end for
+#
+for degree in (0,60,120,180,240,300) :
+    r_up_motif = affinity.rotate(up_motif, degree+15, cxy)
+    t_up_motif = affinity.translate(r_up_motif, r0, -r0*np.sqrt(3))
+    #
+    LU_up_motif = affinity.rotate(t_up_motif, 180, posi_2_xy)
+    RU_up_motif = affinity.rotate(t_up_motif, 180, posi_3_xy)
+    LD_up_motif = affinity.rotate(t_up_motif, 180, posi_4_xy)
+    RD_up_motif = affinity.rotate(t_up_motif, 180, posi_5_xy)    
+    #
+    motif_line(t_up_motif,  &#x27;blue&#x27;, 55, 1.0)
+    motif_line(LU_up_motif, &#x27;blue&#x27;, 55, 1.0)
+    motif_line(RU_up_motif, &#x27;blue&#x27;, 55, 1.0)
+    motif_line(LD_up_motif, &#x27;blue&#x27;, 55, 1.0)
+    motif_line(RD_up_motif, &#x27;blue&#x27;, 55, 1.0)
+# end for
+#
+plot.savefig(&#x27;./png-3/fig-3B.png&#x27;,format=&quot;png&quot;,dpi=150)
+#
+for degree in (0,30,60,90,120,150,180,210,240,270,300,330) :
+    r_line_key = affinity.rotate(line_key, degree+15, cxy)
+    t_line_key = affinity.translate(r_line_key, r0, -r0*np.sqrt(3))
+    t_item     = affinity.translate(t_line_key, 4*r0, 0)
+    motif_line(t_item, &#x27;blue&#x27;, 55, 1.0)
+# end for
+#
+for degree in (0,60,120,180,240,300) :
+    r_set_left   = affinity.rotate(set_left,   degree, (r0, -r0*np.sqrt(3)))
+    r_set_right  = affinity.rotate(set_right,  degree, (r0, -r0*np.sqrt(3)))
+    r_left_line  = affinity.rotate(left_line,  degree, (r0, -r0*np.sqrt(3)))
+    r_right_line = affinity.rotate(right_line, degree, (r0, -r0*np.sqrt(3)))
+    #
+    t_item_1  = affinity.translate(r_set_left,   4*r0, 0)
+    t_item_2  = affinity.translate(r_set_right,  4*r0, 0)
+    t_item_3  = affinity.translate(r_left_line,  4*r0, 0)
+    t_item_4  = affinity.translate(r_right_line, 4*r0, 0)
+    #    
+    motif_line(t_item_1, &#x27;blue&#x27;, 55, 1.0)
+    motif_line(t_item_2, &#x27;blue&#x27;, 55, 1.0)
+    motif_line(t_item_3, &#x27;blue&#x27;, 55, 1.0)
+    motif_line(t_item_4, &#x27;blue&#x27;, 55, 1.0)
+# end for
+#
+for degree in (0,60,120,180,240,300) :
+    r_up_motif = affinity.rotate(up_motif, degree+15, cxy)
+    t_up_motif = affinity.translate(r_up_motif, r0, -r0*np.sqrt(3))
+    t_item     = affinity.translate(t_up_motif, 4*r0, 0)
+    motif_line(t_item, &#x27;blue&#x27;, 55, 1.0)
+# end for
+#
+plot.savefig(&#x27;./png-3/fig-3C.png&#x27;,format=&quot;png&quot;,dpi=150)
+#
+## =================================================================
+#
+for degree in (0,30,60,90,120,150,180,210,240,270,300,330) :
+    r_line_key = affinity.rotate(line_key, degree+15, cxy)
+    t_line_key = affinity.translate(r_line_key, r0, -r0*np.sqrt(3))
+    t1_item    = affinity.translate(t_line_key, 4*r0, 0)
+    t2_item    = affinity.translate(t1_item, 2*r0, 2*r0*np.sqrt(3))
+    t3_item    = affinity.translate(t1_item, 2*r0,-2*r0*np.sqrt(3))
+    motif_line(t2_item, &#x27;blue&#x27;, 55, 1.0)
+    motif_line(t3_item, &#x27;blue&#x27;, 55, 1.0)
+# end for
+#
+for degree in (0,60,120,180,240,300) :
+    r_set_left   = affinity.rotate(set_left,   degree, (r0, -r0*np.sqrt(3)))
+    r_set_right  = affinity.rotate(set_right,  degree, (r0, -r0*np.sqrt(3)))
+    r_left_line  = affinity.rotate(left_line,  degree, (r0, -r0*np.sqrt(3)))
+    r_right_line = affinity.rotate(right_line, degree, (r0, -r0*np.sqrt(3)))
+    #
+    t1_item_1  = affinity.translate(r_set_left,   4*r0, 0)
+    t1_item_2  = affinity.translate(r_set_right,  4*r0, 0)
+    t1_item_3  = affinity.translate(r_left_line,  4*r0, 0)
+    t1_item_4  = affinity.translate(r_right_line, 4*r0, 0)
+    #
+    t2_item_1  = affinity.translate(t1_item_1, 2*r0, 2*r0*np.sqrt(3))
+    t2_item_2  = affinity.translate(t1_item_2, 2*r0, 2*r0*np.sqrt(3))
+    t2_item_3  = affinity.translate(t1_item_3, 2*r0, 2*r0*np.sqrt(3))
+    t2_item_4  = affinity.translate(t1_item_4, 2*r0, 2*r0*np.sqrt(3))
+    #   
+    t3_item_1  = affinity.translate(t1_item_1, 2*r0,-2*r0*np.sqrt(3))
+    t3_item_2  = affinity.translate(t1_item_2, 2*r0,-2*r0*np.sqrt(3))
+    t3_item_3  = affinity.translate(t1_item_3, 2*r0,-2*r0*np.sqrt(3))
+    t3_item_4  = affinity.translate(t1_item_4, 2*r0,-2*r0*np.sqrt(3))
+    #     
+    motif_line(t2_item_1, &#x27;blue&#x27;, 55, 1.0)
+    motif_line(t2_item_2, &#x27;blue&#x27;, 55, 1.0)
+    motif_line(t2_item_3, &#x27;blue&#x27;, 55, 1.0)
+    motif_line(t2_item_4, &#x27;blue&#x27;, 55, 1.0)
+    #     
+    motif_line(t3_item_1, &#x27;blue&#x27;, 55, 1.0)
+    motif_line(t3_item_2, &#x27;blue&#x27;, 55, 1.0)
+    motif_line(t3_item_3, &#x27;blue&#x27;, 55, 1.0)
+    motif_line(t3_item_4, &#x27;blue&#x27;, 55, 1.0)    
+# end for
+#
+for degree in (0,60,120,180,240,300) :
+    r_up_motif = affinity.rotate(up_motif, degree+15, cxy)
+    t_up_motif = affinity.translate(r_up_motif, r0, -r0*np.sqrt(3))
+    t1_item    = affinity.translate(t_up_motif, 4*r0, 0)
+    t2_item    = affinity.translate(t1_item, 2*r0, 2*r0*np.sqrt(3))
+    t3_item    = affinity.translate(t1_item, 2*r0,-2*r0*np.sqrt(3)) 
+    #
+    motif_line(t2_item, &#x27;blue&#x27;, 55, 1.0)
+    motif_line(t3_item, &#x27;blue&#x27;, 55, 1.0)
+# end for
+#
+plot.savefig(&#x27;./png-3/fig-3D.png&#x27;,format=&quot;png&quot;,dpi=150)
+#
+print(&#x27;done&#x27;)</code></pre></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
