@@ -1,0 +1,912 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>pat-81</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2d9ac165-e88d-8104-89ec-c2599f65b2f7" class="page sans"><header><h1 class="page-title" dir="auto">pat-81</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><h2 id="2d9ac165-e88d-8153-bf52-d2d40b4fa754" class="block-color-red">matplotlib <mark class="highlight-blue">Line_joinstyle</mark></h2></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81fc-b708-db3d6b43c48a" class="image"><a href="pat-81/Line_joinstyle.png"><img style="width:709.9715576171875px" src="pat-81/Line_joinstyle.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-810e-bb1d-e3ceeb167973" class="image"><a href="pat-81/4-3.png"><img style="width:709.9857788085938px" src="pat-81/4-3.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8141-b621-e96a4dffa267" class="image"><a href="pat-81/1-01.png"><img style="width:471.9886169433594px" src="pat-81/1-01.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8191-a4a0-f99ede244688" class="image"><a href="pat-81/1-02.png"><img style="width:471.9886169433594px" src="pat-81/1-02.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8115-88db-f824a4ba5731" class="image"><a href="pat-81/1-03.png"><img style="width:471.9886169433594px" src="pat-81/1-03.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81ec-8b7f-c2bd52ad96e5" class="image"><a href="pat-81/1-04.png"><img style="width:471.9886169433594px" src="pat-81/1-04.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81d7-84b9-d47ae6127ee8" class="image"><a href="pat-81/1-05.png"><img style="width:471.9886169433594px" src="pat-81/1-05.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8119-ad95-ffe958cffa80" class="image"><a href="pat-81/1-06.png"><img style="width:471.9886169433594px" src="pat-81/1-06.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81ba-839b-fa3bdc8388d1" class="image"><a href="pat-81/1-07.png"><img style="width:471.9886169433594px" src="pat-81/1-07.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8186-9b2e-fd614d42f127" class="image"><a href="pat-81/1-08.png"><img style="width:471.9886169433594px" src="pat-81/1-08.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-817a-9a53-cb5c2dbefb90" class="image"><a href="pat-81/1-09.png"><img style="width:471.9886169433594px" src="pat-81/1-09.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8195-9cf0-f138aa077154" class="image"><a href="pat-81/1-10.png"><img style="width:471.9886169433594px" src="pat-81/1-10.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8196-9280-eb1c0f5c366e" class="image"><a href="pat-81/2-01.png"><img style="width:709.9857788085938px" src="pat-81/2-01.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8109-b68a-ef9336fd0555" class="image"><a href="pat-81/2-02.png"><img style="width:709.9857788085938px" src="pat-81/2-02.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8155-b699-d470a4fa1a0e" class="image"><a href="pat-81/2-03.png"><img style="width:709.9857788085938px" src="pat-81/2-03.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-814e-ad46-f7fcfc85b0fa" class="image"><a href="pat-81/2-04.png"><img style="width:709.9857788085938px" src="pat-81/2-04.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81fb-9fbb-c0794be43386" class="image"><a href="pat-81/3-01.png"><img style="width:709.9857788085938px" src="pat-81/3-01.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81b8-84ce-db053dd74a0f" class="image"><a href="pat-81/3-02.png"><img style="width:709.9857788085938px" src="pat-81/3-02.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8101-98ec-c6a16edb595c" class="image"><a href="pat-81/4-02.png"><img style="width:709.9857788085938px" src="pat-81/4-02.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8191-89cd-c76719ff3d29" class="image"><a href="pat-81/4-02-color.png"><img style="width:709.9857788085938px" src="pat-81/4-02-color.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8192-890e-ce05bdb71374" class="image"><a href="pat-81/4-02-type-1.png"><img style="width:709.9857788085938px" src="pat-81/4-02-type-1.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-819c-9a72-c37e9b48c084" class="image"><a href="pat-81/4-02-type-2.png"><img style="width:709.9857788085938px" src="pat-81/4-02-type-2.png"/></a></figure></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2d9ac165-e88d-810c-ba6a-e8bcc4b1729d" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all"># (home)/IGP-01/
+# IGP-01-4
+# 2021-09-27
+#
+# python 3.8.10
+# run on replit.com
+# run on mybinder.org
+#
+# python 3.9.1
+# run on miniconda 3 JupyterLab
+#
+# 要執行本程式, 請按上方run▶
+#
+# to fix matplotlib warning
+import os
+path = os.getcwd()
+print(&#x27;當前工作目錄 ==&gt;&#x27;, path)
+os.environ[&#x27;MPLCONFIGDIR&#x27;] = os.getcwd() + &quot;/configs/&quot;
+#
+from platform import python_version
+print(&#x27;the python version is&#x27;, python_version())
+#
+import numpy as np
+# 載入繪圖模組 pyplot, 重新命名為 plot
+import matplotlib.pyplot as plt
+#
+from shapely import affinity
+from shapely.geometry  import LineString, Point
+#
+# ---------------------------------------------
+#
+def set_graphic_area(width,height) :
+        
+    cm2inch = 1/2.54    # inch per cm
+    #
+    # define graphic area
+    #
+    left_margin = 1.0   # cm
+    right_margin = 1.0  # cm
+    #
+    figure_width  = width  # cm , from xmin to xmax
+    figure_height = height # cm , from ymin to ymax
+    #
+    top_margin = 1.0    # cm
+    bottom_margin = 1.0 # cm
+    #
+    box_width = left_margin + figure_width + right_margin   # cm
+    box_height = top_margin + figure_height + bottom_margin # cm
+    #
+    top_value    = 1.0 - top_margin / box_height
+    bottom_value = bottom_margin / box_height
+    left_value   = left_margin / box_width
+    right_value  = 1.0 - right_margin / box_width
+    #
+    return (box_width*cm2inch,box_height*cm2inch,top_value,bottom_value,left_value,right_value,width)
+#
+# end of def
+#
+def shapely_Arc(cxy, r, start_angle, end_angle) :
+
+    numsegments = 720
+    # The coordinates of the arc
+    theta = np.radians(np.linspace(start_angle, end_angle, numsegments))
+    x = cxy[0] + r * np.cos(theta)
+    y = cxy[1] + r * np.sin(theta)
+    Arc = LineString(np.column_stack([x, y]))
+    return Arc
+#
+# end of def
+#
+def motif_line(LS, MYcolor, ZORDER, LINEWIDTH) :
+    #
+    xs, ys = LS.xy
+    ax.plot(xs, ys, color=MYcolor, alpha=1.0, linewidth=LINEWIDTH, solid_joinstyle=&#x27;miter&#x27;, solid_capstyle=&#x27;projecting&#x27;, zorder=ZORDER)
+    return
+#
+def motif_fill(LS, color, ZORDER, Alpha) :
+    #
+    xs, ys = LS.xy
+    ax.fill(xs, ys, alpha=Alpha, closed=True, edgecolor=None, facecolor=color, fill=True, zorder=ZORDER)
+    return
+#
+# ------------------------------------------------------------------------------------------------
+#
+# tup7 is type of Tuple, have 7 indexed value
+#
+tup7 = set_graphic_area(36, 36)  
+fig = plt.figure(figsize=(tup7[0], tup7[1])) # 呼叫 pyplot.figure(), 建立一個圖表物件, 並成為目前圖表物件
+ax = fig.add_subplot(1,1,1)   # 圖表的繪圖區域被分為1個子圖, 1 row, 1 column, plot to index 1
+fig.subplots_adjust(
+                top    = tup7[2] ,
+                bottom = tup7[3] ,
+                left   = tup7[4] ,
+                right  = tup7[5] ,
+                )
+#
+plt.xlim(-tup7[6]/2, tup7[6]/2)    # 設定X軸的顯示範圍, from xmin to xmax
+plt.ylim(-tup7[6]/2, tup7[6]/2)    # 設定Y軸的顯示範圍, from ymin to ymax
+#
+xvalues = []
+yvalues = []
+plt.xticks(xvalues)
+plt.yticks(yvalues)
+plt.tick_params(labelsize=18)
+#
+plt.grid(False)
+ax.set_axis_on()    # will turn on  grid line
+# ax.set_axis_off() # will turn off grid line
+#
+# get current axes, set X,Y same ratio &amp; scale  
+plt.gca().set_aspect(&#x27;equal&#x27;, adjustable=&#x27;box&#x27;)
+#
+## ================================================
+#
+cxy = (0,0)
+r0 = 0.08
+r1 = 3
+cir_1 = shapely_Arc((r1,-r1), 2*r1,  0, 360)  
+#
+line_AC = LineString([(r1,-r1), (-r1, r1)])
+line_BD = LineString([(r1, r1), (-r1,-r1)])
+#
+its_01 = line_AC.intersection(cir_1)
+r2 = its_01.distance(Point(0,0))
+cir_2 = shapely_Arc(cxy, r2,  0, 360)
+#
+cir_A = shapely_Arc(( r1,-r1), r2,  0, 360)
+cir_B = shapely_Arc(( r1, r1), r2,  0, 360)
+cir_C = shapely_Arc((-r1, r1), r2,  0, 360)
+cir_D = shapely_Arc((-r1,-r1), r2,  0, 360)
+#
+its_02 = line_BD.intersection(cir_2)[0]
+its_02_xy = (its_02.x, its_02.y)
+cir_3 = shapely_Arc(its_02_xy, r0,  0, 360)
+#
+line_A_02 = LineString([(r1,-r1), its_02_xy])
+p1_xy = ( r1-r2, r1)
+p2_xy = (-r1+r2,-r1)
+line_p1_p2 = LineString([p1_xy, p2_xy])
+#
+its_03 = line_p1_p2.intersection(line_A_02)
+its_03_xy = (its_03.x, its_03.y)
+cir_4 = shapely_Arc(its_03_xy, r0,  0, 360)
+#
+leg_1 = LineString([(r1,-r1), its_03_xy, cxy])
+leg_2 = affinity.rotate(leg_1, 90, cxy)
+leg_3 = affinity.rotate(leg_1,180, cxy)
+leg_4 = affinity.rotate(leg_1,270, cxy)
+#
+# define reflection matrix for shapely
+#
+reflect_about_Xaxis  = [ 1, 0, 0,-1, 0,0]   # Affine2D(np.array([[ 1, 0, 0], [0,-1, 0], [0, 0, 1]]))
+reflect_about_Yaxis  = [-1, 0, 0, 1, 0,0]   # Affine2D(np.array([[-1, 0, 0], [0, 1, 0], [0, 0, 1]]))
+reflect_about_Origin = [-1, 0, 0,-1, 0,0]   # Affine2D(np.array([[-1, 0, 0], [0,-1, 0], [0, 0, 1]]))
+#
+RU_leg_1 = affinity.translate(leg_1, 3, 3, 0)
+RU_leg_2 = affinity.translate(leg_2, 3, 3, 0)
+RU_leg_3 = affinity.translate(leg_3, 3, 3, 0)
+RU_leg_4 = affinity.translate(leg_4, 3, 3, 0)
+#
+LU_leg_1 = affinity.affine_transform(RU_leg_1, reflect_about_Yaxis)
+LU_leg_2 = affinity.affine_transform(RU_leg_2, reflect_about_Yaxis)
+LU_leg_3 = affinity.affine_transform(RU_leg_3, reflect_about_Yaxis)
+LU_leg_4 = affinity.affine_transform(RU_leg_4, reflect_about_Yaxis)
+#
+RD_leg_1 = affinity.affine_transform(RU_leg_1, reflect_about_Xaxis)
+RD_leg_2 = affinity.affine_transform(RU_leg_2, reflect_about_Xaxis)
+RD_leg_3 = affinity.affine_transform(RU_leg_3, reflect_about_Xaxis)
+RD_leg_4 = affinity.affine_transform(RU_leg_4, reflect_about_Xaxis)
+#
+LD_leg_1 = affinity.rotate(RU_leg_1, 180, cxy)
+LD_leg_2 = affinity.rotate(RU_leg_2, 180, cxy)
+LD_leg_3 = affinity.rotate(RU_leg_3, 180, cxy)
+LD_leg_4 = affinity.rotate(RU_leg_4, 180, cxy)
+#
+motif_set = [RU_leg_1, RU_leg_2, RU_leg_3, RU_leg_4,
+             LU_leg_1, LU_leg_2, LU_leg_3, LU_leg_4,
+             RD_leg_1, RD_leg_2, RD_leg_3, RD_leg_4,
+             LD_leg_1, LD_leg_2, LD_leg_3, LD_leg_4 ]
+#
+for motif in motif_set :
+    motif_line(motif, &#x27;midnightblue&#x27;, 10, 14)
+    motif_line(motif, &#x27;lightskyblue&#x27;, 20,  4)
+# end for
+#
+# T_set = [(12,0), (12,12)]
+T_set = [(12,0), (12,12), (0,12), (-12,12), (-12,0), (-12,-12), (0,-12), (12,-12)]
+#
+for T in T_set :
+    for motif in motif_set :
+        T_motif = affinity.translate(motif, T[0], T[1], 0)
+        motif_line(T_motif, &#x27;midnightblue&#x27;, 10, 14)
+        motif_line(T_motif, &#x27;lightskyblue&#x27;, 20,  4)
+    # end for
+# end for
+#
+plt.savefig(&quot;./png/4-02.png&quot;,format=&quot;png&quot;,dpi=150, facecolor=&#x27;white&#x27;)
+#
+當前工作目錄 ==&gt; D:\0_sdr\IGP-01
+the python version is 3.9.1</code></pre></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81f7-a64b-cb2d4dc19c7a" class="image"><a href="pat-81/Tutorial_4-3.jpg"><img style="width:709.984375px" src="pat-81/Tutorial_4-3.jpg"/></a></figure></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

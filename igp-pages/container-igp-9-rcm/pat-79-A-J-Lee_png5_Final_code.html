@@ -1,0 +1,1124 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>pat-79-A-J-Lee_png5_Final_code</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2d9ac165-e88d-810e-a58a-de7c4eb18e41" class="page sans"><header><h1 class="page-title" dir="auto">pat-79-A-J-Lee_png5_Final_code</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2d9ac165-e88d-81f1-a638-cc2c3a4d4458" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all"># new-rcm-12-A
+# 2021-11-05
+#
+# python 3.8.2
+# run on https://repl.it
+#
+# inspired by:
+# Ayman Soliman [@FB/Analysis of the islamic geometric designs]
+#
+# pdf : The Geometric Rosette : analysis of an Islamic decorative motif
+#
+# 要執行本程式, 請按上方run▶
+#
+# to fix matplotlib warning
+import os
+os.environ[&#x27;MPLCONFIGDIR&#x27;] = os.getcwd() + &quot;/configs/&quot;
+#
+import numpy as np
+# 載入繪圖模組 pyplot, 重新命名為 plot
+import matplotlib.pyplot as plt
+#
+from shapely import affinity
+from shapely.geometry  import LineString, Point
+#
+# ---------------------------------------------
+#
+def set_graphic_area(width,height) :
+        
+    cm2inch = 1/2.54    # inch per cm
+    #
+    # define graphic area
+    #
+    left_margin  = 1.0  # cm
+    right_margin = 1.0  # cm
+    #
+    figure_width  = width  # cm , from xmin to xmax
+    figure_height = height # cm , from ymin to ymax
+    #
+    top_margin = 1.0    # cm
+    bottom_margin = 1.0 # cm
+    #
+    box_width = left_margin + figure_width + right_margin   # cm
+    box_height = top_margin + figure_height + bottom_margin # cm
+    #
+    top_value    = 1.0 - top_margin / box_height
+    bottom_value = bottom_margin / box_height
+    left_value   = left_margin / box_width
+    right_value  = 1.0 - right_margin / box_width
+    #
+    return (box_width*cm2inch,box_height*cm2inch,top_value,bottom_value,left_value,right_value,width)
+#
+# end of def
+#
+def shapely_Arc(cxy, r, start_angle, end_angle) :
+
+    numsegments = 1000
+    # The coordinates of the arc
+    theta = np.radians(np.linspace(start_angle, end_angle, numsegments))
+    x = cxy[0] + r * np.cos(theta)
+    y = cxy[1] + r * np.sin(theta)
+    Arc = LineString(np.column_stack([x, y]))
+    return Arc
+#
+# end of def
+#
+def motif_line(LS, COLOR, ZORDER, LINEWIDTH) :
+    #
+    xs, ys = LS.xy
+    ax.plot(xs, ys, color=COLOR, alpha=0.7, linewidth=LINEWIDTH, solid_capstyle=&#x27;round&#x27;, zorder=ZORDER)
+    return
+# end def
+#
+def motif_fill(LS, color, ZORDER, Alpha) :
+    #
+    xs, ys = LS.xy
+    ax.fill(xs, ys, alpha=Alpha, closed=True, edgecolor=None, facecolor=color, fill=True, zorder=ZORDER)
+    return
+#
+def x_format_func(value, tick_number):
+    # find number of multiples of r0
+    N = int(np.round(value/10))
+    if N == -1:
+        return &quot;-dx&quot;
+    elif N == 0:
+        return &quot;0&quot;
+    elif N == 1:
+        return &quot;dx&quot;
+    elif N == 2:
+        return &quot;2dx&quot;
+    elif N == 3:
+        return &quot;3dx&quot;
+    else:
+        return &quot; &quot;
+    # end if
+# end def
+#
+def y_format_func(value, tick_number):
+    # find number of multiples of 5*np.sqrt(3)
+    N = int(np.round(value/(10*np.sqrt(3))))
+    if N == -1:
+        return r&#x27;$-dx\sqrt{3}$&#x27;
+    elif N == 0:
+        return &quot;0&quot;    
+    elif N == 1:
+        return r&#x27;$dx\sqrt{3}$&#x27;
+    else:
+        return &quot; &quot;
+    # end if
+# end def
+#
+# ------------------------------------------------------------------------------------------------
+#
+# tup7 is type of Tuple, have 7 indexed value
+#
+dx = 10
+dy = dx*np.sqrt(3)
+tup7 = set_graphic_area(4*dx, 2*dy) 
+fig = plt.figure(figsize=(tup7[0], tup7[1])) # 呼叫 pyplot.figure(), 建立一個圖表物件, 並成為目前圖表物件
+ax = fig.add_subplot(1,1,1)   # 圖表的繪圖區域被分為1個子圖, 1 row, 1 column, plot to index 1
+fig.subplots_adjust(
+                top    = tup7[2] ,
+                bottom = tup7[3] ,
+                left   = tup7[4] ,
+                right  = tup7[5] ,
+                )
+#
+plt.xlim(-1*dx, 3*dx)    # 設定X軸的顯示範圍, from xmin to xmax
+plt.ylim(-1*dy, 1*dy)    # 設定Y軸的顯示範圍, from ymin to ymax
+#
+xvalues = []
+yvalues = []
+plt.xticks(xvalues)
+plt.yticks(yvalues)
+plt.tick_params(labelsize=20)
+#
+ax.xaxis.set_major_formatter(plt.FuncFormatter(x_format_func))
+ax.yaxis.set_major_formatter(plt.FuncFormatter(y_format_func))
+#
+plt.grid(False)
+ax.set_axis_on()    # will turn on  grid line
+# ax.set_axis_off() # will turn off grid line
+#
+# get current axes, set X,Y same ratio &amp; scale  
+plt.gca().set_aspect(&#x27;equal&#x27;, adjustable=&#x27;box&#x27;)
+#
+r0  = 8.9354
+cxy = (0,0)
+#
+Hline = LineString([(-r0,0), (r0,0)])
+point_1_xy = (r0,0)
+point_2_xy = (r0*np.cos(5*np.pi/12), r0*np.sin(5*np.pi/12))
+point_3_xy = (r0*np.cos(7*np.pi/12), r0*np.sin(7*np.pi/12))
+point_1    = Point(point_1_xy)
+point_2    = Point(point_2_xy)
+point_3    = Point(point_3_xy)
+d1 = point_2.distance(point_3) / 2
+d92= r0 - d1
+#
+Hline = LineString([(r0+d1,0), (-r0-d1,0)])
+line_left  = affinity.rotate(Hline,105, cxy)
+line_right = affinity.rotate(Hline, 75, cxy)
+r15_line_left  = affinity.rotate(line_left,  15, cxy)
+r15_line_right = affinity.rotate(line_right, 15, cxy)
+#
+line_p2_p3 = LineString([point_2_xy, point_3_xy])
+r15_line_p2_p3 = affinity.rotate(line_p2_p3, 15, cxy)
+#
+bisector_degree = (90-15)/2
+mid_1 = line_p2_p3.interpolate(0.5, normalized = True)
+mid_2 = affinity.rotate(mid_1, 90-15, point_2_xy)
+mid_1_xy = (mid_1.x, mid_1.y)
+mid_2_xy = (mid_2.x, mid_2.y)
+line_mid_1_to_2 = LineString([mid_1_xy, mid_2_xy])
+#
+line_A = affinity.rotate(line_p2_p3, bisector_degree, point_2_xy)
+line_B = affinity.rotate(line_p2_p3,-bisector_degree, point_3_xy)
+its_1    = line_A.intersection(line_B)
+its_1_xy = (its_1.x, its_1.y)
+line_a   = LineString([point_2_xy, its_1_xy])
+line_b   = LineString([point_3_xy, its_1_xy])
+#
+its_2 = line_a.intersection(line_mid_1_to_2)
+its_2_xy = (its_2.x, its_2.y)
+#
+r15_key_line_mid_1_to_2 = affinity.rotate(line_mid_1_to_2, 15, cxy)
+r15_line_a = affinity.rotate(line_a, 15, cxy)
+r15_line_b = affinity.rotate(line_b, 15, cxy)
+#
+tmp_1_xy = (mid_2.x, point_2_xy[1])
+tmp_2_xy = (mid_2.x, 0)
+line_tmp = LineString([tmp_1_xy, tmp_2_xy])
+its_3    = line_a.intersection(line_tmp)
+its_3_xy = (its_3.x, its_3.y)
+#
+line_base = LineString([its_2_xy, its_3_xy])
+d_its2_to_its3 = its_2.distance(its_3)
+distance = d_its2_to_its3 - 0.24
+#
+key_posi = line_base.interpolate(distance)
+key_posi_xy = (key_posi.x, key_posi.y)
+key_cir_2 = shapely_Arc(key_posi_xy, 0.07, 0, 360)
+#
+t0x = mid_2.x - key_posi.x
+t0y = mid_2.y - key_posi.y
+ext_0 = affinity.translate(mid_2, 10*t0x, 10*t0y, 0)
+line_mid_2_to_ext_0 = LineString([mid_2_xy, (ext_0.x,ext_0.y)])
+ext_p0 = line_mid_2_to_ext_0.intersection(Hline)
+ext_p0_xy = (ext_p0.x, ext_p0.y)
+#
+line_key = LineString([mid_1_xy, key_posi_xy, mid_2_xy, ext_p0_xy])
+#
+hline = LineString([(r0,0), (0,0)])
+r45_Hline = affinity.rotate(hline, 45, cxy)
+r60_Hline = affinity.rotate(hline, 60, cxy)
+#
+its_4 = line_key.intersection(r45_Hline)
+its_5 = line_key.intersection(r60_Hline)
+its_4_xy = (its_4.x, its_4.y)
+its_5_xy = (its_5.x, its_5.y)
+d4 = its_4.distance(Point(cxy))
+d5 = its_5.distance(Point(cxy))
+#
+cir_4 = shapely_Arc(cxy, d4, 0, 360) # small magenta circle
+cir_5 = shapely_Arc(cxy, d5, 0, 360) # big   magenta circle
+#
+its_51    = line_key.intersection(cir_4)
+its_51_xy = (its_51.x, its_51.y)
+key_1_xy = [its_51_xy, mid_2_xy, key_posi_xy, mid_1_xy ]
+key_2_xy = [(-key_posi_xy[0],key_posi_xy[1]), (-mid_2_xy[0],mid_2_xy[1]), (-its_51_xy[0],its_51_xy[1])]
+line_key_xy = key_1_xy + key_2_xy
+line_key    = LineString(line_key_xy)
+#
+tx = mid_1.x - key_posi.x
+ty = mid_1.y - key_posi.y
+r15_mid_1 = affinity.rotate(mid_1, 15, cxy)
+r45_mid_1 = affinity.rotate(mid_1, 45, cxy)
+r15_mid_1_xy = (r15_mid_1.x, r15_mid_1.y)
+r45_mid_1_xy = (r45_mid_1.x, r45_mid_1.y)
+#
+ext_1 = affinity.translate(mid_1, 3*tx, 3*ty, 0)
+line_mid_1_to_ext_1 = LineString([mid_1_xy, (ext_1.x,ext_1.y)])
+ext_p1 = line_mid_1_to_ext_1.intersection(line_left)
+r15_ext_p1 = affinity.rotate(ext_p1, 15, cxy)
+r15_ext_p1_xy = (r15_ext_p1.x, r15_ext_p1.y)
+#
+up_motif = LineString([r45_mid_1_xy, r15_ext_p1_xy, r15_mid_1_xy])
+#
+for i in range(0,12) :
+    r_line_key = affinity.rotate(line_key, i*30+15, cxy)
+    xs, ys = r_line_key.xy
+    ax.plot(xs, ys, alpha=0.7, color=&#x27;blue&#x27;, linewidth=1.0, solid_capstyle=&#x27;round&#x27;, zorder=15)
+# end for
+#
+for i in range(0,12,2) :
+    r_up_motif = affinity.rotate(up_motif, i*30, cxy)
+    xs, ys = r_up_motif.xy
+    ax.plot(xs, ys, alpha=0.7, color=&#x27;blue&#x27;, linewidth=1.0, solid_capstyle=&#x27;round&#x27;, zorder=15)
+# end for
+#
+posi_1_xy = (-dx/2, dy/2)
+posi_1 = Point(posi_1_xy)
+posi_2 = affinity.rotate(posi_1, 1*60, cxy)
+posi_3 = affinity.rotate(posi_1, 2*60, cxy)
+posi_4 = affinity.rotate(posi_1, 3*60, cxy)
+posi_5 = affinity.rotate(posi_1, 4*60, cxy)
+posi_6 = affinity.rotate(posi_1, 5*60, cxy)
+#
+posi_2_xy = (posi_2.x, posi_2.y)
+posi_3_xy = (posi_3.x, posi_3.y)
+posi_4_xy = (posi_4.x, posi_4.y)
+posi_5_xy = (posi_5.x, posi_5.y)
+posi_6_xy = (posi_6.x, posi_6.y)
+#
+posi_list = [posi_1_xy, posi_2_xy, posi_3_xy, posi_4_xy, posi_5_xy, posi_6_xy]
+#
+tx_7 = 3*dx
+ty_7 = 1*dy
+tx_8 = 3*dx
+ty_8 =-1*dy
+#
+r15_line_key = affinity.rotate(line_key, 15, cxy)
+vline = LineString([(0,0), (0,r0)])
+its_92 = r15_line_key.intersection(vline)
+#
+d91 = r15_ext_p1.distance(Point(cxy))
+print(&#x27;radius d91 =&#x27;,d91)
+d92 = its_92.y
+print(&#x27;radius d92 =&#x27;,d92)
+#
+cir_91 = shapely_Arc(cxy, d91, 0, 360)
+cir_92 = shapely_Arc(cxy, d92, 0, 360)
+#
+for posi in posi_list :
+    for i in (0,1,2,3,4,5,6,7,8,9,10,11) :
+        r1_line_key = affinity.rotate(line_key, i*30+15, cxy)
+        r2_line_key = affinity.rotate(r1_line_key, 180, posi)
+        motif_line(r2_line_key, &#x27;blue&#x27;, 15, 1.0)
+    # end for
+# end for
+#
+for t in [(tx_7, ty_7), (tx_8, ty_8)] :
+    for i in (0,1,2,3,4,5,6,7,8,9,10,11) :
+        r_line_key = affinity.rotate(line_key, i*30+15, cxy)
+        t_line_key = affinity.translate(r_line_key, t[0], t[1])
+        motif_line(t_line_key, &#x27;blue&#x27;, 15, 1.0)
+    # end for
+# end for
+#
+for posi in posi_list :
+    for i in (0,2,4,6,8,10) :
+        r1_up_motif = affinity.rotate(up_motif, i*30, cxy)
+        r2_up_motif = affinity.rotate(r1_up_motif, 180, posi)
+        motif_line(r2_up_motif, &#x27;blue&#x27;, 15, 1.0)
+    # end for
+# end for
+#
+for t in [(tx_7, ty_7), (tx_8, ty_8)] :
+    for i in (0,2,4,6,8,10) :
+        r_up_motif = affinity.rotate(up_motif, i*30, cxy)
+        t_up_motif = affinity.translate(r_up_motif, t[0], t[1])
+        motif_line(t_up_motif, &#x27;blue&#x27;, 15, 1.0)
+    # end for
+# end for
+#
+aux_line_1_xy = [( dx,dy), posi_1_xy]
+aux_line_2_xy = [(-dx,dy), posi_6_xy]
+aux_line_3_xy = [(0,0), (0,dy)]
+#
+aux_line_1 = LineString(aux_line_1_xy)
+aux_line_2 = LineString(aux_line_2_xy)
+aux_line_3 = LineString(aux_line_3_xy)
+aux_line_4 = affinity.rotate(aux_line_3, 15, (0,0))
+its_81 = aux_line_1.intersection(aux_line_4)
+aux_line_5 = LineString([( its_81.x,its_81.y), (0,0)])
+aux_line_6 = LineString([(-its_81.x,its_81.y), (0,0)])
+aux_line_7 = affinity.rotate(aux_line_5, 52.5, (its_81.x,its_81.y))
+#
+its_82 = aux_line_3.intersection(aux_line_7)
+its_83 = cir_91.intersection(aux_line_7)
+its_82_xy = (its_82.x, its_82.y)
+#
+d93 = its_82.distance(its_83)
+cir_93 = shapely_Arc(its_82_xy, d93, 0, 360)
+#
+its_84 = aux_line_6.intersection(aux_line_7)
+aux_line_7 = LineString([(its_81.x,its_81.y), (its_84.x,its_84.y)])
+#
+posi_start = shapely_Arc((0,d92), 0.07, 0, 360)
+posi_end   = shapely_Arc((0,dx),  0.07, 0, 360)
+posi_start_xy   = (0, dx)
+posi_end_xy     = (0, d92)
+#
+r15_mid_1    = affinity.rotate(mid_1,    15, cxy)
+r15_key_posi = affinity.rotate(key_posi, 15, cxy)
+star_p1 = affinity.rotate(r15_mid_1,   -75, its_82_xy)
+star_p2 = affinity.rotate(r15_key_posi,-75, its_82_xy)
+#
+star_p0_xy = posi_start_xy
+star_p1_xy = (star_p1.x, star_p1.y)
+star_p2_xy = (star_p2.x, star_p2.y)
+star_p3_xy = (r15_mid_1.x, r15_mid_1.y)
+star_p4_xy = (r15_key_posi.x, r15_key_posi.y)
+star_p5_xy = posi_end_xy
+star_p6_xy = (-r15_key_posi.x, r15_key_posi.y)
+star_p7_xy = (-r15_mid_1.x, r15_mid_1.y)
+star_p8_xy = (-star_p2.x, star_p2.y)
+star_p9_xy = (-star_p1.x, star_p1.y)
+#
+star_xy   = [star_p0_xy, star_p1_xy,
+             star_p2_xy, star_p3_xy,
+             star_p4_xy, star_p5_xy,
+             star_p6_xy, star_p7_xy,
+             star_p8_xy, star_p9_xy,
+             star_p0_xy]
+#
+star_frame_xy = [star_p7_xy, star_p8_xy, 
+                 star_p9_xy, star_p0_xy, 
+                 star_p1_xy, star_p2_xy,
+                 star_p3_xy]
+#
+star_body  = LineString(star_xy)
+star_frame = LineString(star_frame_xy)
+#
+my_green = (113/255, 142/255, 62/255)
+#
+for i in (0,1,2,3,4,5) :
+    r0_star_frame = affinity.rotate(star_frame, i*60, (0,0))
+    #
+    r1_star_frame = affinity.rotate(r0_star_frame, 180, posi_1_xy)
+    r2_star_frame = affinity.rotate(r0_star_frame, 180, posi_2_xy)
+    r3_star_frame = affinity.rotate(r0_star_frame, 180, posi_3_xy)
+    r4_star_frame = affinity.rotate(r0_star_frame, 180, posi_4_xy)
+    r5_star_frame = affinity.rotate(r0_star_frame, 180, posi_5_xy)
+    r6_star_frame = affinity.rotate(r0_star_frame, 180, posi_6_xy)
+    t7_star_frame = affinity.translate(r0_star_frame, tx_7, ty_7)
+    t8_star_frame = affinity.translate(r0_star_frame, tx_8, ty_8)      
+    # 
+    motif_line(r0_star_frame, &#x27;blue&#x27;, 10, 1.0)
+    motif_line(r1_star_frame, &#x27;blue&#x27;, 10, 1.0)
+    motif_line(r2_star_frame, &#x27;blue&#x27;, 10, 1.0)
+    motif_line(r3_star_frame, &#x27;blue&#x27;, 10, 1.0)
+    motif_line(r4_star_frame, &#x27;blue&#x27;, 10, 1.0)
+    motif_line(r5_star_frame, &#x27;blue&#x27;, 10, 1.0)
+    motif_line(r6_star_frame, &#x27;blue&#x27;, 10, 1.0)
+    motif_line(t7_star_frame, &#x27;blue&#x27;, 10, 1.0)
+    motif_line(t8_star_frame, &#x27;blue&#x27;, 10, 1.0)    
+# end for
+#
+plt.savefig(&#x27;./png5/rcm-12-L.png&#x27;,format=&quot;png&quot;,dpi=150, facecolor=&#x27;white&#x27;)
+#
+print (&#x27;Done&#x27;)</code></pre></div><div style="display:contents" dir="auto"><p id="2d9ac165-e88d-8191-a570-c39fb4547356" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
