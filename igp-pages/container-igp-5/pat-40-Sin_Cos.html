@@ -1,0 +1,1321 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>pat-40-Sin_Cos</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2d9ac165-e88d-81da-974a-ca284a6020cd" class="page sans"><header><h1 class="page-title" dir="auto">pat-40-Sin_Cos</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><p id="325ac165-e88d-8030-a690-c0538996f1d9" class="">Sin(θ) , Cos(θ)</p></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-8110-995e-f69e99765cd7" class="image"><a href="pat-40-Sin_Cos/fig-3A-Sine.png"><img style="width:709.9625244140625px" src="pat-40-Sin_Cos/fig-3A-Sine.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81d6-984b-f673593b30ba" class="image"><a href="pat-40-Sin_Cos/fig-3B-Cosine.png"><img style="width:709.9625244140625px" src="pat-40-Sin_Cos/fig-3B-Cosine.png"/></a></figure></div><div style="display:contents" dir="ltr"><figure id="2d9ac165-e88d-81ee-b337-d28e6c7ef05d" class="image"><a href="pat-40-Sin_Cos/fig-3C-Sine-Cosine.png"><img style="width:709.9750366210938px" src="pat-40-Sin_Cos/fig-3C-Sine-Cosine.png"/></a></figure></div><div style="display:contents" dir="auto"><h2 id="2d9ac165-e88d-81f4-bdc4-e99830ce32fe" class=""><mark class="highlight-red">Python code 1</mark></h2></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2d9ac165-e88d-81f6-a91c-c2be7032d19e" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all"># 程式碼A區==程式碼A區==程式碼A區==程式碼A區==程式碼A區
+# AAAAAAAA==AAAAAAAA==AAAAAAAAA==AAAAAAAA==AAAAAAAA
+#
+# Sine-Cosine-1
+# 2021-09-21
+#
+# python 3.8
+# run on https://replit.com
+# run on ubuntu 16.04 LTS
+#
+# 要執行本程式, 請按上方run▶
+#
+# Browser encoding UTF-8 HTML5 URL / as %2F
+#
+# 程式碼B區==程式碼B區==程式碼B區==程式碼B區==程式碼B區
+# BBBBBBBB==BBBBBBBB==BBBBBBBBB==BBBBBBBB==BBBBBBBB
+#
+# to fix matplotlib warning
+import os
+os.environ[&#x27;MPLCONFIGDIR&#x27;] = os.getcwd() + &quot;/configs/&quot;
+#
+import sys
+#
+# 載入繪圖模組 pyplot, 重新命名為 plot
+import matplotlib.pyplot as plot
+import numpy as np
+from shapely.geometry  import LineString
+#
+# 定義圖面函數 ------------------------------------------------------
+def set_graphic_area(width,height) :
+    #    
+    cm2inch = 1/2.54    # inch per cm
+    #
+    # define graphic area
+    #
+    left_margin  = 2.0  # cm
+    right_margin = 1.0  # cm
+    #
+    figure_width  = width  # cm , from xmin to xmax
+    figure_height = height # cm , from ymin to ymax
+    #
+    top_margin = 1.0    # cm
+    bottom_margin = 1.0 # cm
+    #
+    box_width = left_margin + figure_width + right_margin   # cm
+    box_height = top_margin + figure_height + bottom_margin # cm
+    #
+    top_value    = 1.0 - top_margin / box_height
+    bottom_value = bottom_margin / box_height
+    left_value   = left_margin / box_width
+    right_value  = 1.0 - right_margin / box_width
+    #
+    return (box_width*cm2inch,box_height*cm2inch,top_value,bottom_value,left_value,right_value,width)
+#
+# end of def
+#
+# Define the arc
+# center position is cxy = (cx, cy)
+# start_angle, end_angle is in degrees
+#
+def shapely_Arc(cxy, r, start_angle, end_angle) :
+    #
+    numsegments = 1440
+    # The coordinates of the arc
+    theta = np.radians(np.linspace(start_angle, end_angle, numsegments))
+    x = cxy[0] + r * np.cos(theta)
+    y = cxy[1] + r * np.sin(theta)
+    Arc = LineString(np.column_stack([x, y]))
+    return Arc
+    #
+# end of def
+#
+def motif_line_1(LS, COLOR, ZORDER, LINEWIDTH) :
+    #
+    xs, ys = LS.xy
+    ax_1.plot(xs, ys, color=COLOR, alpha=0.7, linewidth=LINEWIDTH, solid_capstyle=&#x27;round&#x27;, zorder=ZORDER)
+    return
+#
+def motif_line_2(LS, COLOR, ZORDER, LINEWIDTH) :
+    #
+    xs, ys = LS.xy
+    ax_2.plot(xs, ys, color=COLOR, alpha=0.7, linewidth=LINEWIDTH, solid_capstyle=&#x27;round&#x27;, zorder=ZORDER)
+    return
+#
+def motif_fill(LS, COLOR, ZORDER, ALPHA) :
+    #
+    xs, ys = LS.xy
+    ax_1.fill(xs, ys, alpha=ALPHA, closed=True, edgecolor=None, facecolor=COLOR, fill=True, joinstyle=&#x27;miter&#x27;, zorder=ZORDER)
+    return
+#
+# 程式碼C區==程式碼C區==程式碼C區==程式碼C區==程式碼C區
+# CCCCCCCC==CCCCCCCC==CCCCCCCCC==CCCCCCCC==CCCCCCCC
+#
+# 設定圖面大小
+#  setup圖面大小 (10,5) 單位公分
+#  tup7 is type of Tuple, have 7 indexed value
+#
+# main()
+tup7 = set_graphic_area(4*np.pi,8)  
+# 呼叫 pyplot.figure(), 建立一個圖表物件, 並成為目前圖表物件
+fig = plot.figure(figsize=(tup7[0], tup7[1])) 
+# 圖表的繪圖區域被分為1個子圖, 1 row, 1 column, plot to index 1
+ax_1 = fig.add_subplot(2,1,1)   
+fig.subplots_adjust(
+                top    = tup7[2] ,
+                bottom = tup7[3] ,
+                left   = tup7[4] ,
+                right  = tup7[5] ,
+                )
+#
+plot.xlim(-2*np.pi, 2*np.pi)    # 設定X軸的顯示範圍, from xmin to xmax
+plot.ylim(-1.5, 1.5)            # 設定Y軸的顯示範圍, from ymin to ymax
+#
+xvalues = [-2*np.pi, -3*np.pi/2, -1*np.pi, -1*np.pi/2, 0,
+            1*np.pi/2, 1*np.pi, 3*np.pi/2, 2*np.pi]
+#
+yvalues = [-1.5,-1,-0.5,0,0.5,1,1.5]
+#
+plot.xticks(xvalues)
+plot.yticks(yvalues)
+plot.tick_params(labelsize=6)
+#
+plot.xlabel(&quot;x&quot;)
+plot.ylabel(&quot;sin(x)&quot;)
+#
+# get current axes, set X,Y same ratio &amp; scale 
+# &#x27;equal&#x27; --&gt; 0.5
+plot.gca().set_aspect(&#x27;equal&#x27;, adjustable=&#x27;box&#x27;)
+#
+plot.grid(color=&#x27;green&#x27;, linewidth=0.25)
+ax_1.grid(True)
+# ax.grid(False)
+ax_1.set_axis_on() # will turn on  grid line
+# ax.set_axis_off()  # will turn off grid line
+#
+plot.savefig(&quot;./png/1-1.png&quot;, format=&quot;png&quot;, dpi=150)
+#
+# 程式碼D區==程式碼D區==程式碼D區==程式碼D區==程式碼D區
+# DDDDDDDD==DDDDDDDD==DDDDDDDDD==DDDDDDDD==DDDDDDDD
+#
+numsegments = 1440
+# The coordinates of the Sine
+x = np.radians(np.linspace(-360, 360, numsegments))
+y = np.sin(x)
+Sine = LineString(np.column_stack([x, y]))
+motif_line_1(Sine, &#x27;blue&#x27;, 10, 1.0)
+#
+plot.savefig(&quot;./png/1-2.png&quot;, format=&quot;png&quot;, dpi=150)
+#
+ax_2 = fig.add_subplot(2,1,2)   
+fig.subplots_adjust(
+                top    = tup7[2] ,
+                bottom = tup7[3] ,
+                left   = tup7[4] ,
+                right  = tup7[5] ,
+                )
+#
+plot.xlim(-2*np.pi, 2*np.pi)    # 設定X軸的顯示範圍, from xmin to xmax
+plot.ylim(-1.5, 1.5)            # 設定Y軸的顯示範圍, from ymin to ymax
+#
+xvalues = [-2*np.pi, -3*np.pi/2, -1*np.pi, -1*np.pi/2, 0,
+            1*np.pi/2, 1*np.pi, 3*np.pi/2, 2*np.pi]
+#
+yvalues = [-1.5,-1,-0.5,0,0.5,1,1.5]
+#
+plot.xticks(xvalues)
+plot.yticks(yvalues)
+plot.tick_params(labelsize=6)
+#
+plot.xlabel(&quot;x&quot;)
+plot.ylabel(&quot;cos(x)&quot;)
+#
+# get current axes, set X,Y same ratio &amp; scale 
+plot.gca().set_aspect(&#x27;equal&#x27;, adjustable=&#x27;box&#x27;)
+#
+plot.grid(color=&#x27;green&#x27;, linewidth=0.25)
+ax_2.grid(True)
+# ax.grid(False)
+ax_2.set_axis_on() # will turn on  grid line
+# ax.set_axis_off()  # will turn off grid line
+#
+plot.savefig(&quot;./png/1-3.png&quot;, format=&quot;png&quot;, dpi=150)
+#
+numsegments = 1440
+# The coordinates of the Sine
+x = np.radians(np.linspace(-360, 360, numsegments))
+y = np.cos(x)
+Sine = LineString(np.column_stack([x, y]))
+motif_line_2(Sine, &#x27;magenta&#x27;, 10, 1.0)
+#
+plot.savefig(&quot;./png/1-4.png&quot;, format=&quot;png&quot;, dpi=150)
+#
+try:
+    print(&#x27;Press Ctrl-C to exit&#x27;)
+    plot.show()
+except KeyboardInterrupt:
+    # press Ctrl-C to quit
+    os.system(&#x27;clear&#x27;)
+    sys.exit()</code></pre></div><div style="display:contents" dir="auto"><h2 id="2d9ac165-e88d-81dd-b966-cae56fb00b2c" class=""><mark class="highlight-red">Python code 2</mark></h2></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2d9ac165-e88d-8121-9fb8-e2b6fd940559" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all"># 程式碼A區==程式碼A區==程式碼A區==程式碼A區==程式碼A區
+# AAAAAAAA==AAAAAAAA==AAAAAAAAA==AAAAAAAA==AAAAAAAA
+#
+# Sine-Cosine-2
+# 2021-09-21
+#
+# python 3.8
+# run on https://replit.com
+# run on ubuntu 16.04 LTS
+#
+# 要執行本程式, 請按上方run▶
+#
+# Browser encoding UTF-8 HTML5 URL / as %2F
+#
+# 程式碼B區==程式碼B區==程式碼B區==程式碼B區==程式碼B區
+# BBBBBBBB==BBBBBBBB==BBBBBBBBB==BBBBBBBB==BBBBBBBB
+#
+# to fix matplotlib warning
+import os
+os.environ[&#x27;MPLCONFIGDIR&#x27;] = os.getcwd() + &quot;/configs/&quot;
+#
+import sys
+#
+# 載入繪圖模組 pyplot, 重新命名為 plot
+import matplotlib.pyplot as plot
+import numpy as np
+from shapely.geometry  import LineString
+#
+# 定義圖面函數 ------------------------------------------------------
+def set_graphic_area(width,height) :
+    #    
+    cm2inch = 1/2.54    # inch per cm
+    #
+    # define graphic area
+    #
+    left_margin  = 2.0  # cm
+    right_margin = 1.0  # cm
+    #
+    figure_width  = width  # cm , from xmin to xmax
+    figure_height = height # cm , from ymin to ymax
+    #
+    top_margin = 1.0    # cm
+    bottom_margin = 1.0 # cm
+    #
+    box_width = left_margin + figure_width + right_margin   # cm
+    box_height = top_margin + figure_height + bottom_margin # cm
+    #
+    top_value    = 1.0 - top_margin / box_height
+    bottom_value = bottom_margin / box_height
+    left_value   = left_margin / box_width
+    right_value  = 1.0 - right_margin / box_width
+    #
+    return (box_width*cm2inch,box_height*cm2inch,top_value,bottom_value,left_value,right_value,width)
+#
+# end of def
+#
+# Define the arc
+# center position is cxy = (cx, cy)
+# start_angle, end_angle is in degrees
+#
+def shapely_Arc(cxy, r, start_angle, end_angle) :
+    #
+    numsegments = 1440
+    # The coordinates of the arc
+    theta = np.radians(np.linspace(start_angle, end_angle, numsegments))
+    x = cxy[0] + r * np.cos(theta)
+    y = cxy[1] + r * np.sin(theta)
+    Arc = LineString(np.column_stack([x, y]))
+    return Arc
+    #
+# end of def
+#
+def motif_line_1(LS, COLOR, ZORDER, LINEWIDTH) :
+    #
+    xs, ys = LS.xy
+    ax_1.plot(xs, ys, color=COLOR, alpha=0.7, linewidth=LINEWIDTH, solid_capstyle=&#x27;round&#x27;, zorder=ZORDER)
+    return
+#
+def motif_line_2(LS, COLOR, ZORDER, LINEWIDTH) :
+    #
+    xs, ys = LS.xy
+    ax_2.plot(xs, ys, color=COLOR, alpha=0.7, linewidth=LINEWIDTH, solid_capstyle=&#x27;round&#x27;, zorder=ZORDER)
+    return
+#
+def motif_fill(LS, COLOR, ZORDER, ALPHA) :
+    #
+    xs, ys = LS.xy
+    ax_1.fill(xs, ys, alpha=ALPHA, closed=True, edgecolor=None, facecolor=COLOR, fill=True, joinstyle=&#x27;miter&#x27;, zorder=ZORDER)
+    return
+#
+def format_func(value, tick_number):
+    # find number of multiples of pi/2
+    N = int(np.round(2 * value / np.pi))
+    if N == 0:
+        return &quot;0&quot;
+    elif N == 1:
+        return r&quot;$\pi/2$&quot;
+    elif N == 2:
+        return r&quot;$\pi$&quot;
+    elif N % 2 &gt; 0:
+        return r&quot;${0}\pi/2$&quot;.format(N)
+    else:
+        return r&quot;${0}\pi$&quot;.format(N // 2)
+    # end if
+# end def
+#
+# 程式碼C區==程式碼C區==程式碼C區==程式碼C區==程式碼C區
+# CCCCCCCC==CCCCCCCC==CCCCCCCCC==CCCCCCCC==CCCCCCCC
+#
+# 設定圖面大小
+#  setup圖面大小 (10,5) 單位公分
+#  tup7 is type of Tuple, have 7 indexed value
+#
+# main()
+tup7 = set_graphic_area(4*np.pi,8)  
+# 呼叫 pyplot.figure(), 建立一個圖表物件, 並成為目前圖表物件
+fig = plot.figure(figsize=(tup7[0], tup7[1])) 
+# 圖表的繪圖區域被分為1個子圖, 1 row, 1 column, plot to index 1
+ax_1 = fig.add_subplot(2,1,1)   
+fig.subplots_adjust(
+                top    = tup7[2] ,
+                bottom = tup7[3] ,
+                left   = tup7[4] ,
+                right  = tup7[5] ,
+                )
+#
+plot.xlim(-2*np.pi, 2*np.pi)    # 設定X軸的顯示範圍, from xmin to xmax
+plot.ylim(-1.5, 1.5)            # 設定Y軸的顯示範圍, from ymin to ymax
+#
+xvalues = [-2*np.pi, -3*np.pi/2, -np.pi, -np.pi/2, 0,
+            np.pi/2, np.pi, 3*np.pi/2, 2*np.pi]
+#
+yvalues = [-1.5,-1,-0.5,0,0.5,1,1.5]
+#
+plot.xticks(xvalues)
+plot.yticks(yvalues)
+plot.tick_params(labelsize=6)
+#
+ax_1.xaxis.set_major_formatter(plot.FuncFormatter(format_func))
+#
+plot.xlabel(&quot;x&quot;)
+plot.ylabel(&quot;sin(x)&quot;)
+#
+# get current axes, set X,Y same ratio &amp; scale 
+# &#x27;equal&#x27; --&gt; 0.5
+plot.gca().set_aspect(&#x27;equal&#x27;, adjustable=&#x27;box&#x27;)
+#
+plot.grid(color=&#x27;green&#x27;, linewidth=0.25)
+ax_1.grid(True)
+# ax.grid(False)
+ax_1.set_axis_on() # will turn on  grid line
+# ax.set_axis_off()  # will turn off grid line
+#
+H_line = LineString([(-2*np.pi, 0), (2*np.pi, 0)])
+motif_line_1(H_line, &#x27;red&#x27;, 10, 0.4)
+#
+plot.savefig(&quot;./png/2-1.png&quot;, format=&quot;png&quot;, dpi=150)
+#
+# 程式碼D區==程式碼D區==程式碼D區==程式碼D區==程式碼D區
+# DDDDDDDD==DDDDDDDD==DDDDDDDDD==DDDDDDDD==DDDDDDDD
+#
+numsegments = 1440
+# The coordinates of the Sine
+x = np.radians(np.linspace(-360, 360, numsegments))
+y = np.sin(x)
+Sine = LineString(np.column_stack([x, y]))
+motif_line_1(Sine, &#x27;blue&#x27;, 10, 1.0)
+#
+plot.savefig(&quot;./png/2-2.png&quot;, format=&quot;png&quot;, dpi=150)
+#
+ax_2 = fig.add_subplot(2,1,2)   
+fig.subplots_adjust(
+                top    = tup7[2] ,
+                bottom = tup7[3] ,
+                left   = tup7[4] ,
+                right  = tup7[5] ,
+                )
+#
+plot.xlim(-2*np.pi, 2*np.pi)    # 設定X軸的顯示範圍, from xmin to xmax
+plot.ylim(-1.5, 1.5)            # 設定Y軸的顯示範圍, from ymin to ymax
+#
+xvalues = [-2*np.pi, -3*np.pi/2, -np.pi, -np.pi/2, 0,
+            np.pi/2, np.pi, 3*np.pi/2, 2*np.pi]
+#
+yvalues = [-1.5,-1,-0.5,0,0.5,1,1.5]
+#
+plot.xticks(xvalues)
+plot.yticks(yvalues)
+plot.tick_params(labelsize=6)
+#
+ax_2.xaxis.set_major_formatter(plot.FuncFormatter(format_func))
+#
+plot.xlabel(&quot;x&quot;)
+plot.ylabel(&quot;cos(x)&quot;)
+#
+# get current axes, set X,Y same ratio &amp; scale 
+plot.gca().set_aspect(&#x27;equal&#x27;, adjustable=&#x27;box&#x27;)
+#
+plot.grid(color=&#x27;green&#x27;, linewidth=0.25)
+ax_2.grid(True)
+# ax.grid(False)
+ax_2.set_axis_on() # will turn on  grid line
+# ax.set_axis_off()  # will turn off grid line
+#
+motif_line_2(H_line, &#x27;red&#x27;, 10, 0.4)
+#
+plot.savefig(&quot;./png/2-3.png&quot;, format=&quot;png&quot;, dpi=150)
+#
+numsegments = 1440
+# The coordinates of the Sine
+x = np.radians(np.linspace(-360, 360, numsegments))
+y = np.cos(x)
+Sine = LineString(np.column_stack([x, y]))
+motif_line_2(Sine, &#x27;magenta&#x27;, 10, 1.0)
+#
+plot.savefig(&quot;./png/2-4.png&quot;, format=&quot;png&quot;, dpi=150)
+#
+try:
+    print(&#x27;Press Ctrl-C to exit&#x27;)
+    plot.show()
+except KeyboardInterrupt:
+    # press Ctrl-C to quit
+    os.system(&#x27;clear&#x27;)
+    sys.exit()</code></pre></div><div style="display:contents" dir="auto"><h2 id="2d9ac165-e88d-8178-8a42-c945860ad995" class=""><mark class="highlight-red">Python code 3 animate</mark></h2></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2d9ac165-e88d-81c1-b337-ce4da92c2d4a" class="code code-wrap"><code class="language-Python" style="white-space:pre-wrap;word-break:break-all"># 程式碼A區==程式碼A區==程式碼A區==程式碼A區==程式碼A區
+# AAAAAAAA==AAAAAAAA==AAAAAAAAA==AAAAAAAA==AAAAAAAA
+#
+# Sine-Cosine-3-Animate-1
+# 2021-09-21
+#
+# python 3.8
+# run on https://replit.com
+# run on ubuntu 16.04 LTS
+#
+# 要執行本程式, 請按上方run▶
+#
+# Browser encoding UTF-8 HTML5 URL / as %2F
+#
+# 程式碼B區==程式碼B區==程式碼B區==程式碼B區==程式碼B區
+# BBBBBBBB==BBBBBBBB==BBBBBBBBB==BBBBBBBB==BBBBBBBB
+#
+# Enable interactive plot
+%matplotlib widget
+#
+# to fix matplotlib warning
+import os
+os.environ[&#x27;MPLCONFIGDIR&#x27;] = os.getcwd() + &quot;/configs/&quot;
+#
+import sys
+import numpy as np
+import datetime as dt
+#
+# 載入繪圖模組 pyplot, 重新命名為 plt
+import matplotlib.pyplot as plt
+from shapely.geometry  import LineString
+from matplotlib.animation import FuncAnimation
+#
+# 定義圖面函數 ------------------------------------------------------
+def set_graphic_area(width,height) :
+    #    
+    cm2inch = 1/2.54    # inch per cm
+    #
+    # define graphic area
+    #
+    left_margin  = 2.0  # cm
+    right_margin = 1.0  # cm
+    #
+    figure_width  = width  # cm , from xmin to xmax
+    figure_height = height # cm , from ymin to ymax
+    #
+    top_margin = 1.0    # cm
+    bottom_margin = 1.0 # cm
+    #
+    box_width = left_margin + figure_width + right_margin   # cm
+    box_height = top_margin + figure_height + bottom_margin # cm
+    #
+    top_value    = 1.0 - top_margin / box_height
+    bottom_value = bottom_margin / box_height
+    left_value   = left_margin / box_width
+    right_value  = 1.0 - right_margin / box_width
+    #
+    return (box_width*cm2inch,box_height*cm2inch,top_value,bottom_value,left_value,right_value,width)
+#
+# end of def
+#
+def motif_line(LS, COLOR, ZORDER, LINEWIDTH) :
+    #
+    xs, ys = LS.xy
+    ax.plot(xs, ys, color=COLOR, alpha=0.7, linewidth=LINEWIDTH, solid_capstyle=&#x27;round&#x27;, zorder=ZORDER)
+    return
+#
+# 程式碼C區==程式碼C區==程式碼C區==程式碼C區==程式碼C區
+# CCCCCCCC==CCCCCCCC==CCCCCCCCC==CCCCCCCC==CCCCCCCC
+#
+# 設定圖面大小
+#  setup圖面大小 (16,3) 單位公分
+#  tup7 is type of Tuple, have 7 indexed value
+#
+# main()
+tup7 = set_graphic_area(19,3)  
+# 呼叫 pyplot.figure(), 建立一個圖表物件, 並成為目前圖表物件
+fig = plt.figure(figsize=(tup7[0], tup7[1])) 
+# 圖表的繪圖區域被分為1個子圖, 1 row, 1 column, plot to index 1
+ax = fig.add_subplot(1,1,1)   
+fig.subplots_adjust(
+                top    = tup7[2] ,
+                bottom = tup7[3] ,
+                left   = tup7[4] ,
+                right  = tup7[5] ,
+                )
+#
+plt.xlim(0, 19)      # 設定X軸的顯示範圍, from xmin to xmax
+plt.ylim(-1.5, 1.5)  # 設定Y軸的顯示範圍, from ymin to ymax
+#
+xvalues = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
+yvalues = [-1.5,-1,-0.5,0,0.5,1,1.5]
+plt.yticks(yvalues)
+plt.tick_params(labelsize=6)
+#
+# ax.xaxis.set_major_formatter(plt.FuncFormatter(format_func))
+#
+plt.title(&#x27;Sine &amp; Cosine Curve&#x27;)
+plt.xlabel(&quot;x&quot;)
+plt.ylabel(&quot;sin(x)&quot;)
+#
+# get current axes, set X,Y same ratio &amp; scale 
+plt.gca().set_aspect(&#x27;equal&#x27;, adjustable=&#x27;box&#x27;)
+#
+plt.grid(color=&#x27;green&#x27;, linewidth=0.25)
+ax.grid(True)
+# ax.grid(False)
+ax.set_axis_on() # will turn on  grid line
+# ax.set_axis_off()  # will turn off grid line
+#
+H_line = LineString([(0, 0), (19, 0)])
+motif_line(H_line, &#x27;darkviolet&#x27;, 15, 0.5)
+#
+plt.savefig(&quot;./png/3-1.png&quot;, format=&quot;png&quot;, dpi=150)
+#
+# 程式碼D區==程式碼D區==程式碼D區==程式碼D區==程式碼D區
+# DDDDDDDD==DDDDDDDD==DDDDDDDDD==DDDDDDDD==DDDDDDDD
+#
+# The coordinates of the Sine
+theta = np.pi/18
+xs = []
+sin_ys = []
+cos_ys = []
+for i in range(0,109,1) : 
+    xs.append(i*theta)
+    if i &lt;= 36 :
+        sin_ys.append(np.sin(i*theta))
+        cos_ys.append(np.cos(i*theta))
+    elif (i &gt; 36) and (i &lt;= 72) :
+        j = i - 36
+        sin_ys.append(np.sin(j*theta))
+        cos_ys.append(np.cos(j*theta))        
+    else :
+        j = i - 72
+        sin_ys.append(np.sin(j*theta))
+        cos_ys.append(np.cos(j*theta))          
+    # end if
+# end for
+#
+# function that draws each frame of the animation
+def animate(i, X_list, Sy_list, Cy_list):
+    if i &gt; 108 :
+        print(&#x27;please restart kernel&#x27;)
+        sys.exit()
+    # end if
+    ax.clear()
+    #
+    plt.xlim(0, 19)
+    plt.ylim(-1.5, 1.5)
+    xvalues = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
+    yvalues = [-1.5,-1,-0.5,0,0.5,1,1.5]
+    plt.xticks(xvalues)
+    plt.yticks(yvalues)
+    plt.tick_params(labelsize=6)
+    plt.grid(color=&#x27;green&#x27;, linewidth=0.25)
+    #
+    plt.title(&#x27;Sine &amp; Cosine Curve&#x27;)
+    plt.xlabel(&quot;x&quot;)
+    plt.ylabel(&quot;sin(x)&quot;)
+    #
+    plt.subplots_adjust(bottom=0.20)
+    #    
+    X_list.append(xs[i])
+    Sy_list.append(sin_ys[i])
+    Cy_list.append(cos_ys[i])
+    #
+    ax.plot(X_list, Sy_list, color=&#x27;blue&#x27;)
+    ax.plot(X_list, Cy_list, color=&#x27;red&#x27;)
+    motif_line(H_line, &#x27;darkviolet&#x27;, 15, 0.5)
+    #    
+# end def
+#
+# empty lists for the x,y data
+Xs = []
+SIN_ys = []
+COS_ys = []
+#
+# run the animation
+i = 0
+ani = FuncAnimation(fig, animate, fargs=(Xs,SIN_ys,COS_ys), interval=108)
+#
+try:
+    print(&#x27;Press Ctrl-C to exit&#x27;)
+    plt.show()
+except KeyboardInterrupt:
+    # Ctrl-C was pressed, quit now.
+    os.system(&#x27;clear&#x27;)
+    sys.exit()</code></pre></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
